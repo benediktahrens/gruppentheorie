@@ -1,0 +1,291 @@
+\section{Gruppenoperationen}
+
+Gruppenoperationen sind ein wichtiges Hilfsmittel mit Anwendungen sowohl innerhalb als auch au\ss{}erhalb der Gruppentheorie (z. B. in der Kombinatorik, Zahlentheorie,...). Um die St\"arke zu demonstrieren, werden wir die Aussage des Satzes von Sylow verallgemeinern.
+
+F\"ur eine Menge $\Omega$ bezeichne $\Symm_\Omega$ die symmetrische Gruppe auf $\Omega$. Gruppenoperationen lassen sich auf zwei \"aquivalente Arten definieren.
+
+\begin{definition}[Operation]\spspace
+ \index{Operation}
+ \index{Operation!treue}
+ \index{Operation!triviale}
+\begin{itemize}
+ \item Eine \emph{Gruppenoperation von $G$ auf $\Omega$} ist ein Gruppenhomomorphismus $$\varphi:G\to \Symm_\Omega.$$
+\end{itemize}
+Dazu \"aquivalent:
+\begin{itemize}
+ \item Eine \emph{Gruppenoperation von $G$ auf $\Omega$} ist eine Abbildung $$\Omega \times G \to \Omega, (\alpha,g)\longmapsto \alpha^g$$ derart, dass f\"ur alle $\alpha\in \Omega$ und alle $g,h\in G$ gilt $(\alpha^g)^h=\alpha^{(gh)},\alpha^1=\alpha$.
+\end{itemize}
+Der Homomorphismus $\varphi:G\to \Symm_\Omega$ wird dann gegeben durch $$\varphi(g)=\l(\begin{array}{c}\alpha \\ \alpha^g 
+\end{array}\r).$$
+Die Operation hei\ss{}t \emph{treu} oder \emph{effektiv}, wenn $\varphi$ injektiv ist.\\
+Sie hei\ss{}t \emph{trivial}, wenn $\Ker(\varphi) = G$.
+
+\end{definition}
+
+\begin{beispiel} \spspace
+ \begin{enumerate}
+  \item $\Symm_n$ operiert treu auf $\lbrace 1,\ldots,n \rbrace$.
+  \item $\Di_n$ operiert treu auf den Ecken eines regelm\"a\ss{}igen $n$-Ecks. Versieht man die Ecken mit den Zahlen $1,\ldots,n$, so operiert $\Di_n$ auch treu auf $1,\ldots,n$. Daraus folgt $\Di_3 \cong \Symm_3$, die $2$-Sylowgruppen von $\Symm_4$ sind isomorph zu $\Di_4$.
+  \item Sei $U\leq G$. $G$ operiert auf den Rechtsnebenklassen von $U$ durch Rechtsmultiplikation. Der zugeh\"orige Homomorphismus ist gerade der in \ref{1.8} konstruierte.
+  \item \label{klaus}\label{5.2.4}$G$ operiert durch Konjugation auf 
+   \begin{itemize}
+    \item der Menge ihrer Elemente,
+    \item der Menge der nichtleeren Teilmengen von $G$,
+    \item der Menge der Untergruppen (der $p$-Untergruppen, der Untergruppen von Ordnung $n||G|,\ldots$) von $G$,
+    \item der Menge der $p$-Sylowgruppen von $G$.
+   \end{itemize}
+  \item $\Gl(n,\FF_q)$ operiert auf der Menge der k-dimensionalen Untervektor\-r\"aume von $(\FF_q)^n$.
+
+ \end{enumerate}
+
+ 
+\end{beispiel}
+
+Der letzte Punkt in \ref{5.2.4} verdient es, besonders hervorgehoben zu werden:
+\begin{satz}
+ Sei $G$ eine Gruppe mit genau $n$ $p$-Sylowgruppen $P_1,\ldots,P_n, n>1$. Durch $\psi:G\to \Symm_n, \psi(g)=\sigma$, wobei $g^{-1}P_1g=P_{\sigma(1)},\ldots,g^{-1}P_ng=P_{\sigma(n)}$ wird ein nichttrivialer Homomorphismus definiert und es gilt $\Ker(\psi)=\bigcap_{i=1}^n \Norm_G(P_i)$.
+\end{satz}
+\begin{beweis}
+ Nach Sylow sind die $p$-Sylowgruppen konjugiert, d. h. $\psi$ ist nicht trivial und es gilt $\Ker(\psi)=\lbrace g\in G| g^{-1}P_ig=P_i, i=1,\ldots,n \rbrace = \bigcap_{i=1}^n \Norm_G(P_i)$.
+\end{beweis}
+Als kleine Anwendung zeigen wir:
+\begin{satz} 
+ Ist $|G|=112=2^4\cdot7$, so ist $G$ nicht einfach.
+\end{satz}
+\begin{beweis}
+ Ist die $2$-Sylowgruppe nicht normal in $G$, so gilt $|\Syl_2G|=7$ nach Sylow. Die Operation von $G$ auf $\Syl_2G$ durch Konjugation liefert einen nichttrivialen Homomorphismus $\psi:G\to \Symm_7$. Dann ist auch $\sign\circ\psi:G\to \lbrace -1,1 \rbrace$ ein Homomorphismus. Ist $\sign\circ\psi$ nicht trivial, so ist $\Ker(\sign\circ\psi)\neq G$ und $\Ker(\sign\circ\psi)\nt G$. Sonst ist $\Img(\psi)\leq \Alt_7$. Da $|G| \nmid |\Alt_7|=2^3\cdot 3^2 \cdot 5\cdot 7$, kann $\Alt_7$ keine zu $G$ isomorphe Untergruppe enthalten, also ist $\psi$ weder trivial noch injektiv und $\Ker(\psi)$ daher ein nichttrivialer Normalteiler von $G$.
+\end{beweis}
+\begin{definition}[Stabilisator]
+ \index{Stabilisator}
+ \index{Fixuntergruppe|see{Stabilisator}}
+\index{Isotropiegruppe|see{Stabilisator}}
+\index{Standuntergruppe|see{Stabilisator}}
+ $G$ operiere auf $\Omega$. Sei $\alpha\in\Omega$. Die Menge $G_\alpha:=\lbrace g\in G|\alpha^g=\alpha \rbrace$ hei\ss{}t \emph{Stabilisator von $\alpha$ in $G$}. Andere Bezeichnungen sind \emph{Fixuntergruppe, Isotropiegruppe} und \emph{Standuntergruppe}.
+\end{definition}
+
+\begin{satz} \label{5.6}
+ $G$ operiere auf $\Omega$. Sei $\alpha \in \Omega$. $G_\alpha$ ist eine Untergruppe von $G$ und f\"ur $x\in G$ gilt $G_{\alpha^x}=(G_\alpha)^x$.
+\end{satz}
+\begin{beweis}
+ Seien $x,y\in G_\alpha$, dann ist $\alpha^{xy}=(a^x)^y = \alpha^y = \alpha$. Also ist $xy\in G_\alpha$ und damit ist $G_\alpha$ Untergruppe von $G$.\\
+ Es gilt 
+\begin{eqnarray*}y\in G_{\alpha^x} &\Longleftrightarrow& (\alpha^x)^y = \alpha^x \\ &\Longleftrightarrow& \alpha^{xyx^{-1}}=\alpha \\&\Longleftrightarrow& xyx^{-1}\in G_\alpha \\ &\Longleftrightarrow& y\in x^{-1}G_\alpha x=(G_\alpha)^x
+ \end{eqnarray*}
+
+\end{beweis}
+
+\begin{bemerkung*}
+ $G$ operiert durch Konjugation 
+\begin{itemize}
+ \item auf der Menge ihrer Elemente. Der Stabilisator eines Elements $x\in G$ ist der Zentralisator $\Zen_G(x)$.
+ \item auf der Menge der Untergruppen $U\leq G$. Der Stabilisator von $U$ ist der Normalisator $\Norm_G(U)$.
+\end{itemize}
+Einige Aussagen in (setze REF!) folgen daher aus \ref{5.6}
+\end{bemerkung*}
+
+\begin{definition}[Bahn]
+ \index{Bahn}
+\index{Bahn!L\"ange einer}
+$G$ operiere auf $\Omega$. Sei $\alpha \in \Omega$. Die Menge $\alpha^G:=\lbrace \alpha^g|g\in G\rbrace$ hei\ss{}t \emph{Bahn} (engl. \emph{orbit}) \emph{von $\alpha$}. Die Anzahl der Elemente einer Bahn hei\ss{}t auch \emph{L\"ange der Bahn}.
+\end{definition}
+
+\begin{bemerkung*}
+ Die Bahnen gehen von einer \"Aquivalenzrelation hervor, n\"amlich aus $$\alpha \sim \beta \Longleftrightarrow \exists g\in G : \alpha^g =\beta.$$
+Sind daher $B_1,\ldots,B_n$ die Bahnen von $G$ auf $\Omega$, so gilt $$\Omega=\bigcup_{i=1}^n B_i \qquad\mbox{disjunkt}.$$
+\end{bemerkung*}
+
+\begin{satz}[Bahnengleichung] 
+\addtotoc{Bahnengleichung}
+\label{5.8}
+ \index{Bahnengleichung}
+ $G$ operiere auf $\Omega$. F\"ur $\alpha\in \Omega$ gilt $$|\alpha^g|=\frac{|G|}{|G_\alpha|}$$. Ist $\Lambda$ ein Vertretersystem der Bahnen von $G$ auf $\Omega$, so gilt \begin{equation}
+ |\Omega|=\sum_{\alpha\in\Lambda}\frac{|G|}{|G_\alpha|}\tag{Bahnengleichung}
+\end{equation}
+
+\end{satz}
+
+\begin{beweis}
+ F\"ur $x,y\in G$ gilt
+\begin{eqnarray*}
+ \alpha^x=\alpha^y &\Longleftrightarrow& \alpha^{yx^{-1}}=\alpha \\&\Longleftrightarrow& yx\in G_\alpha \\&\Longleftrightarrow& y\in G_\alpha x.
+\end{eqnarray*}
+Es gibt also in der Bahn $\alpha^G$ genauso viele Elemente, wie es Nebenklassen von $G_\alpha$ gibt, n\"amlich $\frac{|G|}{|G_\alpha|}$ St\"uck. Die Bahnengleichung folgt dann aus $$\Omega=\bigcup_{\alpha\in\Lambda}\alpha^G$$.
+\end{beweis}
+\begin{bemerkung*}
+ Sei $H\leq G$. Betrachten wir die Operation von $H$ auf $G$ durch Konjugation, so sind die Bahnen gerade die $H$-Konjugationsklassen und (setze REF!) folgt aus \ref{5.8}. Auch die Klassengleichung (setze REF!) folgt sofort.\\
+Lassen wir $H$ auf der Menge der Untergruppen von $G$ durch Konjugation operieren, so folgt (setze REF!).
+\end{bemerkung*}
+
+Wir demonstrieren nun die St\"arke des Konzepts der Gruppenoperationen, indem wir im folgenden Satz auf einen Schlag den Satz von Cauchy und die Aussage (setze REF!) des Satzes von Sylow erneut beweisen. Die Aussage aus dem Satz von Sylow wird dabei sogar noch verallgemeinert.\\
+Beachte: Der Beweis verwendet au\ss{}er Gruppenoperationen nur Aussagen \"uber Nebenklassen von Untergruppen und Kenntnisse \"uber Untergruppen zyklischer Gruppen.
+
+\begin{satz}[Cauchy, Sylow (\ref{3.10}) und mehr] \label{5.9}
+\index{Cauchy!Satz von}
+\index{Sylow!Satz von}
+ Sei $p$ prim und $|G|=p^a\cdot m$ mit $p\nmid m$. F\"ur $0\leq s\leq a$ bezeichne $r_s$ die Anzahl der Untergruppen der Ordnung $p^s$ von $G$. Dann gilt $r_s \equiv 1 \mod p$. Insbesondere ist $r_s\leq 1$ (Cauchy) und $r_a\equiv 1\mod p$ (Sylow).
+\end{satz}
+
+\begin{beweis}[nach Wielandt]
+ \index{Wielandt}
+Sei $n:=\frac{|G|}{p^s}=p^{a-s}\cdot m$ und sei $\Omega:=\lbrace M\subset G| |M|=p^s \rbrace$. Offensichtlich gilt $|\Omega|=\binom{np^s}{p^s}$. $G$ operiert auf $\Omega$ durch Rechtsmultiplikation, da f\"ur $g\in G$ gilt $|Mg|=|M|$.\\
+Seien $T_i$ die Bahnen dieser Operation, $M_i$ ein Repr\"asentant von $T_i$ und sei $U_i:=G_{M_i}=\lbrace g\in G|M_ig=M_i \rbrace$ der Stabilisator von $M_i$. Dann gilt $|T_i|=\frac{|G|}{|U_i|}$. Aus $M_iU_i=M_i$ folgt $M_i=\bigcup_{j=1}^{k_i}g_{ij}U_i$ f\"ur bestimmte $g_{ij}\in G$, das hei\ss{}t $M_i$ ist Vereinigung von Nebenklassen von $U_i$. Also ist $p^s=|M_i|=k_i\cdot|U_i|\Longleftrightarrow |U_i|=\frac{p^s}{k_i}$ und folglich $|U_i|=p^{b_i}$ mit $b_i\leq s$.
+Ist $|U_i|=p^{b_i}< p^s$, so gilt $|T_i|=\frac{|G|}{|U_i|}=\frac{p^sn}{p^{b_i}}\equiv 0 \mod pn$. Ist $|U_i|=p^s$, so gilt $|T_i|=\frac{p^sn}{p^s}=n$. Insgesamt erhalten wir \begin{equation}\binom{np^s}{p^s}=|\Omega|\equiv \sum_{|T_i|=n}|T_i|\mod pn \tag{*}\end{equation}
+ Wir zeigen nun: $\#\lbrace T_i||T_i|=n\rbrace =r_s$. \\Ist n\"amlich $|T_i|=n$, so gibt es ein $m_i\in M_i$ derart, dass $M_i=m_iU_i$. Dann ist $m_iU_im_i^{-1}=:V_i\leq T_i$ eine Untergruppe der Ordnung $p^s$ in $T_i$.\\Ist andererseits $U\leq G$ mit $|U|=p^s$, so ist $T:=\lbrace Ug|g\in G\rbrace$ eine Bahn mit $|T|=\frac{|G|}{|U|}=n$. Sind $V_i, V_j$ Untergruppen von $G$ mit $|V_i|=|V_j|=p^s$, so gilt $V_i=V_jg$ f\"ur ein $g\in G$. Also gibt es ein $v_j\in V_j$ mit $1=v_jg$ und damit $g=v_j^{-1}\in V_j$, ergo $V_i=V_j$.\\
+Kurz: verschiedene Untergruppen mit Ordnung $p^s$ liegen in verschiedenen Bahnen.
+Setzen wir das Erhaltene in (*) ein, so erhalten wir $\binom{np^s}{p^s}\equiv nr_s\mod pn$. Diese Kongruenz gilt f\"ur alle Gruppen mit Ordnung $p^am$, insbesondere auch f\"ur die zyklische. Bei der zyklischen Gruppe ist bekanntlich $r_s=1$, also ist $\binom{np^s}{p^s}\equiv n\mod pn$. Damit gilt f\"ur beliebige Gruppen $G$ mit $|G|=p^am$: $n\equiv n\cdot r_s\mod pn$, also $pn|nr_s-n=n(r_s-1)$ und damit $p|r_s-1$ bzw. $r_s\equiv 1\mod p$.
+\end{beweis}
+
+
+
+\begin{folgerung} \label{5.10}\index{Normalteiler!in $p$-Gruppen}
+\index{$p$-Gruppe}
+ Sei $p$ prim und $P$ eine Gruppe der Ordnung $p^a$. Sei $1\leq s\leq a$. Dann enth\"alt $P$ einen Normalteiler der Ordnung $p^s$.
+\end{folgerung}
+
+
+\begin{beweis}
+ $P$ operiert durch Konjugation auf der Menge $\Omega:=\lbrace U\leq P||U|=p^s\rbrace$ der Untergruppen von $P$ mit Ordnung $p^s$. Sei $r_s:=|\Omega|$. Nach der Bahnengleichung gilt dann $r_s=|\Omega|=\sum_i{\frac{|P|}{P_{U_i}}}$, wobei $U_i$ Repr\"asentanten der verschiedenen Bahnen sind. F\"ur die Stabilisatoren $P_{U_i}$ erhalten wir $P_{U_i}=\lbrace g\in G|g^{-1}U_ig=U_i\rbrace = \Norm_P(U_i)$. Also ist 
+\begin{equation*}
+ r_s=\sum_i{\frac{|P|}{|\Norm_P(U_i)|}} \tag{*}
+\end{equation*}
+Weil P eine $p$-Gruppe ist, gilt $ p|\frac{|P|}{\Norm_P(U_i)} \Longleftrightarrow \Norm_P(U_i) \neq P$. Nach \ref{5.9} ist $r_s\equiv 1\mod p$, also $p\nmid r_s$. Also gibt es in (*) einen Summanden, der nicht durch $p$ teilbar ist, d. h. es gibt $U_i\in \Omega$ mit $\Norm_P(U_i) = P \Longleftrightarrow U_i \nt P$.
+\end{beweis}
+
+F\"ur weitere Aussagen \"uber Untergruppen von $p$-Gruppen ben\"otigen wir zun\"achst eine Aussage \"uber deren Normalisatoren:
+\begin{lemma}[Matsuyama] \label{5.11}
+\index{Normalisator!in $p$-Gruppen}
+\index{Matsuyama}
+\index{$p$-Gruppe}
+ Sei $p$ prim, $P$ eine $p$-Gruppe und $H < G$. Dann ist entweder $H\vartriangleleft P$ oder es gibt ein $x\in P$ mit $H^x \neq H$ und $H^x \leq \Norm_P(H)$. 
+\end{lemma}
+\begin{beweis}
+ Sei $H\ntriangleleft P$. Wir setzen $X:=\lbrace H^x|x\in P\rbrace \backslash \lbrace H\rbrace$. Dann ist $X\neq \varnothing$ und $H$ operiert auf $X$ durch Konjugation. Nach Lemma (setze REF!) gibt es $\frac{|P|}{|\Norm_P(H)|}$ $H$-Konjugierte von $H$ in $P$, also ist $|X|=\frac{|P|}{|\Norm_P(H)|}-1\not\equiv 0\mod p$. Die L\"angen der Bahnen von $H$ auf $X$ sind nach Lemma \ref{5.8} Potenzen von $p$. Wegen $|X|\not\equiv 0\mod p$ folgt, dass es eine Bahn der L\"ange $1$ gibt, etwa $\lbrace H^y\rbrace$. Dann ist $h^{-1}H^yh=H^y$ f\"ur $h\in H$, das hei\ss{}t es gilt $H\leq \Norm_P(H^y)$. Setzen wir $x:=y^{-1}$, so ist nach (setze REF!) $H^x\leq \Norm_P(H^y)^x=\Norm_P(H^{yx})=\Norm_P(H)$.
+\end{beweis}
+
+\begin{folgerung} \label{5.12}
+\index{$p$-Gruppe}
+ Sei $p$ prim, $P$ eine $p$-Gruppe. Ist $H <P$, so ist $H < \Norm_P(H)$.
+\end{folgerung}
+
+\begin{beweis}
+ Ist $H \vartriangleleft P$, so ist $\Norm_P(H)=P > H$. Ist $H\ntriangleleft P$, so gibt es nach \ref{5.11} ein $H^x \neq H$ mit $H^x\leq \Norm_P(H)$, also ist $N_P(H) > H$.
+\end{beweis}
+
+\begin{folgerung} \label{5.13}
+\index{$p$-Gruppe}
+\index{Normalteiler!in $p$-Gruppen}
+ Sei $p$ prim, $P$ eine $p$-Gruppe mit $|P|=p^n$. Alle Untergruppen der Ordnung $p^{n-1}$ sind Normalteiler in $P$.
+\end{folgerung}
+\begin{beweis}
+ Nach \ref{5.12} ist $\Norm_P(H) = P$ f\"ur $H < P$ mit $|H| = p^{n-1}$.
+\end{beweis}
+
+Mit \ref{5.12} und \ref{5.13} k\"onnen wir einen weiteren Satz \"uber Untergruppen von $p$-Gruppen beweisen:
+
+\begin{satz}\label{5.14}
+ \index{$p$-Gruppe}
+ \index{Untergruppen!von $p$-Gruppen}
+Sei $P$ eine $p$-Gruppe und $H < P$ mit $|H|=p^s$. Sei $$a:=|\lbrace K < P|H < K \text{ und } |K|=p^{s+1}\rbrace|$$ die Anzahl der Untergruppen von $P$ mit Ordnung $p^{s+1}$, die $H$ enthalten. Dann ist $a\equiv 1 \mod p$. Insbesondere ist $a\geq 1$.
+\end{satz}
+
+\begin{beweis}
+ Nach \ref{5.12} ist $N < \Norm_P(H)$. Ist $K\leq P$ mit $H < K$ und $|K|=p^{s+1}$, so gilt $H\vartriangleleft K$ nach \ref{5.13}. Laut (setze REF!) ist daher $K\leq \Norm_P(H)$. Wir wenden nun den Korrespondenzsatz auf $\theta:\Norm_P(H)\to \Norm_P(H)/H$ an. Die Untergruppen $K$ mit $H < K$ und $|K|=p^{s+1}$ entsprechen dabei den Untergruppen der Ordnung $p$ von $\Norm_P(H)/H$. F\"ur deren Anzahl $a$ gilt $a\equiv 1\mod p$ nach \ref{5.9}.
+\end{beweis}
+
+\begin{bemerkung}
+ Sei $p$ prim, $P$ eine $p$-Gruppe mit $|P|=p^n$. F\"ur $1\leq s < n$ sei $r_s$ die Anzahl der Untergruppen von $P$ mit Ordnung $p^s$. Nach \ref{5.9} ist $r_s\equiv 1\mod p$. Der einfachste Fall w\"are also $r_s=1$. In diesem Fall l\"asst sich zeigen:
+\begin{itemize}
+ \item Ist $r_1=1$, so ist $P$ zyklisch oder es ist $p=2$ und $P$ ist eine sogenannte \emph{verallgemeinerte Quaternionengruppe}.
+ \item Ist $r_s=1$ f\"ur $s > 1$, so ist $P$ zyklisch.
+\end{itemize}
+
+\end{bemerkung}
+
+F\"ur die Kombinatorik interessant ist das folgende Lemma
+\begin{satz}[Lemma von Cauchy-Frobenius]
+\addtotoc{Lemma von Cauchy-Frobenius}
+\index{Cauchy-Frobenius!Lemma von}
+\index{Burnside!Lemma von}
+\index{Bahn!Anzahl der $\sim$en}
+ (oft falsch als Lemma von Burnside bezeichnet)\\
+$G$ operiere auf $\Omega$. F\"ur $g\in G$ bezeichne $F(g):=\lbrace \alpha \in \Omega|\alpha^g=\alpha \rbrace$. die Menge der Fixpunkte von $g$. Dann gilt f\"ur die Anzahl $N$ der Bahnen von $G$ auf $\Omega$ $$N=\frac{1}{|G|}\sum_{g\in G}{|F(g)|},$$ das hei\ss{}t, die Zahl der Bahnen ist gleich der durchschnittlichen Zahl der Fixpunkte.
+\end{satz}
+\begin{beweis}
+ Es gilt $\alpha\in F(g) \Longleftrightarrow g\in G_\alpha$. Damit ist 
+\begin{eqnarray*}
+ \sum_{g\in G}{|F(g)|}&=&\sum_{g\in G}\sum_{\alpha\in F(g)}{1}=\sum_{\alpha\in\Omega}\sum_{g\in G_\alpha}{1}=\\&=&\sum_{\alpha\in\Omega}{|G_\alpha|}\stackrel{\ref{5.8}}{=}|G|\sum_{\alpha\in\Omega}\frac{1}{|\alpha^G|}=|G|\cdot N
+\end{eqnarray*}
+Im letzten Schritt wurde verwendet, dass jede Bahn den Beitrag $1$ zur Summe liefert.
+\end{beweis}
+
+Eine gruppentheoretische Folgerung aus dem Lemma von Cauchy-Frobenius ist 
+\begin{folgerung}
+ F\"ur die Anzahl $c$ der Konjugationsklassen von $g$ gilt $$c=\frac{1}{|G|}\sum_{g\in G}|\Cen_G(g)|.$$
+\end{folgerung}
+\begin{beweis}
+ $G$ operiert durch Konjugation auf sich selbst, die Bahnen sind die Konjugationsklassen und f\"ur $g\in G$ gilt
+$$F(g)=\lbrace x\in G|g^{-1}xg=x\rbrace = \lbrace x\in G|x^{-1}gx=g \rbrace = \Cen_G(g).$$
+\end{beweis}
+
+\begin{definition}[transitiv]
+ \index{Operation!transitive}
+ \index{Operation!$n$-transitive}
+$G$ operiere auf $\Omega$. Die Operation hei\ss{}t \emph{transitiv}, wenn es nur eine einzige Bahn gibt, d. h. wenn zu $\alpha,\beta \in \Omega$ ein $g\in G$ existiert mit $\alpha^g=\beta$.\\
+Die Operation hei\ss{}t \emph{$n$-transitiv}, wenn zu jedem Paar $(\alpha_1,\ldots,\alpha_n)$, $(\beta_1,\ldots,\beta_n)$ von $n$-Tupeln mit $\alpha_1,\ldots,\alpha_n$ paarweise verschieden (genauso f\"ur $(\beta_1,\ldots,\beta_n)$) ein $g\in G$ existiert derart, dass $\alpha_i^g=\beta_i$ f\"ur $i=1,\ldots,n$.
+\end{definition}
+
+\begin{beispiel}
+ Offensichtlich ist eine transitive Operation $1$-transitiv und eine $n$-transitive Operation ist $(n-1)$-transitiv. 
+\begin{enumerate}
+ \item $\Di_n$ operiert transitiv auf den Ecken des regelm\"a\ss{}igen $n$-Ecks.
+ \item $\Symm_n$ operiert $n$-transitiv auf $\lbrace 1,\ldots,n\rbrace$.
+ \item $\Alt_n$ operiert $(n-2)$-transitiv auf $\lbrace 1,\ldots,n\rbrace$.
+\end{enumerate}
+
+\end{beispiel}
+\begin{beweis} \spspace
+ \begin{enumerate}
+  \item $\Di_n$ operiert transitiv, weil schon $\langle d \rangle$ transitiv operiert.
+  \item $\l(\begin{array}{ccc} \alpha_1&\ldots&\alpha_n\\\beta_1&\ldots&\beta_n\end{array}\r)$ tut es.
+  \item Seien $\alpha_1,\ldots,\alpha_{n-2}\in \lbrace 1,\ldots,n \rbrace$ paarweise verschieden und $\beta_1,\ldots,\beta_{n-2} \in \lbrace 1,\ldots,n\rbrace$ paarweise verschieden. Dann gibt es $\alpha_{n-1},\alpha_n,\beta_{n-1},\beta_n$ derart, dass $\lbrace \alpha_1,\ldots,\alpha_n\rbrace=\lbrace 1,\ldots,n\rbrace=\lbrace\beta_1,\ldots,\beta_n\rbrace$. Wir betrachen $$\sigma=\l(\begin{array}{ccccc} \alpha_1&\ldots&\alpha_{n-2}&\alpha_{n-1}&\alpha_n\\\beta_1&\ldots&\beta_{n-2}&\beta_{n-1}&\beta_n\end{array}\r),$$ $$\pi=\l(\begin{array}{ccccc} \alpha_1&\ldots&\alpha_{n-2}&\alpha_{n-1}&\alpha_n\\\beta_1&\ldots&\beta_{n-2}&\beta_{n}&\beta_{n-1}\end{array}\r).$$
+Dann ist $(\alpha_{n-1}\quad\alpha_n)\circ\sigma = \pi$ und daher $\sign(\pi)=-\sign(\sigma)$.
+Folglich liegt eine der beiden Permutationen in der $\Alt_n$.
+ \end{enumerate}
+
+\end{beweis}
+
+\begin{satz}[Frattini-Argument I]
+\addtotoc{Die Frattini-Argumente}
+\label{5.22}
+ \index{Frattini-Argument I}
+ $G$ operiere auf $\Omega$. Besitzt $G$ eine Untergruppe $U$, die transitiv auf $\Omega$ operiert, so gilt $G=G_\alpha U$ f\"ur alle $\alpha\in\Omega$.
+\end{satz}
+\begin{beweis}
+ Sei $\alpha\in\Omega$ fest. Zu jedem $g\in G$ gibt es ein $x\in U$ derart, dass $\alpha^g=\alpha^x$. Also ist $\alpha^{gx^{-1}}=\alpha$ und damit $gx^{-1}\in G_\alpha$, d. h. es gilt $g\in G_\alpha x\subset G_\alpha U$.\\
+Bemerke: es gilt auch $G=UG_\alpha$, ersetze $g$ durch $g^{-1}$ im Beweis.
+\end{beweis}
+
+\begin{satz}[Frattini-Argument II]
+\index{Frattini-Argument II}
+ Sei $M \lhd G$. Dann gilt f\"ur jede $p$-Sylowgruppe $P$ von $M$ $$G=M\Norm_G(P).$$
+\end{satz}
+\begin{beweis}
+ Wegen $M \lhd G$ operiert $G$ auf $\Syl_PM$ durch Konjugation. Nach Sylow operiert $M$ dabei transitiv. F\"ur $P\in \Syl_PG$ ist der Stabilisator $G_P=\lbrace g\in G|g^{-1}Pg=P\rbrace =\Norm_G(P)$. Mit dem Frattini-Argument I folgt $G=M\Norm_G(P)$. 
+\end{beweis}
+
+\begin{satz}
+\index{Operation!transitive}
+ $G$ operiere transitiv auf $\Omega$. Dann sind \"aquivalent:
+\begin{enumerate}
+ \item $G$ operiert $2$-transitiv auf $\Omega$.
+ \item F\"ur jedes $x\in\Omega$ operiert $G_x$ transitiv auf $\Omega\backslash\lbrace x\rbrace$.
+\end{enumerate}
+
+\end{satz}
+\begin{beweis}
+ Operiere zun\"achst $G$ $2$-transitiv auf $\Omega$. Seien $\beta,\gamma\in\Omega\backslash\lbrace\alpha\rbrace$. Nach Voraussetzung gibt es ein $g\in G$ mit $(\alpha_g,\beta_g)=(\alpha,\gamma)$. Offensichtlich ist $g\in G_\alpha$.\\
+Operiere umgekehrt $G_x$ transitiv auf $\Omega\backslash\lbrace x\rbrace$ f\"ur alle $x\in\Omega$, und seien $\alpha\neq\beta\in\Omega$ und $\gamma\neq\delta\in G$. Dann gibt es ein $g\in G_\alpha$ derart, dass $\beta^g=\delta$ und ein $h\in G_\delta$ mit $\alpha^h=\gamma$. F\"ur das Element $gh$ gilt dann $(\alpha^{gh},\beta^{gh})=(\alpha^h,\delta^h)=(\gamma,\delta)$.
+\end{beweis}
+
+
+

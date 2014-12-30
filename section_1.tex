@@ -1,0 +1,312 @@
+\section{Grundlagen}
+Im ersten Kapitel werden wir verschiedene S\"atze besprechen, die evtl. auch schon bekannt sind.
+
+Generalvoraussetzung: $G$ sei eine endliche Gruppe.
+
+\begin{lemma}\label{1.1}\label{untergruppenkriterium}
+ Seien $A, B \subset G$ (nicht notwendig Untergruppen) mit $A^{-1} = A,\quad B^{-1}=B$. Dann gilt:
+ \begin{enumerate}
+ \item $$|AB| = \frac{|A|\cdot |B|}{|A\cap B|},$$
+  wobei $AB$ die Menge aller Produkte der Form $a\cdot b$ mit $a \in A$ und $b \in B$ ist.
+ \item Seien jetzt $A, B \leq G$ Untergruppen von $G$. Dann gilt:
+  $AB$ ist Untergruppe von $G$ genau dann, wenn $AB=BA$.
+\end{enumerate}
+
+\end{lemma}
+\begin{beweis} \spspace
+ \begin{enumerate}
+ \item Seien $a_1,a_2$ aus $A$, $b_1,b_2$ aus $B$. Dann gilt:
+  \begin{eqnarray*}a_{1}b_{1}=a_{2}b_{2} \Leftrightarrow a_{2}^{-1} a_1=b_2b_{1}^{-1} =:d \in A\cap B \\\Leftrightarrow \exists d \textrm{ in } A\cap B \textrm{ mit } a_1=a_2d, b=d^{-1}b_2.
+  \end{eqnarray*}
+  Zu einem festen Produkt $a_2b_2$ gibt es genau $|A\cap B|$ M\"oglichkeiten, Elemente $a_1 \textrm{ in } A, b_1 \textrm{ in } B$ zu w\"ahlen derart, dass $a_2b_2 = a_1b_1$. Damit ist $|AB|=\frac{|A|\cdot |B|}{|A\cap B|}$.
+ \item Sei zun\"achst $AB$  Untergruppe von $G$. Dann ist $AB=(AB)^{-1}=B^{-1}A^{-1}\stackrel{A,B \leq G}{=}BA$.\\
+Ist umgekehrt $AB=BA$, so folgt $(AB)(AB)=A(BA)B\stackrel{Vor.}{=}A(AB)B\\=(AA)(BB)=AB$. Nach dem Untergruppenkriterium f\"ur endliche Gruppen (\ref{1.1}) ist damit $AB$ Untergruppe von $G$.
+\end{enumerate}
+
+\end{beweis}
+
+
+\begin{defundsatz}\label{1.2}\label{schabrackentapir}\spspace
+\index{Automorphismengruppe}
+\index{Automorphismus!innerer}
+\index{Automorphismus!\"au\ss{}erer}
+\index{Konjugation}
+\index{Aut(G)}
+\index{Inn(G)}
+\index{Untergruppe!charakteristische}
+ \begin{enumerate}
+ \item Die Menge \emph{Aut(G)} aller Automorphismen $\alpha : G \to G$ bildet mit der Verkn\"ufpung \"uber Komposition eine Gruppe, die sog. \emph{Automorphismengruppe von $G$}.
+ \item F\"ur jedes $g$ in $G$ ist die Abbildung $\varphi_g : G \to G, x \mapsto g^{-1}xg$, die sog. \emph{Konjugation mit $g$}, ein Automorphismus von $G$. Automorphismen von diesem Typ hei\ss{}en \emph{innere Automorphismen}, andere hei\ss{}en \emph{\"au\ss{}ere Automorphismen}.
+\item Die Menge \emph{Inn(G)} der inneren Automorphismen bildet eine Untergruppe von $\Aut(G)$. Es gilt: $\Inn(G) \nt \Aut(G)$.
+\item Eine Untergruppe $U$ von $G$ hei\ss{}t \emph{charakteristisch} (schreibe $U \Char G$), wenn $U$ invariant ist unter Automorphismen von $G$, d.h. wenn $\alpha(U)=U$ f\"ur alle $\alpha$ aus $\Aut(G)$.
+\end{enumerate}
+
+\end{defundsatz}
+
+\begin{bemerkung*}
+ Es gilt $U\nt G \Longleftrightarrow g^{-1}Ug = U$ f\"ur alle $g\in G \Longleftrightarrow \alpha(U)=U$ f\"ur alle $\alpha \in \Inn(G)$. Daher gilt $U\Char G \Longrightarrow U \nt G$.
+\end{bemerkung*}
+
+
+
+
+
+\begin{beweis}[von \ref{1.2}]  \spspace%\ref{gnk}
+ \begin{enumerate}
+  \item trivial
+  \item $g^{-1}xg = 1 \Leftrightarrow x=gg^{-1}$. Also ist $\varphi_x$ injektiv und, da $|G|<\infty$, auch surjektiv.
+    Weite ist $\varphi_g(xy)=g^{-1}xyg=g^{-1}xgg^{-1}yg=\varphi_g(x)\varphi_g(y)$. Also ist $\varphi_g$ ein Homomorphismus.
+  \item Seien $h_1,h_2 \in G$. Wir zeigen\\ $\varphi_{h_{2}}\circ\varphi_{h_{1}}=\\\varphi_{h_1h_2}\in \Inn(G)$:\\
+  $\varphi_{h_2}\circ\varphi_{h_1}(x)=\varphi_{h_2}(h_1^{-1}xh_1)=h_2^{-1}h_1^{-1}xh_1h_2=(h_1h_2)^{-1}x(h_1h_2)=\varphi_{h_1h_2}(x)$ Also ist $\varphi_{h_2}\circ\varphi_{h_1}=\varphi_{h_1h_2}\in \Inn(G)$ und damit $\Inn(G)\leq\Aut(G)$.\\
+  Sei nun $\psi\in\Aut(G), g \in G$. Dann gilt: $(\psi^{-1}\varphi_g\psi)(x)=\psi^{-1}(g^{-1}\psi(x)g)=\psi^{-1}(g)^{-1}x\psi^{-1}(g)=\varphi_{\psi^{-1}(g)}(x)$. Also ist $\psi^{-1}\varphi_g\psi=\varphi_{\psi^{-1}(g)}\in\Inn(G)$ und damit $\Inn(G)\nt\Aut(G)$.
+
+ \end{enumerate}
+
+\end{beweis}
+
+
+
+
+\begin{bemerkung}
+ Die Formel $\varphi_{h_2}\circ\varphi_{h_1}=\varphi_{h_1h_2}$ im letzten Beweis ist nicht nur unsch\"on, sondern verursacht h\"aufig technische Schwierigkeiten: Die Komposition von Abbildungen ist f\"ur die Gruppentheorie ``verkehrt herum''. Z.B. sollte bei einem Homomorphismus $\varphi:G\to\Aut(H)$ mit $\varphi(g)=\alpha, \varphi(h)=\beta$ auch $\varphi(gh)=\alpha\beta$ gelten.\\
+ Als Abhilfe vereinbart man folgende Konvention: Abbildungen, Homomorphismen werden rechts von Elementen als Exponent geschrieben, also $g^\alpha$ statt $\alpha(g)$ und entsprechend $g^{\alpha\beta}$ statt $\beta(\alpha(g))$.\\
+ In der symmetrischen Gruppe lesen wir Zykel von links nach rechts und multiplizieren sie auch von links, also $(1\quad 2)(1\quad 3)=(1\quad 2\quad 3)$.
+\end{bemerkung}
+
+\begin{satz}[Korrespondenzsatz]\label{korres}\label{1.4}
+ Sei $N$ Normalteiler in $G$. Der nat\"urliche Epimorphismus $v: G\to G/N$ induziert eine Bijektion $$\tilde v : \lbrace U|N \leq U \leq G\rbrace \to\lbrace V|V\leq G/N\rbrace, \quad U \longmapsto v(U)$$ zwischen der Menge der Zwischengruppen von $N$ und $G$ und der Menge der Untergruppen von $G/N$. Dabei entsprechen Normalteiler einander, es gilt also $N\leq U \nt G$ genau dann, wenn $v(U) \nt G/N$.
+\end{satz}
+\begin{beweis}
+ Ist $U\nt G$, so ist $v(U) \leq G/N$ wieder Untergruppe, denn Homomorphismen bilden Untergruppen wieder auf Untergruppen ab. Also ist $\tilde v$ wohldefiniert.\\
+ Die Umkehrabbildung ist $\tilde v^{-1}:V\to v^{-1}(V)$. Weil $v$ surjektiv ist, gilt $v(v^{-1}(V))=V$. Ist $N\leq U$, so gilt $v^{-1}(\underbrace{v(U)}_{UN/N})=UN=U$.
+ Damit ist $\tilde v$ bijektiv.\\
+ Sei jetzt $N\leq U \nt G$. Dann ist $x^{-1}Ux = U$ f\"ur alle $x \in G$. Hierauf $v$ angewandt liefert $v(U) = v(x^{-1}Ux)=v(x)^{-1}v(U)v(x)$. Durchl\"auft $x$ ganz $G$, so durchl\"auft $v(x)$ ganz $G/N$, also folgt $v(U) \nt G/N$. Sei $V \nt G/N$ und $U\leq G$ mit $N\leq U$ eine Untergruppe mit $v(U)=V$. Wir zeigen, dass $U$ und $x^{-1}Ux$ f\"ur jedes $x\in G$ durch $\tilde v$ auf $V$ abgebildet werden: es gilt $\tilde v(x^{-1}Ux)=v(x^{-1}Ux)=v(x)^{-1}v(U)v(x)=v(x)^{-1}Vv(x)\stackrel{V\nt G/N}{=}V=v(U)=\tilde v(U)$. Nach dem ersten Teil folgt $x^{-1}Ux=U`$. Da dies f\"ur alle $x\in G$ gilt, ist $U \nt G$.\qed
+\end{beweis}
+
+\begin{definition}\spspace
+\index{Gruppe!einfache}
+\index{Normalteiler!maximaler}
+\index{Normalteiler!minimaler}
+ \begin{enumerate}
+  \item $G$ hei\ss{}t \emph{einfach}, wenn $G$ au\ss{}er $\l<1\r>$ und $G$ keine Normalteiler besitzt.
+  \item Ein Normalteiler $N\nt G$ hei\ss{}t \emph{maximal}, wenn es keinen Normalteiler $M\nt G$ gibt mit $N < M < G$. Nach dem Korrespondenzsatz \ref{1.4} ist dies genau dann der Fall, wenn $G/N$ einfach ist.
+  \item Ein Normalteiler $N\nt G$ hei\ss{}t \emph{minimal}, wenn es keinen Normalteiler $M\nt G$ gibt mit $\l<1\r> < M < N$.\\Beachte: $N$ muss hier nicht einfach sein, da $M\nt N\nt G \stackrel{\text{i.A.}}{\nRightarrow} M \nt G$.
+ \end{enumerate}
+
+\end{definition}
+
+\begin{satz}[Cayley]\label{cayley}\label{1.6}
+\index{Cayley!Satz von}
+ Jede Gruppe der Ordnung $n$ ist isomorph zu einer Untergruppe der $\Symm_n$.
+\end{satz}
+\begin{beweis}
+ Sei $|G| = n$ und f\"ur jedes $g\in G$ sei $r_g:G\to G, x\mapsto xg$ die \emph{Rechtstranslation um $g$}.\\
+ Die Abbildung $r:G\to \Symm_G, g\mapsto r_g$ ist ein injektiver Gruppenhomomorphismus: $$x^{r(gh)}=x\cdot (gh) = (xg)h = xg^{r(h)}=(x^{r_g})^{r_h}=x^{r(g)r(h)}$$ liefert $r(gh)=r(g)r(h)$. Weil $$\Ker(r) = \lbrace g|x\cdot g = x \forall x\in G\rbrace = \l<1\r>$$ ist $r$ injektiv.\\
+Mit dem Homomorphiesatz folgt $$G\cong G/\Ker(r) \cong \Inn(r) \leq \Symm_G \cong \Symm_n.$$
+\end{beweis}
+
+\begin{satz}
+ Sei $G$ eine Gruppe mit $|G| = 2n$, $n$ ungerade. Dann besitzt $G$ einen Normalteiler der Ordnung $n$.
+\end{satz}
+\begin{beweis}
+ Wir zeigen zun\"achst, dass $G$ ein Element $g$ der Ordnung 2 enth\"alt. Sei $A:=\lbrace g\in G| g=g^{-1}\rbrace$ und $B:=\lbrace g\in G| g\neq g^{-1}\rbrace$. Dann ist $G=A\amalg B$.$|B|$ ist gerade, da mit $g\in B$ auch $g^{-1}\in B, g^{-1}\neq g$. Also ist auch $|A| = 2n - |B|$ gerade. Da $1\in A$ folgt $|A|\geq 2$, d.h. es gibt $g\neq 1$ mit $g = g^{-1}$, also $g^2 = 1$. 
+ Sei $r:G\to \Symm_G$ die Einbettung von $G$ wie im Beweis von \ref{1.6}. Dann ist $r(G)=:h$ ein Element der Ordnung 2. Wegen $\ord(h)=2$ kommen in der Zerlegung von $h$ in disjunkte Zykel nur Zykel der L\"ange 2 vor. Nach \ref{1.6} gilt $h(x) = x\cdot g$ f\"ur alle $x$ in $G$. 
+ Da $g\neq 1$, ist $x\cdot g \neq x$ f\"ur alle $x$ in $G$, d.h. die Permutation $h$ hat keine Fixpunkte. Also ist $h$ das Produkt von n Zykeln der L\"ange 2. Damit ist $\sign(h) = (-1)^n=-1$. Also ist $\sign\circ r: G\to ({-1, 1})$ ein surjektiver Gruppenhomomorphismus und $\Ker(\sign\circ r)\nt G$. Nach dem Homomorphiesatz gilt $|\Ker(\sign\circ r)|=\frac{|G|}{2}= n$.\qed
+\end{beweis}
+\begin{bemerkung*}
+ Ist $G$ eine einfache Gruppe mit $2\mid |G|$, so gilt $4\mid |G|$ (f\"ur $|G|>2$).
+\end{bemerkung*}
+
+\begin{satz}[Konstruktion] \label{konstruktion}\label{1.8}
+ \index{Konstruktion}
+ Sei $U\leq G$ eine Untergruppe von Index $\l[G:U\r]=k$ und $\lbrace U_{g_1},\ldots, U_{g_k}\rbrace=\lbrace N_1,\ldots,N_k\rbrace$ die Menge der rechten Nebenklassen von $U$. Dann wird durch 
+  $$\varphi: G\to \Symm_n, g\longmapsto \l(\begin{array}{cccc} 1&2&\cdots&n\\i_1&i_2&\cdots&i_n\end{array}\r)$$ mit $N_1g=N_{i_1},\ldots, N_kg=N_{i_k}$ ein Gruppenhomomorphismus definiert.\\
+  Es gilt $\Ker(\varphi)=\bigcap_{g\in G}g^{-1}Ug \leq U$. F\"ur $k\geq 2$ ist $\varphi$ nicht trivial.
+
+\end{satz}
+
+\begin{beweis}
+ $\varphi$ ist wohldefiniert: 
+\begin{eqnarray*}
+ N_ig=N_jg &\Longleftrightarrow& Ug_ig=Ug_jg \Longleftrightarrow g_ig\in Ug_jg \\&\Longleftrightarrow& \exists u\in U:g_ig=ug_jg \Longleftrightarrow \exists u\in U:g_i=ug_j \\&\Longleftrightarrow& g_i \in Ug_j \Longleftrightarrow Ug_i=Ug_j \\&\Longleftrightarrow& N_i=N_j.
+\end{eqnarray*}
+Das bedeutet, $\varphi(g)$ ist tats\"achlich Permutation.
+$\varphi$ ist ein Homomorphismus: Sei $\varphi(gh) = \pi$. Sei $N_ig=N_j und N_jh=N_m$. Dann ist $N_igh =N_m$. Also ist $\pi$ eine Permutation mit $i^\pi=m$. Gleichzeitig ist $\varphi(g) = \sigma$ mit $i^\sigma=j$ und $\varphi(h)=\tau$ mit $j^\tau=m$. Daher ist $i^{\sigma\tau}=j^\tau=m=i^\pi$, also $\pi=\sigma\tau$ und damit $\varphi(gh)=\varphi(g)\varphi(h)$.
+Es gilt: $\Ker(\varphi)=\lbrace g\in G|Ug_ig=Ug_i,i=1,\ldots, n\rbrace = \lbrace g\in G|g_igg_i^{-1}\in U, i=1,\ldots, n\rbrace = \lbrace g\in G|g\in g_i^{-1}Ug_i, i=1,\ldots , n\rbrace = \bigcap_{g\in G}g^{-1}Ug$.
+Sei $k\geq 2$. Sei $Ug_1\neq Ug_2$. Setze $g:=g_1^{-1}g_2$, dann ist $Ug_1g=Ug_1g_1^{-1}=Ug_2\neq Ug_1$. Also ist $\varphi(g)\neq 1\in \Symm_N$.
+\end{beweis}
+
+\begin{bemerkung*}\spspace
+ \begin{enumerate}
+  \item Setzen wir $U=\l<1\r>$, so erhalten wir wieder den Satz von Cayley mit genau dem dortigen Beweis.
+  \item Die Rechtsmultiplikation auf den Rechtsnebenklassen ist eine sogenannte \emph{Gruppenoperation}. Zu jeder Gruppenoperation geh\"ort ein Homomorphismus in eine geeignete symmetrische Gruppe - in diesem Fall genau der oben konstruierte.
+ \end{enumerate}
+
+\end{bemerkung*}
+
+\begin{definition}[inneres und \"au\ss{}eres Produkt]\spspace
+\index{Produkt!direktes!inneres}
+\index{Produkt!direktes!\"au\ss{}eres}
+\begin{enumerate}
+ \item Seien $G_1, G_2$ Gruppen. Das kartesische Produkt $G_1 \times G_2$ wird mit der komponentenweisen Verkn\"upfung zu einer Gruppe, dem sogenannten \emph{\"au\ss{}eren direkten Produkt} von $G_1$ und $G_2$.
+ \item Seien $N_1,\ldots, N_k$ Normalteiler von $G$ mit:
+ \begin{enumerate}
+  \item $G=N_1N_2\cdots N_k$
+  \item $N_i \cap N_1\cdots N_{i-1}N_{i+1}\cdots N_k = \l<1\r>$ f\"ur $i=1,\ldots, k$.
+
+ \end{enumerate}
+ Dann hei\ss{}t $G$ \emph{inneres direktes Produkt} von $N_1,\ldots, N_k$.
+\end{enumerate}
+
+ 
+\end{definition}
+
+\begin{satz}\label{gnlmph}\label{1.10}
+ Sei $G=N_1\cdot\ldots\cdot N_k$ ein inneres direktes Produkt der Normalteiler $N_1, \ldots, N_k$. Dann gilt:
+ \begin{enumerate}
+ \item \label{rt}\label{1.10.1}F\"ur $i\neq j$ kommutieren Elemente von $N_i$ und $N_j$, d.h. f\"ur $a\in N_i, b\in N_j$ gilt $ab=ba$.
+ \item Jedes $a\in G$ besitzt eine (bis auf Reihenfolge) eindeutige Darstellung $a=a_1\cdot a_2 \cdot \ldots \cdot a_k$ mit $ a_i\in N_i$.
+\end{enumerate}
+
+\end{satz}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item \label{schnaps}\label{1.10.1b} $N_i, N_j \nt G$, daher gilt $\underbrace{a^{-1}b^{-1}a}_{\in N_i}\underbrace{b}_{\in N_j}=\underbrace{a^{-1}}_{\in N_i}\underbrace{b^{-1}ab}_{\in N_i} \in N_i\cap N_j \leq N_i\cap (N_1\cdot \ldots \cdot N_{i-1}N_{i+1}\cdot\ldots\cdot N_k) = \langle 1 \rangle$. Also folgt $a^{-1}b^{-1}ab=1 \Longleftrightarrow ab=ba$.
+
+  \item Wegen $G=N_1\cdot\ldots\cdot N_k$ gibt es eine Darstellung $a=a_1\cdot\ldots\cdot a_k$ mit $a_i\in N_i$.\\Zur Eindeutigkeit: Sei zun\"achst $a=1=a_1\cdot\ldots\cdot a_k$. Nach \ref{1.10.1b} gilt: $ N_i \ni a_i^{-1}=a_1a_2\ldots a_{i-1}a_{i+1}\ldots a_k \in N_1\ldots N_{i-1}N_{i+1}\ldots N_k$. Damit ist $a_i^{-1}\in N_i \cap (N_1\ldots N_{i-1}N_{i+1}\ldots N_k) = \langle1\rangle$, also ist $a_i = 1$.\\
+  Sei nun $a=a_1\ldots a_k=b_1\ldots b_k$ mit $a_i, b_i \in N_i$. Dann gilt nach \ref{1.10.1b}: $1=(a_1^{-1}b_1)(a_2^{-1}b_2)\cdot\ldots\cdot (a_k^{-1}b_k)$. Wie oben gezeigt gilt dann $a_i^{-1}b_i=1 \Longleftrightarrow a_i=b_i$ f\"ur $i=1,\ldots,k$.
+ \end{enumerate}
+
+\end{beweis}
+
+\begin{satz} \label{hase}\label{1.11}
+\index{Produkt!direktes!inneres}
+\index{Produkt!direktes!\"au\ss{}eres}
+ Sei $G=N_1\cdot\ldots\cdot N_k$ das innere direkte Produkt der Normalteiler $N_1,\ldots, N_k$. Dann ist $G$ isomorph zum \"au\ss{}eren direkten Produkt $G \cong N_1 \times \ldots \times N_k$. 
+\end{satz}
+
+\begin{beweis}
+ Nach \ref{1.10} besitzt jedes $g\in G$ eine eindeutige Darstellung $g=a_1\cdot\ldots\cdot a_k$ mit $a_i \in N_i$. Wir definieren $$\varphi:G\to N_1\times \ldots \times N_k, g \longmapsto (a_1,\ldots, a_k).$$ Wegen der Eindeutigkeit der Darstellung ist $\varphi$ wohldefiniert und bijektiv. Sei $h=b_1\cdot\ldots\cdot b_k$ mit $b_i\in N_i$. Dann ist $gh=(a_1\cdot\ldots\cdot a_k)(b_1\cdot\ldots\cdot b_k)\stackrel{\ref{gnlmph}.\ref{rt}}{=}a_1b_1a_2b_2\ldots a_kb_k$ und $\varphi(gh)=(a_1b_1, a_2b_2,\ldots, a_kb_k)=(a_1, \ldots, a_k)\cdot (b_1, \ldots b_k)= \varphi(g)\varphi(h)$. Damit ist $\varphi$ ein Homomorphismus.
+\end{beweis}
+
+\begin{bemerkung} \label{bratwurst}\label{1.12}
+\index{Produkt!direktes!inneres}
+\index{Produkt!direktes!\"au\ss{}eres}
+ Das \"au\ss{}ere Produkt $G_1\times \ldots \times G_k$ ist das innere Produkt der Normalteiler $\langle 1 \rangle\times \ldots \times \langle 1 \rangle\times G_i \times \langle 1 \rangle\times \ldots\times \langle 1 \rangle$. Wegen \ref{hase} unterscheiden wir im Folgenden nicht mehr zwischen \"au\ss{}erem und innerem direkten Produkt, denn isomorphe Gruppen sind vom Standpunkt der Gruppentheorie nicht unterscheidbar. Der Unterschied zwischen beiden besteht in der Sichtweise. Beim \"au\ss{}eren direkten Produkt haben wir mehrere ``kleine'' Gruppen gegeben und setzen daraus eine ``gro\ss{}e'' Gruppe zusammen. Beim inneren direkten Produkt stehen wir vor dem umgekehrten Problem. Eine gro\ss{}e Gruppe ist gegeben und wir suchen ihre ``Bestandteile'', d.h. ihre direkten Faktoren. Das gleiche Problem werden wir beim semidirekten Produkt haben.
+\end{bemerkung}
+
+\begin{definition}
+\index{Untergruppe!diagonale}
+ Sei $U\leq G_1\times G_2$ und seien $\pi_i:G_1\times G_2\to G_i$ die Projektionen. $U$ hei\ss{}t \emph{diagonal}, wenn $U\subsetneqq \pi_1(U)\times \pi_2(U)$.
+\end{definition}
+
+\begin{beispiel*}
+ In $\ZZ_2\times\ZZ_2$ ist $U:=\lbrace (0,0), (1,1) \rbrace$ diagonal, denn $U < \pi_1(U)\times \pi_2(U)=\ZZ_2\times\ZZ_2$.
+\end{beispiel*}
+
+\begin{satz}\label{1.14}
+\index{Untergruppe!diagonale}
+ Seien $G_1,\ldots, G_r \nt G$ und $|G_1|,\ldots, |G_r|$ paarweise teilerfremd. Gilt dann $|G|=|G_1|\cdot \ldots \cdot |G_r|$, so ist $G=G_1\times \ldots \times G_r$ und jede Untergruppe $U$ von $G$ hat die Form $U=U_1\times \ldots\times U_r$ mit $U_i\leq G_i$, d.h. es gibt keine diagonalen Untergruppen in $G$.
+\end{satz}
+
+\begin{beweis}
+ Wir zeigen durch Induktion \"uber $i$: $G_1\cdot\ldots\cdot G_i$ ist Untergruppe von $G$ und es gilt $|G_1\cdot \ldots\cdot G_i|=|G_1|\cdot\ldots\cdot |G_i|$ und $G_1\cdot\ldots\cdot G_i \cong G_1\times\ldots\times G_i$.\\
+ Nach Induktionsvoraussetzung (IV) ist $G_1\cdot\ldots\cdot G_{i-1}\leq G$. Wegen $G_i\nt G$ folgt aus dem 1. Isomorphiesatz, dass auch $G_1\cdot\ldots\cdot G_{i-1}\cdot G_i \leq G$. Weiter gilt $|G_1\cdot\ldots\cdot G_{i-1}= |G_1|\cdot\ldots\cdot |G_{i-1}|$ nach Induktionsvoraussetzung, und diese Zahl ist teilerfremd zu $|G_i|$. Mit \ref{1.1} folgt $$|G_1\cdot\ldots\cdot G_i| = \frac{|G_1\cdot\ldots\cdot G_{i-1}|\cdot |G_i|}{|(G_1\cdot \ldots\cdot G_{i-1})\cap G_i|}=|G_1\cdot\ldots\cdot G_{i-1}|\cdot |G_i| = |G_1|\cdot\ldots\cdot |G_i|,$$ da nach dem Satz von Lagrange gilt $(G_1\cdot\ldots\cdot G_{i-1})\cap G_i=\langle 1 \rangle$.
+Nach dem Satz \ref{1.11} folgt $G_1\cdot\ldots\cdot G_i \cong (G_1\cdot \ldots\cdot G_{i-1})\times G_i \stackrel{\textrm{IV}}{\cong} G_1\times \ldots\times G_{i-1}\times G_i$. 
+
+Sei nun $U\leq G$ und $u\in U$. Nach \ref{1.10} gibt es eindeutig bestimmte $u_i\in G_i$ derart, dass $u=u_1\cdot\ldots\cdot u_r$. Sei $\sigma_i:=\ord(u_i)$ und sei $n_i := \frac{\sigma_1\cdot\ldots\cdot\sigma_r}{\sigma_i}$. Weil die $|G_i|$ paarweise teilerfremd sind, folgt $\ggT(\sigma_i, n_i)=1$. Deshalb gibt es $x, y\in \ZZ$ derart, dass $x\sigma_i + yn_i=1$. Nach \ref{1.10} kommutieren die $u_i$, also ist wegen $u_i^{\sigma_i}=1$
+$$u^{yn_i}=(u_1\cdot\ldots\cdot u_r)^{yn_i}=u_1^{yn_i}\cdot\ldots\cdot u_r^{yn_i}=u_i^{yn_i}=u_i^{yn_i + x\sigma_i}=u_i^1=u_i.$$
+Es gilt $$\pi_i(U)=\lbrace u_i\in U_i | \forall j\in \lbrace 1,\ldots,r \rbrace - \lbrace i \rbrace\exists u_j\in G_j:u=u_1\cdot\ldots\cdot u_r\in U\rbrace.$$
+Ist aber $u=u_1\cdot\ldots\cdot u_r\in U$, so ist auch $u_i\in U$, d.h. $\pi_i(U)\subset U$ f\"ur alle $i$. Daher ist $\pi_1(U)\cdot\ldots\cdot\pi_r(U)\subset U$, also $U=\pi_1(U)\times \ldots\times \pi_r(U)$.
+\end{beweis}
+
+\begin{definition}[inneres semidirektes Produkt] 
+\index{Produkt!direktes!inneres}
+%\index{Produkt!direktes!\"au\ss{}eres}
+\index{Komplement}
+ Sei $N\nt G$. Gibt es eine Untergruppe $U\leq G$ derart, dass $UN=G$ und $U\cap N = \langle 1 \rangle$, so hei\ss{}t $U$ \emph{Komplement} zu $N$ in $G$ und $G$ hei\ss{}t \emph{inneres semidirektes Produkt von $N$ und $U$}.
+\end{definition}
+
+\begin{bemerkung}
+ Sei $G=NU$ inneres semidirektes Produkt des Normalteilers $N$ mit $U$. Dann ist auch $G=NU$.\\
+Die Abbildung $\psi:U\to \Aut(N), u\longmapsto (n\mapsto n^u)$ ist ein Gruppenhomomorphismus und es gilt $$(u_1n_1)(u_2n_2)=(u_1u_2)(n_1^{u^\psi}n_2)$$ f\"ur $u_1, u_2 \in U, n_1, n_2\in N$.
+\end{bemerkung}
+
+\begin{beweis}
+ Wegen $N\nt G$ ist $UN=NU$. $\psi$ ist wohldefiniert, denn f\"ur $u\in U$ ist $$\varphi_u:G\to G, x\longmapsto u^{-1}xu$$ ein Automorphismus. Wegen $N\nt G$ ist $\varphi_u(n)\in N$ f\"ur $n\in N$, also ist $\varphi_u|_N\in \Aut(N)$. \\Die Homomorphieeigenschaft von $\psi$ ist klar.\\
+F\"ur $u_1, u_2\in U, n_1, n_2\in N$ ist 
+$$(u_1n_1)(u_2n_2)=u_1u_2u_2^{-1}n_1u_2n_2=u_1u_2n_1^{u_2}n_2=u_1u_2n_1^{u_2^\psi}n_2.$$
+\end{beweis}
+
+\begin{defundsatz} 
+%\index{Produkt!direktes!inneres}
+\index{Produkt!direktes!\"au\ss{}eres}
+ Seien $U,N$ Gruppen und sei $\varphi:U\to \Aut(N)$ ein Gruppenhomomorphismus. Dann wird das kartesische Produkt $U\times N$ mit der Multiplikation 
+$$(u_1,n_1)(u_2,n_2):=(u_1u_2,n_1^{(u_2^\varphi)}n_2)$$ zu einer Gruppe, dem sogenannten \emph{\"au\ss{}eren semidirekten Produkt von $U$ mit $N$ bez\"uglich $\varphi$}.\\
+Schreibweise:$U \ltimes_\varphi N$ (Spitze zum Normalteiler).
+\end{defundsatz}
+
+
+\begin{beweis}
+ Das Einselement ist $(1_U,1_N)$, Inverses zu $(u,n)$ ist $(u^{-1},(n^{-1})^{(u^{-1})^{\varphi}})$:
+\begin{eqnarray*}(u,n)(u^{-1},(n^{-1})^{(u^{-1})^{\varphi}})=(uu^{-1},n^{(u^{-1})^\varphi}(n^{-1})^{(u^{-1})^{\varphi}})=\\=(1_U,n^{(u^{-1})^\varphi}(n^{(u^{-1})^\varphi})^{-1})=(1_U,1_N).\end{eqnarray*}
+Zur Assoziativit\"at:
+\begin{eqnarray*}\lbrack (u_1,n_1)(u_2,n_2)\rbrack (u_3,n_3) &=& (u_1u_2,n_1^{u_2^\varphi}n_2)(u_3,n_3) \\&=& (u_1u_2u_3,(n_1^{u_2^\varphi}n_2)^{u_3^\varphi})n_3) \\&=& (u_1u_2u_3,(n_1^{u_2^\varphi})^{u_3^{\varphi}}n_2^{u_3^\varphi}n_3) \\&=& (u_1u_2u_3,n_1^{(u_2u_3)^\varphi}n_2^{u_3^\varphi}n_3) \\&=& (u_1,n_1)(u_2u_3,n_2^{u_3^\varphi}n_3) \\&=& (u_1,n_1)\lbrack (u_2,n_2)(u_3,n_3) \rbrack.
+\end{eqnarray*}
+\end{beweis}
+
+\begin{bemerkung}\spspace
+\index{Produkt!direktes!inneres}
+\index{Produkt!direktes!\"au\ss{}eres}
+ \begin{itemize}
+ \item Ist $\varphi$ der triviale Homomorphismus, der alles auf $\id_N$ abbildet, so ist $U \ltimes_\varphi N\cong U\times N$.
+ \item $U \ltimes_\varphi N$ kann auch als inneres semidirektes Produkt von $U\times \langle 1 \rangle$ und $\langle 1 \rangle \times N$ gesehen werden. Die Unterscheidung zwischen inneren und \"au\ss{}erem semidirekten Produkt ist also wieder unn\"otig, Bemerkung \ref{1.12} gilt entsprechend.
+ \item Ein wichtiges Problem der Gruppentheorie ist die Frage ``Wann gibt es zu einem Normalteiler $N \nt G$ ein Komplement?'' Eine relativ allgemeine Antwort liefert der 
+\begin{satz*}[von Zassenhaus] \index{Zassenhaus!Satz von}
+ Sind $|N|$ und $|G/N|$ teilerfremd, so besitzt $N$ ein Komplement in $G$.
+\end{satz*}
+
+\end{itemize}
+
+\end{bemerkung}
+
+\begin{beispiel}
+\index{Diedergruppe}
+ Seien $\langle d \rangle \cong \ZZ_n$ und $\langle s \rangle \cong \ZZ_2$ zyklisch. Durch 
+\begin{eqnarray*}
+\varphi:\langle s \rangle \to \Aut(\langle d \rangle ), s&\longmapsto&(x\mapsto x^{-1}\\ 1 &\longmapsto& \id_{\langle d \rangle}
+\end{eqnarray*}
+wird ein Homomorphismus gegeben. Das semidirekte Produkt $\Di_n:=\langle d \rangle \rtimes_\varphi \langle s \rangle$ der Ordnung $2n$ hei\ss{}t \emph{Diedergruppe}.
+
+Bemerke: $\Di_n$ ist isomorph zur Symmetriegruppe des regelm\"a\ss{}igen $n$-Ecks. Das Element $d$ entspricht der Drehung um $\frac{360^\circ}{n}$, $s$ einer Spiegelung an einer Symmetrieachse.
+
+\end{beispiel}
+
+\begin{definition}[Kranzprodukt] \spspace
+ \index{Kranzprodukt!regul\"ares}
+ \index{Kranzprodukt!Permutations-}
+\begin{enumerate}
+ \item Seien $G,H$ Gruppen. Sei $|H|=n$, $H=\lbrace h_1,\ldots,h_n \rbrace$. Dann wird f\"ur $h\in H$ durch $h_i\cdot h= h_{\pi_h(i)}$ eine Permutation $\pi_h \in \Symm_n$ definiert. Die Abbildung
+$$\vartheta_h:G^n\to G^n,(g_1,\ldots,g_n)\longmapsto (g_{\pi_h(1)},\ldots,g_{\pi_h(n)})$$
+ist ein Automorphismus von $G^n$, dem $n$-fachen direkten Produkt von $G$ mit sich selbst. Durch $$\varphi: H\to \Aut(G^n), h\longmapsto \vartheta_n$$ wird ein Gruppenhomomorphismus definiert. Das semidirekte Produkt $$G \wr_r H := (G^n) \rtimes_\varphi N$$ hei\ss{}t \emph{regul\"ares Kranzprodukt von $G$ mit $H$}.
+ \item Sei $G$ Gruppe, $H\leq \Symm_n$. Sei $h\in H$. Durch
+$$\vartheta_h:G^n\to G^n, (g_1,\ldots,g_n)\longmapsto (g_{h(1)},\ldots,g_{h(n)})$$
+wird ein Automorphismus von $G^n$ definiert. Die Abbildung
+$$\varphi:H\to \Aut(G^n), h\longmapsto \vartheta_h$$
+ist ein Gruppenhomomorphismus. Das semidirekte Produkt
+$$G\wr_p H:=(G^n)\rtimes_\varphi H$$ hei\ss{}t \emph{Permutations-Kranzprodukt}.
+Elemente von $G \wr_p H$ werden meistens in der Form $(f,h)$ geschrieben. Dabei ist $h\in H\leq \Symm_n$ und $f:\lbrace 1,\ldots,n\rbrace\to G$ eine Abbildung, die $(g_1,\ldots,g_n)\in G^n$ angibt
+\end{enumerate}
+
+\end{definition}
+
+\begin{bemerkung*}
+ \begin{enumerate}
+  \item $|G\wr_r H| = |G|^{|H|}\cdot |H|$ und $|G\wr_p H|=|G|^n |H|$, wobei $H\leq \Symm_n$.
+  \item $G\wr_r H$ ist ein Spezialfall von $G\wr_p H$ (Satz von Cayley).
+  \item $G\wr_r H$ und $G\wr_p H$ k\"onnen durchaus verschieden sein. F\"r $G\cong \ZZ_2$ und $H\cong \Symm_3$ ist $|G\wr_r H|=2^6\cdot 6$ und $|G\wr_p H| = 2^3\cdot 6$, wenn wir $H$ als Permutationsgruppe auf drei Ziffern auffassen. In der Literatur wird meistens $G\wr H$ geschrieben.
+ \end{enumerate}
+
+\end{bemerkung*}
+

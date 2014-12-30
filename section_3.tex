@@ -1,0 +1,347 @@
+\section{Der Satz von Sylow}
+
+\begin{satz}
+ \label{ugr_ord_p}
+ Sei $p$ prim und $G$ abelsche Gruppe mit $p \mid \l|G\r|$. Dann enth\"alt $G$ eine Untergruppe der Ordnung $p$.
+\end{satz}
+
+\begin{beweis}
+ Nach Lemma \ref{untergruppenkriterium} gilt: $\l|AB\r| \mid \l|A\r| \l|B\r|$ für Untergruppen $A, B$ von $G$. Weil $G$ abelsch ist, ist $AB$ eine Untergruppe von $G$. Daher folgt durch Unduktion \"uber die Anzahl der Faktoren: Sind $A_1, \ldots, A_k$ Untergruppen von $G$, so gilt:
+ $$
+  \l|A_1\cdot \ldots \cdot A_k \r| \mid \l|A_1\r| \cdot \ldots \cdot \l|A_k\r|
+ $$
+ F\"ur jedes $g \in G$ ist $\l<g\r>$ eine zyklische Untergruppe von $G$ und das Produkt all dieser Untergruppen ist $G$. Also folgt:
+ $$
+  \l|G\r| \mid \prod_{g\in G} \ord g
+ $$
+ Daher gibt es ein $g \in G$ mit $p \mid \ord g$; setze $a := \frac{\ord g}{p}$. Dann it $\ord\l(g^a\r)=p$ und $\l<g^a\r>\leq G$ mit $\l<g^a\r>=p$.
+ \qed
+\end{beweis}
+
+\begin{definition}[Sylowgruppe]
+ \index{Sylowgruppe}
+ \label{sylowgruppe}
+ Sei $p$ prim und $\l|G\r|=p^am$ mit $p \nmid m$. Die Untergruppen $P \leq G$ mit $\l|P\r|=p^a$ hei\ss{}en \emph{$p$-Sylowgruppen von $G$}. Die Menge der $p$-Sylowgruppen wird mit $\Syl_pG$ bezeichnet.
+\end{definition}
+
+\begin{satz}[Satz von Cauchy]
+ \index{Cauchy!Satz von}
+ \label{satz_von_cauchy}
+ Sei $p$ prim, $i \in \NN_0$, so dass $p^i \mid \l|G\r|$. Dann enth\"alt $G$ eine Untergruppe der Ordnung $p^i$.
+\end{satz}
+
+\begin{beweis}
+ Beweis durch Induktion \"uber die Gruppenordnung $\l|G\r|$. Sei die Behauptung schon f\"ur alle Gruppen kleinerer Ordnung bewiesen. Besitzt $G$ eine Untergruppe $V < G$ mit $p^i \mid \l|V\r|$, so besitzt $V$ eine Untergruppe der Ordnung $p^i$ und damit auch $G$. Wir k\"onnen dann annehmen, dass $G$ keine solche Untergruppe $V$ besitzt und betrachten die Klassengleichung \ref{klassengleichung}
+ $$
+  \l|G\r| = \sum_{j=1}^r \frac{\l|G\r|}{\l|\Cen_G\l(x_j\r)\r|} + \l|\Zen\l(G\r)\r|
+ $$
+ Die linke Seite $\l|G\r|$ ist durch $p^i$ teilbar. Wegen $p^i \mid \l|\Cen_G\l(x_j\r)\r|$ sind alle Summanden $\frac{\l|G\r|}{\l|\Cen_G\l(x_j\r)\r|}$ durch $p$ teilbar. Damit folgt $p \mid \l|\Zen\l(G\r)\r|$. Mit \ref{ugr_ord_p} folgt: Weil $\Zen\l(G\r)$ abelsch, enth\"alt $\Zen\l(G\r)$ eine Untergruppe $N$ der Ordnung $p$. Nach \ref{aussagen_zu_ugr}.\ref{ugr_zen_nt} gilt: $N \nt G$. Die Ordnung der Faktorgruppe $G/N$ ist kleiner als $\l|G\r|$, also gibt es nach Induktionsvoraussetzung eine Untergruppe $B/N \leq G/N$ mit $\l|B/N\r| = p^{i-1}$. Nach dem Korrespondenzsatz \ref{korres} gibt es eine Untergruppe $B$: $N \leq B \leq G$, so dass $\nu\l(B\r) = B/N$ ($\nu: G \to G/N$ kanonischer Epimorphismus). Es gilt:
+ $$
+  \l|B\r| = \l|B/N\r| \l|N\r| = p^i
+ $$
+ \qed
+\end{beweis}
+
+\begin{folgerung}
+ Sei $M \leq G$ maximale Untergruppe. Gilt $M \nt G$, so ist $\l[G:M\r]$ eine Primzahl.
+\end{folgerung}
+
+\begin{beweis}
+ Weil $M$ maximal ist, gilt $M < G$ und es gibt kein $U \leq G: M \leq U \leq G$. Nach dem Korrespondenzsatz \ref{korres} besitzt daher die Faktorgruppe $G/M$ keine nichttriviale Untergruppe. Da $\l|G/M\r| > 1$ existiert eine Primzahl $p$ mit $p \nmid \l|G/M\r|$. Nach dem Satz von Cauchy \ref{satz_von_cauchy} folgt: $G/M$ besitzt eine Untergruppe der Ordnung $p$. Daher muss $p=\l|G/M\r|$ gelten.
+ \qed
+\end{beweis}
+
+\begin{bemerkung}\spspace
+ \label{bem3_5}
+ \begin{enumerate}
+  \item \label{bem3_5_1} Ist $P \in \Syl_pG$ und $P \leq G$ eine $p$-Untergruppe mit $BP = PB$, dann gilt: $B \leq P$. Insbesondere ist $P$ die einzige $p$-Sylowgruppe zu $\Norm_G\l(P\r)$.
+  \item Ist $\alpha \in \Aut\l(G\r)$ und $P \in \Syl_pG$, so ist auch $\alpha\l(P\r) \in \Syl_pG$.
+  \item F\"ur $P \in \Syl_pG$ gilt: $P \nt G \Leftrightarrow \Syl_pG=\l\{P\r\}P \Leftrightarrow \Char G$.
+  \item $\OOC_p\l(G\r) := \bigcap_{P\in\Syl_pG}P \Char G$ und $\OOC_p\l(G\r)$ enth\"alt alle $p$-Normalteiler von $G$, das hei\ss{}t alle Normalteiler $N$ haben die Ordnung $p^k$.
+ \end{enumerate}
+\end{bemerkung}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item Nach Lemma \ref{untergruppenkriterium} gilt: $BP$ ist eine Untergruppe von $G$, und zwar eine $p$-Gruppe. Da offensichtlich $P \leq BP$ und $P \in \Syl_pG$ folgt: $P = BP$ und damit $B \leq P$. In $\Norm_G\l(P\r)$ gilt:
+  $$
+   xP = Px \qquad \forall x \in \Norm_G\l(P\r)
+  $$
+  Ist also $B \leq \Norm_G\l(P\r)$ eine $p$-Untergruppe, so folgt $BP=PB$.
+  \item Ist $\alpha \in \Aut\l(G\r)$, so gilt $\l|P\r| = \l|\alpha\l(P\r)\r|$, also ist auch $\alpha\l(P\r)$ eine $p$-Sylowgruppe.
+  \item Sei $Q \leq G$ eine weitere $p$-Sylow. Wegen $P\nt G$ ist dann $PQ=QP$ und mit 1. folgt: $Q=P$.
+
+  F\"ur $\alpha \in \Aut\l(G\r)$ ist $\alpha\l(P\r)$ eine $p$-Sylow (nach 2.) und daher $\alpha\l(P\r)=P$.
+
+  Der Rest folgt aus \ref{aussagen_zu_charakteristischen_ugr}.\ref{aussagen_zu_charakteristischen_ugr_3}
+  \item F\"ur $\alpha \in \Aut\l(G\r)$ gilt: Jede $p$-Sylow wird wieder auf eine $p$-Sylow abgebildet. Also ist $\alpha\l(\OOC_p\l(G\r)\r)=\OOC_p\l(G\r)$. Ist $B \nt G p$-Normalteiler und $P\in \Syl_pG$, so gilt: $BP=PB$ nach dem 1. Isomorphiesatz \ref{isomorphiesatz1}. NAch 1. folgt $B \leq P$. Folglich ist $B$ in allen $p$-Sylowgruppen enthalten und damit $B\leq \OOC_p\l(G\r)$.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{definition}[$\OOC_{p'}\l(G\r), \OOC\l(G\r)$]
+ \index{$\OOC_{p'}\l(G\r)$}
+ \index{$\OOC\l(G\r)$}
+ Der gr\"o\ss{}te Normalteiler $N \nt G$ mit $p \nmid \l|N\r|$ wird mit $\OOC_{p'}\l(G\r)$ bezeichnet. Statt $\OOC_{2'}\l(G\r)$ schreibt man oft kurz $\OOC\l(G\r)$.
+\end{definition}
+
+\begin{bemerkung}\spspace
+ \begin{enumerate}
+  \item $\OOC_{p'}\l(G\r)$ enth\"alt alle $p'$-Normalteiler von $G$, das hei\ss{}t alle $N \nt G$ mit $p \nmid \l|N\r|$.
+  \item $\OOC_{p'}\l(G\r) \Char G$.
+  \item $\OOC_p\l(G/\OOC_p\l(G\r)\r)=\l<1\r>, \OOC_{p'}\l(G/\OOC_{p'}\l(G\r)\r)=\l<1\r>$
+ \end{enumerate}
+\end{bemerkung}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item  Seien $N, U \nt G$ mit $p \nmid \l|N\r|, \l|U\r|$. F\"ur $g\in G$ ist
+  $$
+   g^{-1}NUg = g^{-1}Ngg^{-1}Ug = NU
+  $$
+  Also ist $NU \nt G$ und nach \ref{untergruppenkriterium} gilt: $\l|NU\r| \mid \l|N\r|\l|U\r|$, das hei\ss{}t es gilt $p \nmid \l|NU\r|$.
+
+  Folglich ist f\"ur jeden $p'$-Normalteiler $N$ die Gruppe $N\OOC_{p'}\l(G\r) \nt G$ mit $p \nmid \l|N\OOC_{p'}\l(G\r)\r|$ und $\OOC_{p'}\l(G\r) \leq N\OOC_{p'}\l(G\r)$. Nach Definition folgt $N\OOC_{p'}\l(G\r) = \OOC_{p'}\l(G\r)$ und damit $N\leq\OOC_{p'}\l(G\r)$.
+  \item Ist $\alpha \in \Aut\l(G\r)$, so gilt $\alpha\l(\OOC_{p'}\l(G\r)\r) \nt G$ und
+  $$
+   \l|\alpha\l(\OOC_{p'}\l(G\r)\r)\r| = \l|\OOC_{p'}\l(G\r)\r|
+  $$
+  Nach 1. folgt
+  $$
+   \alpha\l(\OOC_{p'}\l(G\r)\r) = \OOC_{p'}\l(G\r)
+  $$
+  \item Enth\"alt $G/\OOC_p\l(G\r)$ einen nichttrivialien $p$-Normalteiler $N/\OOC_p\l(G\r)$, so gibt es nach dem Korrespondenzsatz \ref{korres} ein $N \nt G$ mit $\OOC_p\l(G\r) \leq N \leq G$ und $\nu\l(N\r) = N/\OOC_p\l(G\r)$ ($\nu$ kanonischer Epimorphismus). Es gilt:
+  $$
+   \l|N\r| = \l|N/\OOC_p\l(G\r)\r| \l|\OOC_p\l(G\r)\r|
+  $$
+  ist $p$-Potenz. Widerspruch!
+
+  F\"ur $\OOC_{p'}\l(G\r)$ analog.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{lemma}
+ \label{anzahl_h_konjugierte}
+ Seien $P, H \leq G$. Dann gibt es $\frac{\l|H\r|}{\l|\Norm_H\l(P\r)\r|}$ verschiedene $H$-Konjugierte von $P$ in $G$.
+\end{lemma}
+
+\begin{beweis}
+ Analog zu \ref{anzahl_elemente_konjugationsklasse}.
+ F\"ur $a,b\in H$ gilt:
+ $$
+  a^{-1}Pa=b^{-1}Pb \Leftrightarrow ba^{-1}Pab^{-1}=P \Leftrightarrow ab^{-1} \in \Norm_H\l(P\r) \Leftrightarrow a \in \Norm_H\l(P\r)b
+ $$
+ Das hei\ss{}t $a,b$ liegen in derselben Rechtsnebenklasse von $\Norm_H\l(P\r)$.
+ \qed
+\end{beweis}
+
+\begin{lemma}
+ \label{lemma_3_9}
+ Sei $H$ eine $p$-Untergruppe von $G$ und $P \in \Syl_pG$. Dann gilt:
+ $$
+  H \cap \Norm_G\l(P\r) = H \cap P
+ $$
+\end{lemma}
+
+\begin{beweis}
+ $H \cap \Norm_G\l(P\r) \supset H \cap P$ ist klar wegen $P \leq \Norm_G\l(P\r)$. Sei daher nun $H \cap \Norm_G\l(P\r) \subset H \cap P$. $H \cap \Norm_G\l(P\r)$ ist eine $p$-Untergruppe von $\Norm_G\l(P\r)$. Wegen $P \nt \Norm_G\l(P\r)$ gilt:
+ $$
+  \l(H\cap\Norm_G\l(P\r)\r)P = P\l(H\cap\Norm_G\l(P\r)\r)
+ $$
+ Nach \ref{bem3_5}.\ref{bem3_5_1} folgt: $$H \cap \Norm_G\l(P\r) \leq P$$ und damit $$H\cap \Norm_G\l(P\r) \leq H \cap P$$
+ \qed
+\end{beweis}
+
+Damit k\"onnen wir den wichtigsten Satz der Gruppentheorie beweisen:
+
+\begin{satz}[Satz von Sylow]
+ \index{Sylow!Satz von}
+ \label{satz_von_sylow}
+ Sei $p$ prim und $\l|G\r|=p^am$ mit $p \nmid m$. Es gilt:
+ \begin{enumerate}
+  \item Jede $p$-Untergruppe von $G$ ist in einer $p$-Sylowgruppe von $G$ enthalten.
+  \item Alle $p$-Sylowgruppen von $G$ sind konjugiert und f\"ur $P\in \Syl_pG$ gilt:
+   $$
+    \l|\Syl_pG\r| = \frac{\l|G\r|}{\l|\Norm_G\l(P\r)\r|}
+   $$
+  \item Es gilt: 
+   $$
+    \l|\Syl_pG\r| \mid \l|G\r| \quad \mbox{und} \quad \l|\Syl_pG\r| \equiv 1 \mod p
+   $$
+   Genauer: $\l|\Syl_pG\r| \mid m$. Insbesondere gibt es eine $p$-Sylowgruppe in $G$.
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item Beweisen wir zusammen mit
+  \item Sei $P \in \Syl_pG$. Wir betrachten die Menge $M := \l\{x^{-1}Px \mid x \in G\r\}$ der Konjugationen von $P$. Nach \ref{anzahl_h_konjugierte} gilt: $\l|M\r| = \frac{\l|G\r|}{\l|\Norm_G\l(P\r)\r|}$. Weil $P \leq \Norm_G\l(P\r)$ teilt $p$ nicht $\frac{\l|G\r|}{\l|\Norm_G\l(P\r)\r|}$. Sei $H\leq G$ eine $p$-Untergruppe. Wir betrachten die $H$-Konjugationen auf $M$. Sei $\l\{x_1^{-1}Px_1, \ldots, x_r^{-1}Px_r\r\}$ eine Transversale der $H$-Konjugationsklassen. Die $H$-Konjugationsklasse, die $x^{-1}Px$ enth\"alt, hat nach \ref{anzahl_h_konjugierte} genau $\frac{\l|H\r|}{\l|\Norm_H\l(x^{-1}Px\r)\r|}$ Elemente. Insbesondere ist die Zahl dieser Elemente ein Teiler von $\l|H\r|$, also eine $p$-Potenz. $M$ ist die disjunkte Vereinigung der $H$-Konjugationsklassen, also folt:
+  $$
+   \frac{\l|G\r|}{\l|\Norm_G\l(P\r)\r|} = \l|M\r| = \sum_{i=1}^r\frac{\l|H\r|}{\l|\Norm_H\l(x_i^{-1}Px_i\r)\r|}
+  $$
+  $p$ teilt nicht $\frac{\l|G\r|}{\l|\Norm_G\l(P\r)\r|}$ und
+  $$
+   p \nmid \frac{\l|H\r|}{\l|\Norm_H\l(x_i^{-1}Px_i\r)\r|} \Leftrightarrow H = \Norm_H\l(x_i^{-1}Px_i\r)
+  $$
+  Weil die linke Seite nicht durch $p$ teilbar ist, muss es ein $i \in \l\{1,\ldots,r\r\}$ geben, so dass $H=\Norm_H\l(x_i^{-1}Px_i\r)$. Damit ist $H\leq \Norm_G\l(x_i^{-1}Px_i\r)$ und folglich
+  $$
+   H\l(x_i^{-1}Px_i\r) = \l(x_i^{-1}Px_i\r)H
+  $$
+  Mit \ref{bem3_5}.\ref{bem3_5_1} folgt $H\leq x_i^{-1}Px_i$. Ist $H$ eine beliebige $p$-Untergruppe von $G$, so ist $H$ demnach in einer $p$-Sylowgruppe enthalten. Ist $H$ eine $p$-Sylowgruppe, so ist $H = x_i^{-1}Px_i$, das hei\ss{}t $H$ ist konjugiert zu $P$. Damit ist auch $\Syl_pG = M$ und daher
+  $$
+   \l|\Syl_pG\r| = \frac{\l|G\r|}{\l|\Norm_G\l(P\r)\r|}
+  $$
+  \item Setzen wir im ersten Teil $H=P$, so ergibt sich
+  \begin{eqnarray*}
+   \l|\Syl_pG\r| & = & \l|M\r| = \sum_{i=1}^r\frac{\l|P\r|}{\l|\Norm_P\l(x_i^{-1}Px_i\r)\r|}=\\&\stackrel{\ref{satz_uber_cen_und_norm}}{=}&\sum_{i=1}^r\frac{\l|P\r|}{\l|P\cap\Norm_G\l(x_i^{-1}Px_i\r)\r|}\stackrel{\ref{lemma_3_9}}{=}\sum_{i=1}^r\frac{\l|P\r|}{\l|P\cap\l(x_i^{-1}Px_i\r)\r|}
+  \end{eqnarray*}
+  Bei den Summanden $\l|P\cap\l(x_i^{-1}Px_i\r)\r|$ gibt es genau einen Summanden 1 (n\"amlich f\"ur $x_i^{-1}Px_i=P$), sonst ist
+  $$
+   P \cap x_i^{-1}Px_i < P
+  $$
+  und daher $p \mid \frac{\l|P\r|}{\l|P\cap\l(x_i^{-1}Px_i\r)\r|}$. Insgesamt folgt
+  $$
+   \l|\Syl_pG\r| \equiv 1 \mod p
+  $$
+  Dass $\l|\Syl_pG\r| \mid \l|G\r|$ (genauer: $\l|\Syl_pG\r| \mid m$) haben wir bereits im 1. Teil gezeigt.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{bemerkung*}
+ Der Satz von Sylow ist der vielleicht wichtigste Satz der Gruppentheorie, weil er einen ersten Ansatzpunkt liefert, die Struktur der Gruppe n\"aher zu untersuchen. In einigen Spezialf\"allen gen\"ugt er (mit einigen kleinen zus\"atzlichen Resultaten) sogar schon, um alle Gruppen mit einer bestimmten Ordnung zu klassifizieren. Naturgem\"a\ss{} ist der Satz jedoch von Sylow keine Hilfe bei der Untersuchung von $p$-Gruppen.
+
+ Die Bedeutung des Satzes legt die Frage nahe, ob er sich verallgemeinern l\"asst. Tats\"achlich gibt es zwei Resultate, die dies in bestimmte Richtungen tun:
+ \begin{itemize}
+  \item Sei $\l|G\r| = p^am$ mit $p \nmid m$ und sei $s \in \NN_0$ mit $0 \leq s \leq a$. Sei $r_s$ die Anzahl der Untergruppen von $G$ mit Ordnung $p^s$. Dann gilt:
+  $$
+   r_s \equiv 1 \mod p
+  $$
+  \item Satz von Hall: Sei $G$ \emph{aufl\"osbar} und $\l|G\r| = ab$ mit $\ggT\l(a,b\r) = 1$. Dann enth\"alt $G$ Untergruppen der Ordnung $a$ und alle diese Untergruppen sind konjugiert.
+ \end{itemize}
+\end{bemerkung*}
+
+\begin{folgerung}
+ Sei $P \in \Syl_pG, \Norm_G\l(P\r) \leq U \leq G$. Dann gilt
+ \begin{enumerate}
+  \item $\Norm_G\l(U\r)=U$
+  \item $\l[G:U\r] = 1 \mod p$
+ \end{enumerate}
+\end{folgerung}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item Sei $x\in \Norm_G\l(U\r)$, das hei\ss{}t $x^{-1}Ux=U$. Dann gilt:
+  $$
+   x^{-1}Px \leq x^{-1}\Norm_G\l(Pr\r)x \leq x^{-1}Ux \leq U
+  $$
+  Also ist auch $x^{-1}Px$ eine $p$-Sylowgruppe und $U$, das hei\ss{}t $P$ und $x^{-1}Px$ sind in $U$ konjugiert (als $p$-Sylowgruppe von $U$). Daher gibt es ein $u\in U$, so dass
+  $$
+   u^{-1}\l(x^{-1}Px\r)u = P
+  $$
+  Folglich ist $xu \in \Norm_G\l(P\r) \leq U \Rightarrow x \in U$.
+  \item $P$ ist eine $p$-Sylowgruppe von $U$. Wegen $\Norm_G\l(P\r) \leq U$ ist $\Norm_U\l(P\r) = \Norm_G\l(P\r)$. Mit dem Satz von Sylow \ref{satz_von_sylow} folgt
+  $$
+   \l[U:\Norm_G\l(P\r)\r] \equiv 1 \mod p
+  $$
+  Ebenfalls nach dem Satz von Sylow \ref{satz_von_sylow} ist aber auch
+  $$
+   \l[G:U\r] \l[U:\Norm_G\l(P\r)\r] = \l[G : \Norm_G\l(P\r)\r] \equiv 1 \mod p
+  $$
+  Deshalb ist $\l[G:U\r] \equiv 1 \mod p$
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{folgerung}
+ Sei $N \nt G$ und $P \in \Syl_pG$. Dann ist $P\cap N \in Syl_pN$ und $PN/N \in \Syl_p\l(G/N\r)$. Beachte: Ist nur $N \leq G$, so gilt die erste Aussage im Allgemeinen \emph{nicht}.
+\end{folgerung}
+
+\begin{beweis}
+ Sei $R$ eine $p$-Sylowgruppe von $N$. Nach dem Satz von Sylow \ref{satz_von_sylow} ist $R$ in einer $p$-Sylowgruppe $P_1$ von G enthalten und es gibt ein $x \in G$ mit $x^{-1}P_1x=P$. Da $R$ die maximale $p$-Gruppe von $N$, so ist
+ $
+  P_1\cap N = R\cap N = R
+ $.
+ Nun ist
+ $$
+  P\cap N = x^{-1}P_1x \cap N \stackrel{N\nt G}{=} x^{-1}P_1x \cap x^{-1}Nx=x^{-1}P_1\cap Nx=x^{-1}Rx 
+ $$
+ Daraus folgt:
+ $$
+  \l|P_1 \cap N\r| = \l|x^{-1} R x\r| = \l|R\r| \Rightarrow P\cap N\in \Syl_pN
+ $$
+
+ Sei $ \overline{U} := PN/N \leq G/N =: \overline{G} $ ($N \nt PN$ nach dem 1. Isomorphiesatz \ref{isomorphiesatz1}). Sei $\l|G\r| = p^ag, \l|N\r|=p^bn, p \nmid g,n$. Nach der ersten Aussage des Satzes ist dann $P \cap N$ eine $p$-Sylowgruppe von $N$, also gilt $\l|P\cap N\r|=p^b$. Mit \ref{untergruppenkriterium} folgt:
+ $$
+  \l|PN\r| = \frac{\l|P\r|\l|N\r|}{\l|P\cap N\r|} = \frac{p^ap^bn}{p^b} = p^an
+ $$
+ und damit
+ $$
+  \l|\overline{U}\r| = \l|PN/N\r| = \frac{p^an}{p^bn} = p^{a-b}
+ $$
+ Wegen $\l|G/N\r| = \frac{p^ag}{p^bn}=p^{a-b}\frac{g}{n}$ ist $\overline{U}$ eine $p$-Sylowgruppe von $\overline{G}$.
+ \qed
+\end{beweis}
+
+\begin{bemerkung}
+ Sei $\l|G\r| = p_1^{a_1} \cdot \ldots \cdot p_k^{a_k}$ die Primfaktorzerlegung der Ordnung von $G, p_i \in \Syl_{p_i}G$. Dann ist $G = \l< p_1, \ldots, p_k \r>$.
+\end{bemerkung}
+
+\begin{beweis}
+ Sei $G_1 := \l<p_1, \ldots, p_k\r> \Rightarrow P_i \leq G_1; \l|G_1\r|=\l|G\r|$. Daraus folgt Behauptung.
+ \qed
+\end{beweis}
+
+\begin{satz}[Zerlegung von Gruppenelementen]
+ \label{zerlegung_von_gruppenelementen}
+ Sei $g \in G$ mit $\ord G = p_1^{a_1}\cdot \ldots \cdot p_k^{a_k}$. Dann gibt es eindeutig bestimmte Elemente $g_1, \ldots g_k$ mit $\ord g_i = p_i^{a_i}$, so dass $g=g_1\cdot\ldots\cdot g_k$ und $g_ig_j=g_jg_i$. Die $g_i$ sind Potenzen von $g$, das hei\ss{}t $g_i \in \l<g\r>$.
+
+ \emph{Beachte}: Die Zahl $g=g_1\cdot\ldots\cdot g_k$ mit $\ord g_i = p_i^{a_i}$ ist nicht eindeutig.
+\end{satz}
+
+\begin{beweis}
+ Sei $p := p_1^{a_1}$ und $q = \prod_{i=2}^kp_i^{a_i}$. Wegen $\ggT\l(p,q\r)=1$ gibt es $x,y\in\ZZ$ mit $xp+yq=1$. Wir setzen $g_1 := g^{yq}, g_2' := g^{xp}$. Dann ist
+ \begin{eqnarray*}
+  g_1^p&=&\l(g^{yq}\r)^p = \l(g^{pq}\r)^{y'}=1^y=1\\
+  &\Rightarrow& \ord g_1 = p = p_1^{a_1}\\
+  \l(g_2'\r)^q&=&\l(g^{xp}\r)^q=\l(g^{pq}\r)^x=1^x=1\\
+  &\Rightarrow& \ord g_2'=q
+ \end{eqnarray*}
+ Induktiv folgt die Behauptung. Eindeutigkeit:
+ $$
+  g = \underbrace{g_1g_2}_{p_1} = \underbrace{g_3g_4}_{p2}
+ $$
+ \qed
+\end{beweis}
+
+\begin{definition}[Exponent]
+ \index{Exponent}
+ \label{exponent}
+ Der \emph{Exponent} $\exp G$ einer Gruppe $G$ ist die kleinste Zahl $m \in \NN$ mit $g^m \equiv 1$ f\"ur alle $g \in G$. Mit anderen Worten:
+ $$
+  \exp G = \kgV_{g\in G} \l(\ord g\r)
+ $$
+\end{definition}
+
+\begin{folgerung}
+ Sei $\l|G\r| = p_1^{a_1}\cdot \ldots \cdot p_n^{a_n}$ und sei $P_i \in \Syl_pG$. Dann gilt:
+ $$
+  \exp G = \prod_{i=1}^n \exp P_i
+ $$
+\end{folgerung}
+
+\begin{beweis}
+ Dass $\prod_{i=1}^n \exp P_i \mid \exp G$ ist klar, denn die $\exp P_i$ sind paarweise teilerfremd und f\"ur $U \leq G$ gilt $\exp U \mid \exp G$. Sei $g \in G$ mit $\ord g = p_1^{b_1}\cdot\ldots\cdot p_n^{b_n}$. Nach \ref{zerlegung_von_gruppenelementen} gibt es ein $g \in G$ mit $\ord g_i = p_i^{b_i}$ so, dass $G = g_1 \cdot\ldots\cdot g_n$. Nach dem Satz von Sylow \ref{satz_von_sylow} ist $g_i$ in einer $p$-Sylowgruppe enthalten und daher $p_i^b=\ord g_i \mid \exp P_i$. Damit teilt $\ord g$ das Produkt $\prod_{i=1}^n \exp P_i$ und es gilt
+ $$
+  \exp G \mid \exp P_i
+ $$
+ \qed
+\end{beweis}
+
+\begin{bemerkung*}[Alperin und Kuo]
+ F\"ur jede Gruppe $G$ gilt:
+ $$
+  \exp G \mid \l[G : G' \cap \Zen\l(G\r) \r]
+ $$
+\end{bemerkung*}

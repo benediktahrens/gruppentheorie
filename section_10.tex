@@ -1,0 +1,311 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Baustellen im Text sind mit '[ToDo]' im Text gekennzeichnet und koennen mit der Suchfunktion
+% leicht gefunden werden.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{$p$-Gruppen}
+In diesem Kapitel wollen wir uns ausf\"uhrlich mit $p$-Gruppen besch\"aftigen - nach Sylow bilden sie ja sozusagen die Bausteine aller Gruppen. Allerdings war der Satz von Sylow bisher auch unser Hauptwerkzeug bei der Untersuchung von Gruppen, so dass wir nun kaum Mittel zur Verf\"ugung haben. Dar\"uber hinaus gibt es ein prinzipielles Problem: es gibt sehr viele $p$-Gruppen, f\"ur die Anzahl der $2$-Gruppen siehe zum Beispiel Tabelle \ref{tab:anzahl 2-gruppen}.
+\begin{table}[hbp]
+ \begin{tabular}{l|cccccccccc}
+$|G|$         &2&4&8&16&32&64 &128 &256  &512     &1024\\
+Anzahl&1&2&5&14&51&267&2328&56092&10494213& $>$ 49 Mia.\\
+\end{tabular}
+\caption{Anzahl der 2-Gruppen in Abh\"angigkeit der Kardinalit\"at}
+\label{tab:anzahl 2-gruppen}
+ 
+\end{table}
+
+Klassifizieren ist also schwierig Und allgemeine Aussagen beweisen? Wir hatten ja bereits gezeigt:
+\begin{itemize}
+\addtotoc{bisherige Ergebnisse \"uber $p$-Gruppen}
+\index{$p$-Gruppen!Eigenschaften von}
+ \item $p$-Gruppen besitzen ein nichttriviales Zentrum (\ref{2.10}).
+ \item $|P|=p^2 \Longrightarrow P\cong \ZZ_{p^2}$ oder $P\cong \ZZ_p \times \ZZ_p$ (\ref{2.11}).
+ \item F\"ur $r_s:=\lbrace U\leq P\mid|U|=p^s\rbrace$ gilt $r_s\equiv 1 \mod p$ (\ref{5.9}).
+ \item F\"ur jedes $1\leq s\leq n, |P|=p^n$ gibt es ein $N\nt P$ mit $|N|=p^s$ (\ref{5.10}).
+ \item F\"ur $U<p$ gilt $U<\Norm_P(U)$ (\ref{5.12}). Insbesondere ist jede maximale Untergruppe Normalteiler.
+ \item Absteigende bzw. aufsteigende Normalreihen erreichen $\langle 1\rangle$ bzw. $P$ (\ref{8.3}).
+ \item $\langle 1\rangle\neq N\nt P \Longrightarrow n\cap \Zen(P)>1$ (\ref{8.5}).
+\end{itemize}
+Wie der Burnsidesche Basissatz zeigen wird, spielt die Frattini-Gruppe $\Phi(P)$ bei der Untersuchung von $p$-Gruppen eine wichtige Rolle. Zum Beweis ben\"otigen wir ein 
+\begin{lemma}\label{10.1}
+ Sei $K$ eine Menge von Gruppen, die abgeschlossen ist bez\"uglich der Bildung von Untergruppen sowie direkten Produkten und unter Isomorphie. Weiter seien $M_1,\ldots,M_k$ alle Normalteiler einer endlichen Gruppe $G$ derart, dass $G/M_i \in K$. Dann ist $D=\bigcap_{i=1}^kM_i$ der kleinste Normalteiler von $G$, dessen Faktorgruppe $G/D$ in $K$ liegt.
+\end{lemma}
+
+\begin{beweis}
+ Wir betrachten den Homomorphismus $$\varphi:G\to \Pi_{i=1}^kG/M_i, g\mapsto (gM_1, \ldots, gM_k).$$ Dann ist $\Ker\varphi=\bigcap_{i=1}^kM_i=D$. Nach dem Homomorphiesatz ist $G/\Ker\varphi$ isomorph zu einer Untergruppe von $\Pi_{i=1}^kG/M_i\in K$. Weil $K$ abgeschlossen ist bez\"uglich Untergruppenbildung, folgt $G/D\in K$. Als Durchschnitt aller Normalteiler $N$ mit $G/N\in K$ ist $D$ der kleinste dieser Normalteiler.
+\end{beweis}
+
+\begin{satz}[Burnsidescher Basissatz]
+\addtotoc{Burnsidescher Basissatz}
+\label{10.2}
+ \index{Burnside!Basissatz von}
+ \index{Basissatz|see{Burnside}}
+F\"ur jede $p$-Gruppe $P$ gilt
+\begin{enumerate}
+ \item \label{10.2.1}Die Frattini-Gruppe $\Phi(P)$ ist der kleinste Normalteiler von $P$ derart, dass $P/N$ elementarabelsch (das hei\ss{}, $P/N\cong (\ZZ_p)^k$) ist.
+ \item \label{10.2.2}Sei $|P/\Phi(P)|=p^n$. Dann ist $n$ die kleinste Zahl, f\"ur die $x_1,\ldots,x_n\in P$ existieren mit $P=\langle x_1,\ldots,x_n\rangle$.
+\end{enumerate}
+
+
+\end{satz}
+\begin{beweis}\spspace
+\begin{enumerate}
+ \item Sei $K$ die Menge aller elementarabelschen $p$-Gruppen. Diese erf\"ullt die Bedingungen in Lemma \ref{10.1}. Sei $\NNC$ die Menge aller Normalteiler von $P$ mit elementarabelscher Faktorgruppe. Setzen wir $D:=\bigcap_{N\in \NNC} N$, so ist $D\nt P$ und nach \ref{10.1} gilt: $D$ ist der kleinste Normalteiler von $P$ mit elementarabelscher Faktorgruppe. Wir zeigen $D=\Phi(P)$.\\
+Ist $U<P$ eine maximale Untergruppe, so gilt $U\nt P$ und $|P/U|=p$ nach \ref{5.13} und \ref{5.14}.
+Daher ist $U\in \NNC$ und es folgt $D\leq \Phi(P)$.
+Da $P/D$ elementarabelsch ist, ist $\Phi(P/D)=\langle 1 \rangle$. Sind $U_i/D$ f\"ur $i\in I$ die maximalen Untergruppen von $P/D$, so gilt $1=\bigcap_{i\in I}(U_i/D)=(\bigcap_{i\in I}U_i)/D$ und daher $\bigcap_{i\in I}U_i=D$. Nach dem Korrespondenzsatz ist $U_i/D$ in $P/D$ genau dann maximal, wenn $U_i$ in $P$ maximal ist. Weil $D$ in allen maximalen Untergruppen von $P$ enthalten ist, folgt $D=\bigcap_{i\in I}U_i=\Phi(P)$.
+\item Aus $P=\langle x_1,\ldots,x_n\rangle$ folgt $\overline{P}:=P/\Phi(P)=\langle x_1\Phi(P),\ldots,x_n\Phi(P)\rangle$. Nach \ref{10.2.1}. ist $\overline{P}$ elementarabelsch und kann daher als Vektorraum \"uber $\ZZ_p$ aufgefasst werden. Da $|\overline{P}|=p^n$, ist dieser Vektorraum $n$-dimensional und wir erhalten $n\leq m$. Andererseits besitzt der Vektorraum eine Basis $y_1\Phi(P),\ldots,y_n\Phi(P)$ aus $n$ Elementen, also ist $P=\langle y_1,\ldots,y_n,\Phi(P)$. Aus Lemma \ref{9.2} folgt $P=\langle y_1,\ldots,y_n\rangle$.
+\end{enumerate}
+\end{beweis}
+
+\begin{folgerung}\label{10.3}\index{zyklische Gr.}
+ Sei $P$ eine $p$-Gruppe. Es gilt 
+\begin{enumerate}
+ \item \label{10.3.1}Ist $P/\Phi(P)$ zyklisch, so auch $P$.
+ \item Ist $P/P'$ zyklisch, so auch $P$.
+ \item Besitzt $P$ nur eine maximale Untergruppe, so ist $P$ zyklisch.
+\end{enumerate}
+
+\end{folgerung}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+ \item Nach \ref{10.2}.\ref{10.2.1} ist $|P/\Phi(P)|=p$. Mit \ref{10.2}.\ref{10.2.2} folgt, dass $P$ von einem Element erzeugt wird.
+ \item Weil $P$ nilpotent ist, gilt $P'\leq \Phi(P)$ nach \ref{9.7}. Nach dem 2. Isomorphiesatz ist $P/\Phi(P)\cong (P/P')/(\Phi(P)/P')$, also ist $P/\Phi(P)$ als Faktorgruppe einer zyklischen Gruppe zyklisch und mit \ref{10.3.1}. folgt die Behauptung.
+ \item Ist $U< P$ die einzige maximale Untergruppe von $P$, so gilt $\Phi(P)=U$ und $|P/\Phi(P)|=|P/U|=p$. Also ist $P/\Phi(P)$ zyklisch und mit \ref{10.3.1}. folgt die Behauptung.
+\end{enumerate}
+
+\end{beweis}
+
+Bei $p$-Gruppen spielen die folgenden Untergruppen eine wichtige Rolle:
+\begin{definition}[$\Omega_i(P),\Agemo^i(P)$]
+\index{Omega}
+\index{Agemo}
+Sei $P$ eine $p$-Gruppe und $i\in \NN_0$. Wir definieren
+\begin{enumerate}
+ \item $\Omega_i(P):=\langle x\in P\mid x^{p^i}=1\rangle$ das Erzeugnis der Elemente, deren Ordnung $p^i$ teilt
+ \item $\Agemo^i(P):=\langle x^{p^i}\mid x\in P\rangle$ das Erzeugnis der $p^i$-ten Potenzen der Elemente von $P$. Diese zweite Gruppe nennen wir \emph{Agemo}.
+\end{enumerate}
+
+ 
+\end{definition}
+\begin{bemerkung}
+ Die Gruppen $\Omega_i(P)$ und $\Agemo^i(P)$ haben folgende offensichtliche Eigenschaften:
+\begin{enumerate}
+ \item $\langle 1\rangle=\Omega_0(P)\leq \Omega_1(P)\leq \Omega_2(P)\leq \ldots$\\
+       $P=\Agemo^0(P)\geq \Agemo^1(P)\geq \Agemo^2(P)\geq\ldots$
+\item $\Omega_i(P)\Char P, \Agemo^i(P)\Char P$
+\item Ist $P$ abelsch, so gilt $\Omega_i(P)=\lbrace x\in P\mid x^{p^i}=1\rbrace$ und $\Agemo^i(P)=\lbrace x^{p^i}\mid x\in P\rbrace$.
+\end{enumerate}
+
+\end{bemerkung}
+
+\begin{satz}
+ Sei $P$ eine $p$-Gruppe. Dann gilt
+\begin{enumerate}
+ \item \label{10.6.1}$\Phi(P)=P'\Agemo^1(P)$.
+ \item Ist $p=2$, so gilt $\Phi(P)=\Agemo^1(P)$.
+ \item F\"ur $U\leq P$ ist $\Phi(U)\leq \Phi(P)$. F\"ur $N\nt P$ ist $\Phi(P)N/N=\Phi(P/N)$.
+\end{enumerate}
+
+\end{satz}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+ \item Weil $p$-Gruppen nilpotent sind, gilt $P'\leq \Phi(P)$ nach \ref{9.7}. Da $P/\Phi(P)$ nach \ref{10.2} elementarabelsch ist, gilt $x^p\in \Phi(P)$ f\"ur alle $x\in P$ und daher $\Agemo^1(P)\leq \Phi(P)$. Also ist $P'\Agemo^1(P)\leq \Phi(P)$. Wegen $P'\leq P'\Agemo^1(P)$ ist $P/\bigl(P'\Agemo^1(P)\bigr)$ abelsch. Da $x^p\in \Agemo^1(P)$ f\"ur alle $x\in P$, haben alle Elemente der Faktorgruppe $P/\bigl(P'\Agemo^1(P)\bigr)$ Ordnung $\leq p$, also ist $P/\bigl(P'\Agemo^1(P)\bigr)$ elementarabelsch. Mit dem Burnsideschen Basissatz \ref{10.2}.\ref{10.2.2} folgt $\Phi(P)\leq P'\Agemo^1(P)$.
+ \item Wegen $\lbrack x,y\rbrack=x^{-1}y^{-1}xy=x^{-1}\underbrace{y^{-2}xx^{-2}xy}_{y^{-1}}xy=(y^x)^{-2}x^{-2}(xy)^{-2}$ ist $P'\leq \Agemo^1(P)$, wenn $p=2$. Mit \ref{10.6.1}. folgt $\Phi(P)=\Agemo^1(P)$.
+\item folgt aus \ref{10.6.1}., denn f\"ur $U<P$ ist $U'\leq P'$ und $\Agemo^1(U)\leq\Agemo^1(P)$. F\"ur $N\nt P$ ist $\bigl(P'\Agemo^1(P)N\bigr)/N=(P/N)'\Agemo^1(P/N)$.
+\end{enumerate}
+
+\end{beweis}
+ In einem Spezialfall lassen sich die Gruppen $\Omega_1(P)$ bzw. $\Omega_2(P)$ (f\"ur $p=2$) genauer bestimmen. Diese Aussage ben\"otigen wir in \ref{10.8}, um die Quaternionengruppe zu charakterisieren.
+\begin{satz}\label{10.7}
+ Sei $P$ eine $p$-Gruppe.
+\begin{enumerate}
+ \item Ist $p>2$ und $P/\Zen(P)$ abelsch, so ist $\Omega_1(P)=\lbrace x\in P\mid x^p=1\rbrace$.
+ \item \label{10.7.1}Ist $P/\Zen(P)$ elementarabelsch, so gilt f\"ur $x,y\in P$
+$$(xy)^p=x^py^p,\qquad \text{falls}\quad p\neq 2,$$
+$$(xy)^4=x^4y^4,\qquad \text{falls}\quad p=2.$$
+F\"ur $p=2$ ist dann also $\Omega_2(P)=\lbrace x\in P\mid x^4=1\rbrace$.
+\end{enumerate}
+
+\end{satz}
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item Da $P/\Zen(P)$ abelsch ist, gilt $P'\leq \Zen(P)$ nach \ref{2.15}.\ref{2.15.4}. Also kommutiert $\lbrack x,y\rbrack$ mit $x$ und $y$ und mit $z:=\lbrack y,x\rbrack\in P$ gilt $(xy)^i=x^iy^iz^{\frac{1}{2}i(i-1)}$ f\"ur alle $i\in \NN_0$. F\"ur $x,y\in \Omega_1(P)$ ist $x^p=y^p=1$ und nach \ref{2.13}.\ref{2.13.8} daher $z^p=\lbrack y,x\rbrack^p=\lbrack y,x^p\rbrack=\lbrack y,1\rbrack =1$. Weil $p$ ungerade ist, gilt $p\mid\frac{1}{2}p(p-1)$, also folgt $(xy)^p=x^py^pz^{\frac{1}{2}p(p-1)}=1$ f\"ur $x,y\in \Omega_1(P)$. Damit ist $\Omega_1(P)=\lbrace x\in P\mid x^p=1\rbrace$.
+ \item Ist $P/\Zen(P)$ elementarabelsch, so ist $x^p\in \Zen(P)$ f\"ur alle $x\in P$. Setzen wir nun wieder $z:=\lbrack y,x\rbrack$, so folgt $z^p=1$ und damit $(xy)^p=x^py^p$ f\"ur $p>2$ wie in \ref{10.7.1}, da wieder $z\in P'\leq \Zen(P)$.
+F\"ur $p=2$ ist (wieder nach \ref{2.13}) $z^6=\lbrack y,x\rbrack^6=\lbrack y,x^6\rbrack = \lbrack y,\underbrace{(x^2)^3}_{\in \Zen(P)}\rbrack=1$, da $x^2\in \Zen(P)$. Mit \ref{2.13}.\ref{2.13.9} folgt $(xy)^4=x^4y^4z^{\frac{1}{2}\cdot 4(4-1)}=x^4y^4$ und damit $\Omega_2(P) = \lbrace x\in P\mid x^4 =1\rbrace$.
+ \end{enumerate}
+
+\end{beweis}
+In den folgenden S\"atzen werden wir die $p$-Gruppen der Ordnung $p^n$ bestimmen, die nur eine Untergruppe der Ordnung $p^s, 1\leq s\leq n-1$, besitzen. Eine solche Gruppe ist uns schon aus der \"Ubung bekannt.
+\begin{satz}\label{10.8}
+\index{Quaternionengruppe}
+ Die Quaternionengruppe der Ordnung 8 ist die einzige Gruppe, die nur eine Untergruppe der Ordnung $p$ besitzt, aber mindestens zwei zyklische Untergruppen vom Index $p$.
+\end{satz}
+\begin{beweis}
+ Sei $P$ eine $p$-Gruppe wie im Satz und seien $\langle x_1\rangle$ und $\langle x_2\rangle$ zwei verschiedene Untergruppen vom Index $p$. Da $\langle x_1\rangle$ und $\langle x_2\rangle$ maximal sind und $x_2\not\in \langle x_1\rangle$, ist $P=\langle x_1,x_2\rangle$. Nach dem Burnsideschen Basissatz \ref{10.2} folgt $P/\Phi(P)\cong\ZZ_p\times\ZZ_p$ (da $P$ nicht zyklisch). Weiter ist $\Phi(P)\leq \langle x_1\rangle\cap\langle x_2\rangle\leq\Zen(P)$. Da $P/\Zen(P)$ nicht zyklisch sein kann (sonst w\"are $P$ zyklisch nach \ref{2.2}), folgt $\Zen(P)=\Phi(P)$. Insbesondere ist $P/\Zen(P)$ elementarabelsch. Wir k\"onnen daher \ref{10.7} anwenden. Danach ist die Abbildung $$\varphi:P\to P, \quad x\mapsto x^p\quad (\text{bzw.}\quad x\mapsto x^4 \quad\text{f\"ur}\quad p=2)$$ ein Endomorphismus von $P$ mit $\Img\varphi\leq\Zen(P)$. Insbesondere ist $\Img \varphi$ eine abelsche Untergruppe von $P$. Sei nun $M$ eine beliebige abelsche Untergruppe von $P$. Dann ist $M$ zyklisch.\\
+ACHTUNG: HIER FEHLT EINE ZEILE, MEINE VORLAGE IST UNLESERLICH [ToDo]\\
+Nach dem Hauptsatz \"uber endliche abelsche Gruppen ist $M$ daher zyklisch, denn direkte Produkte mehrerer zyklischer Gruppen $> \langle 1\rangle$ besitzen mehrere Untergruppen der Ordnung $p$.
+Damit ist $\Img\varphi$ zyklisch, nach dem Homomorphiesatz also auch $P/\Ker\varphi\cong \Img \varphi$. Also ist $\Ker\varphi\nleq\Phi(P)$, denn sonst w\"are $\ZZ_p\times \ZZ_P\cong P/\Phi(P)\stackrel{\text{2.Isom.}}{\cong}\bigl(P/\Ker\varphi\bigr)/\bigl(\Phi(P)/\Ker\varphi\bigr)$ als Faktorgruppe einer zyklischen Gruppe zyklisch, ein Widerspruch.
+Also gibt es ein $x\in \Ker\varphi\backslash\Phi(P)$.
+W\"are $p\neq 2$, so w\"are $\ord x=p$ und $\langle x\rangle$ daher die einzige minimale Untergruppe von $P$. Dann w\"are allerdings $\Phi(P)=\langle 1\rangle$, denn sonst m\"usste ja auch $\Phi(P)$ diese minimale Untergruppe enthalten. Wegen $P/\Phi(P)\cong \ZZ_p\times\ZZ_p$ w\"are dann $P\cong\ZZ_p\times \ZZ_p$, ein Widerspruch.
+Damit muss $p=2$ und $\ord x=4$ sein. Wir betrachten $M:=\langle x, \Phi(P)\rangle$. Wegen $\Phi(P)=\Zen(P)$ ist $M$ abelsch und daher zyklisch (siehe oben). Da $x\not\in\Phi(P)$ und $M$ eine zyklische $p$-Gruppe ist, folgt $M=\langle x\rangle$ und also $\mathopen{|}M\mathclose{|}=4$. Da $x\not\in \Phi(P)$ und $\Phi(P)\neq\langle 1\rangle$ (sonst w\"are $P\cong \ZZ_2\times \ZZ_2$), erhalten wir $|\Phi(P)|=2$. Wegen $|P/\Phi(P)|=4$ ist dann $|P|=8$. Da $P$ weder abelsch noch isomorph zu $\Di_4$ sein kann, muss $P\cong \Quat$ isomorph zur Quaternionengruppe der Ordnung $8$ sein. $\Quat$ erf\"ullt tats\"achlich die Voraussetzungen.
+\end{beweis}
+
+
+L\"asst man die Bedingung \"uber die Untergruppen vom Index $p$ weg, so ergeben sich noch weitere Gruppen, die wir zun\"achst definieren m\"ussen.
+\begin{definition}[verallgemeinerte Quaternionengruppe]
+ \index{Quaternionengruppe!verallgemeinerte}
+Sei $n\geq 3, A:=\langle a\mid a^{2^{n-1}}=1\rangle\cong \ZZ_{2^{n-1}}$ und $B:=\langle b\mid b^4=1\rangle\cong \ZZ_4$. Durch 
+$$\varphi:B\to Aut A,\quad b\longmapsto(a^j\mapsto a^{-j})$$ wird ein Homomorphismus mit $\Ker\varphi=\langle b^2\rangle$ definiert. Im semidirekten Produkt $A\stackrel{\varphi}{\rtimes}B$ ist $C:=\langle a^{2^{n-2}}, b^2\langle$ daher eine elementarabelsche Untergruppe mit $C\leq \Zen(A\stackrel{\varphi}{\rtimes}B)$ und $|C|=4$. Wir setzen $N:=\langle a^{2^{n-2}}\cdot b^2\rangle < C$. Die Gruppe $\Quat_n:=A\stackrel{\varphi}{\rtimes}B/N$ der Ordnung $2^n$ hei\ss{}t \emph{verallgemeinerte Quaternionengruppe} ($\Quat_3$ ist die bekannte Quaternionengruppe der Ordnung $8$).
+\end{definition}
+
+\begin{satz}
+ \index{Quaternionengruppe!verallgemeinerte}
+F\"ur die verallgemeinerte Quaternionengruppe $\Quat_n$ der Ordnung $2^n$ gilt:
+\begin{enumerate}
+ \item $\Quat_n=\langle x,y\mid x^{2^{n-1}}=1, y^2=x^{2^{n-2}}, y^{-1}xy=x^{-1}\rangle$.
+ \item $\Quat_n=\lbrace 1, x,\ldots, x^{2^{n-1}-1},y,yx,\ldots,yx^{2^{n-1}-1}\rbrace$.
+ \item \label{10.10.3}$(yx^i)^2=x^{2^{n-2}}$ f\"ur $i\in \NN_0$.
+ \item $\langle x\rangle$ ist f\"ur $n\geq 4$ charakteristische Untergruppe von $\Quat_n$ vom Index $2$.
+ \item \label{10.10.5}$\Zen(\Quat_n)=\lbrace 1, x^{2^{n-2}}\rbrace$ ist die einzige Untergruppe der Ordnung $2$ von $\Quat_n$.
+\end{enumerate}
+
+\end{satz}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item \label{10.10.1}Wir setzen $x:=aN$ und $y:=bN$, dann ist $\Quat_n=\langle x,y\rangle$ und es gilt $\ord x=2^{n-1}, \ord y = 4, x^{2^{n-2}}=a^{2^{n-2}}N=b^2N=y^2$ und $y^{-1}xy=x^{-1}$. $\Quat_n$ wird also von Elementen mit entsprechenden Relationen erzeugt. Da $xy=yx^{-1}$, lassen sich alle Elemente von $\Quat_n$ in der Form $y^ix^j$ mit $i\in \lbrace 0,1\rbrace$ (wegen $y^2\in \langle x\rangle$) und $j\in \lbrace 0,1,\ldots, 2^{n-1}-1\rbrace$ schreiben. Also kann $\langle x,y\rangle$ auch nicht mehr als $2^n$ Elemente enthalten und es folgt $\Quat_n=\langle x,y\mid\ldots\rangle$.
+ \item wurde in \ref{10.10.1} mitbewiesen
+ \item $(yx^i)^2=yx^iyx^i=y^2y^{-1}x^iyx^i=y^2x^{-i}x^i=y^2=x^{2^{n-2}}$.
+ \item Nach \ref{10.10.3} haben alle Elemente in $\Quat_n\backslash\langle x\rangle$ Ordnung $4$. Also ist $\langle x\rangle$ die einzige zyklische Untergruppe in $\Quat_n$ vom Index $2$, wenn $n\geq 4$. Damit ist $\langle x\rangle$ charakteristisch in $\Quat_n$.
+ \item Nach \ref{10.10.3} haben die Elemente der Form $yx$ alle Ordnung $4$. Daher ist $\langle x^{2^{n-2}}$ die einzige Untergruppe von Ordnung $2$. Aus $yx^{i+j}=yx^ix^j=x^jyx^i=yy^{-1}x^jyx^i=yx^{-j}x^i=yx{i-j} \Longleftrightarrow x^j=x^{-j} \Longleftrightarrow x^{2j}=1 \Longleftrightarrow j=2^{n-2} \text{oder} j=2^{n-1}$ folgt auch $\Zen(\Quat_n)=\langle x^{2^{n-2}}$.
+ \end{enumerate}
+
+\end{beweis}
+
+Die Eigenschaft \ref{10.10.5} charakterisiert $\Quat_n$ fast vollst\"andig, wie wir in \ref{10.12} zeigen werden. Daf\"ur ben\"otigen wir noch ein 
+
+\begin{lemma}\label{10.11}
+ Sei $P$ eine nichtabelsche $p$-Gruppe und $A\nt P$ ein maximaler abelscher Normalteiler von $P$. Dann gilt $\Cen_P(A)=A$ und $\Zen(P)\leq A$.
+\end{lemma}
+
+\begin{beweis}
+Angenommen, es ist $A<\Cen_P(A)$. Wegen $A\nt P$ gilt $\Cen_P(A)\nt P$ nach \ref{2.4}. Nach dem Korrespondenzsatz gilt daher $\Cen_P(A)/A \nt P/A$. In der nilpotenten Gruppe $P/A$ hat jeder nichttriviale Normalteiler nach \ref{8.5} einen nichttrivialen Schnitt mit dem Zentrum $\Zen(P/A)$, also gibt es ein $x\in\Cen_P(A)\backslash A$ mit $\overline{x}:=xA\in \Zen(P/A)$. Wegen $x\in \Cen_P(A)$ ist $\langle A,x\rangle$ abelsch. Da $\overline{x}\in\Zen(P/A)$, gilt $\langle \overline{x}\nt P/A$. Nach dem Korrespondenzsatz ist die zu $\langle \overline{x}\rangle$ entsprechende Untergruppe $\langle A,x\rangle\leq P$ von $P$ dann normal in $P$, ein Widerspruch zur Maximalit\"at von $A$.
+ 
+\end{beweis}
+
+\begin{satz}\label{10.12}
+ \index{Quaternionengruppe!verallgemeinerte}
+ \index{zyklische Gr.}
+ Eine $p$-Gruppe $P$ mit genau einer minimalen Untergruppe ist entweder zyklisch oder eine verallgemeinerte Quaternionengruppe.
+\end{satz}
+\begin{beweis}
+Wir f\"uhren den Beweis durch Induktion nach $|P|$. Sei $P$ eine nicht zyklische (und damit nicht abelsche) $p$-Gruppe mit nur einer minimalen Untergruppe. Dann besitzt $P$ mindestens zwei maximale Untergruppen vom Index $p$, denn sonst w\"are $P/\Phi(P)$ zyklisch und damit  auch $P$ selbst nach \ref{10.3}.\\
+Nach Induktionsvoraussetzung sind die beiden maximalen Untergruppen entweder zyklisch oder verallgemeinerte Quaternionengruppen. Sind beide zyklisch, so ist $P$ nach \ref{10.8} eine Quaternionengruppe der Ordnung $8$. Sonst enth\"alt $P$ eine verallgemeinerte Quaternionengruppe, das hei\ss{}t, es ist $p=2$.\\
+Sei $X$ ein maximaler abelscher Normalteiler von $P$ und sei $|X|=2^{n-1}$. Da $X$ wie $P$ nur eine minimale Untergruppe besitzt, ist $X$ nach dem Hauptsatz \"uber endliche abelsche Gruppen zyklisch. Sei also $X=\langle x\rangle$. Der weitere Beweis verl\"auft in zwei Schritten.
+\begin{enumerate}
+ \item \label{10.12.1}Ist $y\in P\backslash X$ mit $y^2\in X$, so ist $\langle x,y\rangle$ eine verallgemeinerte Quaternionengruppe\\
+HIER FEHLT EINE ZEILE [ToDo]\\
+Wegen $y^2\in X, y \not\in x$ liegt genau die H\"alfte der Elemente von $\langle y\rangle$ in $X$, das hei\ss{}t, f\"ur $V:=\langle y\rangle \cap X$ gilt $|V|=\frac{|\langle y\rangle|}{2}$. W\"are $V=X$, so w\"are $\Cen_P(X)\leq \langle y \rangle >X$, ein Widerspruch zu \ref{10.11}. Also ist $V<X$ und in der zyklischen Gruppe $X$ gibt es eine Untergruppe $X_1\leq X$ mit $|X_1|=2|V|$. Nat\"urlich ist dann $V<X_1$. F\"ur die Gruppe $X_1\cdot\langle y\rangle$ gilt daher nach \ref{1.1} $|X_1\cdot\langle y\rangle|=\frac{|X_1|\cdot|\langle y\rangle|}{|V|}=2|\langle y\rangle|$. $V$ enth\"alt auch die H\"alfte der Elemente von $\langle y \rangle$, also gilt auch $|X_1\langle y\rangle|=2|X_1|$. Damit enth\"alt die Gruppe $X_1\langle y\rangle$ zwei maximale zyklische Untergruppen (n\"amlich $X_1$ und $\langle y \rangle$) und genau eine minimale Untergruppe (da $P$ nur eine besitzt). Nach \ref{10.8} ist $X_1\langle y\rangle$ daher eine Quaternionengruppe der Ordnung $8$. Folglich ist $\ord y =4$ und somit $y^2=x^{2^{n-2}}$, denn $x^{2^{n-2}}$ ist das einzige Element der Ordnung $2$ von $P$. Wegen $X\nt P$ ist $(yx)^2=yxyx=y^2\underbrace{(y^{-1}xy)}_{\in X}x\in y^2X=X$ und analog zum Beweis f\"ur $y$ folgt $(yx)^2=x^{2^{n-2}}$. Also ist $y^{-1}xy=y^{-2}yxyxx^{-1}=y^{-2}(yx)^2x^{-1}=x^{-2^{n-2}}x^{2^{n-2}}x^{-1}$. Damit ist $\langle x,y\rangle$ eine Gruppe mit Ordnung mindestens $2^n$, deren Erzeuger die Relationen $x^{2^{n-1}}=1, y^2=x^{2^{n-2}}, y^{-1}xy=x^{-1}$ erf\"ullen. Damit ist $\langle x, y\rangle$ eine verallgemeinerte Quaternionengruppe der Ordnung $2^n$.
+\item $P=\langle x, y\rangle$. Da $X$ ein maximaler abelscher Normalteiler von $P$ ist, gilt $\Cen_P(X)=X$ nach \ref{10.11}. Weiter ist $\Norm_P(X)=P$, also ist $\Norm_P(X)/\Cen_P(X)=P/X=:A$. Nach \ref{2.4} ist $A$ isomorph zu einer Untergruppe von $\Aut X\cong \ZZ_{2^{n-1}}^*\stackrel{\ref{4.12}}{=}\langle \overline{-1} \rangle\times\langle \overline{5}\rangle$, das hei\ss{}t, es gibt einen Monomorphismus $\varphi:A\to \Aut X$. Wie im Beweis von \ref{2.4} gesehen wird $\varphi$ gegeben durch $\varphi(a)=(x\longmapsto x^a)$. In \ref{10.12.1} haben wir gezeigt: ist $\ord a=2$, so ist $\varphi(a)=(x\longmapsto x^{-1})$. In der $2$-Gruppe $A=P/X>1$ gibt es nat\"urlich Elemente der Ordnung $2$, das hei\ss{}t, es gibt Elemente $y\in P\backslash X$ mit $y^2\in X$. Weil alle diese Elemente auf $\overline{-1}$ abgebildet werden und $\varphi$ injektiv ist, ist $\langle \overline{-1}\rangle$ die einzige Untergruppe von $\varphi(A)$ mit Ordnung $2$. Also ist $\varphi(A)$ zyklisch und enth\"alt $\langle \overline{-1}\rangle$. Die einzige zyklische Untergruppe von $\langle\overline{-1}\rangle\times\langle \overline{5} \rangle$, die $\langle\overline{-1}\rangle$ enh\"alt, ist $\langle \overline{-1}\rangle$ selbst. Also folgt $\varphi(A)=\langle\overline{-1}\rangle$, und damit ist $|A|=2$ und also $\lbrack P:X\rbrack=2$. Daraus ergibt sich $P=\langle x,y\rangle$.
+\end{enumerate}
+
+ 
+\end{beweis}
+
+
+\begin{folgerung}\label{10.13}
+ Ist in der $p$-Gruppe $P$ jede abelsche Untergruppe zyklisch, so ist $P$ selbst zyklisch oder eine verallgemeinerte Quaternionengruppe.
+\end{folgerung}
+\begin{beweis}
+Sei $U\leq P$ mit $|U|=p$. Wegen $\Zen(P)\nt G$ ist $U\Zen(P)\leq P$. Offensichtlich ist $U\Zen(P)$ abelsch und daher nach Voraussetzung zyklisch. $U$ ist eine minimale Untergruppe von $U\Zen(P)$, und - da $U\Zen(P)$ zyklisch ist - die einzige. Damit folgt $U\leq \Zen(P)$, denn sonst bes\"a\ss{}e $\Zen(P)$ eine weitere minimale Untergruppe. Also liegen alle Untergruppen von $P$ mit Ordnung $p$ in $\Zen(P)$. Nach Voraussetzung ist $\Zen(P)$ zyklisch und besitzt daher nur eine Untergruppe der Ordnung $p$. Also gibt es in $P$ nur eine einzige minimale Untergruppe. Mit Satz \ref{10.12} folgt die Behauptung.
+ 
+\end{beweis}
+
+\begin{satz}\label{10.14}
+ Sei $P$ eine $p$-Gruppe mit $|P|=p^n$. F\"ur $0\leq s\leq n$ sei $r_s$ die Anzahl der Untergruppen von $P$ mit Ordnung $p^s$. Ist $r_s=1$ f\"ur ein $s$ mit $1<s<n$, so ist $P$ zyklisch.
+\end{satz}
+\begin{beweis}
+Sei $U$ die einzige Untergruppe von Ordnung $p^s$ von $P$. Nach Satz \ref{5.14} gibt es eine Untergruppe $V$ der Ordnung $p^{s+1}$ mit $U<V$. $V$ besitzt dann nur eine maximale Untergruppe und ist daher nach Satz \ref{10.3} zyklisch. Damit ist auch $U$ als Untergruppe von $V$ zyklisch.\\
+Durch mehrfache Anwendung von Satz \ref{5.14} folgt, dass jede Untergruppe der Ordnung $p$ und jede der Ordnung $p^2$ in einer Untergruppe der Ordnung $p^s$, also hier in $U$, enthalten ist. $U$ besitzt als zyklische Untergruppe nur je eine Untergruppe von Ordnung $p$ und $p^2$. Damit gibt es auch in $P$ nur je eine Untergruppe mit Ordnung $p$ und $p^2$. Mit Satz \ref{10.12} folgt: ist $p>2$, so ist $P$ zyklisch, f\"ur $p=2$ ist $P$ zyklisch oder eine verallgemeinerte Quaternionengruppe. Diese letztere $\Quat_n=\langle x,y\mid x^{2^{n-1}}=1, y^2=x^{2^{n-2}}, y^{-1}xy=x^{-1}\rangle$ enth\"alt jedoch zwei zyklische Untergruppen der Ordnung $4$, n\"amlich $\langle x^{2^{n-2}}\rangle$ und $\langle y\rangle$. Also ist $P$ zyklisch.
+ 
+\end{beweis}
+
+
+\begin{satz}\label{10.15}
+ Sei $|P|=p^n$. F\"ur ein $s$ mit $1<s\leq n$ sei jede Untergruppe der Ordnung $p^s$ von $P$ zyklisch. Ist $p^s\neq 4$, so ist $P$ zyklisch. Ist $p^s=4$, so ist $P$ zyklisch oder eine verallgemeinerte Quaternionengruppe.
+\end{satz}
+
+\begin{beweis}
+Wegen $s\geq 2$ sind alle Untergruppen von $P$ von Ordnung $p^2$ zyklisch, da sie nach \ref{5.14} in einer Untergruppe der Ordnung $p^s$ enthalten sind. Sei $N\leq \Zen(P)$ mit $|N|=p$. Gibt es eine weitere Untergruppe $U<P$ mit $|U|=p$, so ist wegen $N\nt P$ zun\"achst $NU\leq P$ und aus $N\leq \Zen(P)$ folgt $NU\cong N\times U\cong \ZZ_p\times \ZZ_p$, ein Widerspruch. Somit ist $N$ die einzige minimale Untergruppe von $P$ und mit \ref{10.12} folgt: $P$ ist zyklisch oder eine verallgemeinerte Quaternionengruppe. F\"ur $p>2$ sind wir also fertig.\\
+F\"ur $s\geq 3$ hat die verallgemeinerte Quaternionengruppe $\Quat_n=\langle x,y\mid x^{2^{n-1}}=1, y^2=x^{2^{n-2}}, y^{-1}xy=x^{-1}\rangle$ der Ordnung $2^n$ aber auch nichtzyklische Untergruppen der Ordnung $2^s$, n\"amlich $U=\langle x^{2^{n-s}}, y\rangle$. Die Erzeuger von $U$ erf\"ullen die Relationen einer verallgemeinerten Quaternionengruppe, das hei\ss{}t, es ist $U\cong \Quat_s$. Also kann nur im Fall $p^s=4$ die Gruppe $P$ auch nichtzyklisch sein.
+ 
+\end{beweis}
+
+Als n\"achstes wollen wir die $p$-Gruppen der Ordnung $p^{n+1}$ klassifizieren, die eine zyklische Untergruppe der Ordnung $p^n$ besitzen. Daf\"ur ben\"otigen wir folgendes
+
+\begin{lemma}
+ Sei $P$ eine nichtabelsche $p$-Gruppe mit einer zyklischen maximalen Untergruppe $H$. Gilt $1\neq x^p\in H$ f\"ur alle $x\in P\backslash H$, so ist $p=2$ und $P$ eine verallgemeinerte Quaternionengruppe.
+\end{lemma}
+
+\begin{beweis}
+Sei $H=\langle h\rangle$ mit $\ord h=p^n$ und sei $z:=h^{p^{n-1}}$. Nach Voraussetzung ist $\ord x>p$ f\"ur alle $x\in P\backslash H$. Ist $U<P$ mit $|U|=p$, so gilt folglich $U\leq H$. Die zyklische Gruppe $H$ enth\"alt aber nur eine Untergruppe der Ordnung $p$, n\"amlich $\langle z\rangle$. Daher ist $U=\langle z\rangle$, das hei\ss{}t, $\langle z\rangle$ ist die einzige minimale Untergruppe von $P$. Mit \ref{10.12} folgt die Behauptung.
+ \end{beweis}
+
+\begin{satz}\label{10.17}
+\index{$p$-Gruppe!modulare}
+\index{Semidiedergr.}
+\index{Quasidiedergruppe|see{Semidiedergr.}}
+ Sei $P$ eine nichtabelsche $p$-Gruppe der Ordnung $p^{n+1}$, die eine zyklische Untergruppe $H=\langle h\rangle$ der Ordnung $p^n$ enth\"alt. Dann gilt:
+\begin{enumerate}
+ \item \label{10.17.1}Ist $p\neq 2$, so ist $P$ isomorph zur sogenannten \emph{modularen $p$-Gruppe} $\Mod_{n+1}(p)=\langle h, a\mid h^{p^n}=a^p=1, a^{-1}ha=h^{1+p^{n-1}}\rangle$, also zu einem semidirekten Produkt $\ZZ_{p^n}\rtimes\ZZ_p$.
+ \item Ist $p=2$ und $n\geq 3$, so ist $P$ isomorph zu einer der folgenden Gruppen:
+  \begin{enumerate}
+   \item \label{10.17.2.a}einer verallgemeinertern Quaternionengruppe $$\Quat_{n+1}=\langle h, a\mid h^{2^n}=1, a^2=h^{2^{n-1}}, a^{-1}ha=h^{-1}\rangle$$.
+   \item \label{10.17.2.b}einer Diedergruppe $$\Di_{2^n}=\langle h,a\mid h^{2^n}=a^2=1, a^{-1}ha=h^{-1}\rangle$$.
+   \item \label{10.17.2.c}einer sogenannten \emph{Semidiedergruppe} (manchmal auch \emph{Quasidiedergruppe}) $$\SD_{n+1}=\langle h,a\mid h^{2^n}=a^2=1, a^{-1}ha=h^{-1+2^{n-1}}\rangle$$
+   \item\label{10.17.2.d} einer sogenannten modularen $2$-Gruppe $$\Mod_{n+1}(2)=\langle h, a\mid h^{2^n}=a^2=1, a^{-1}ha=h^{1+2^{n-1}}\rangle$$.
+   \end{enumerate}
+   F\"ur $p=2$ und $n=2$ treten nur die F\"alle \ref{10.17.2.a} und \ref{10.17.2.b} auf. Die Gruppen in \ref{10.17.2.b}, \ref{10.17.2.c} und \ref{10.17.2.d} sind semidirekte Produkte der Form $\ZZ_{2^n}\rtimes \ZZ_2$.
+\end{enumerate}
+
+\end{satz}
+
+\begin{beweis}
+ Besitzt die Untergruppe $H$ kein Komplement in $P$, so gilt $x^p\neq 1$ f\"ur alle $x\in P\backslash H$ und $x^p\in H$ wegen $\lbrack P:H\rbrack=p$. Nach Lemma \ref{10.16} ist dann $p=2$ und $P$ eine verallgemeinerte Quaternionengruppe. In allen \"ubrigen F\"allen ist $P$ ein semidirektes Produkt der Form $H\rtimes \langle a\rangle$, wobei $a\in P\backslash H$ Ordnung $p$ hat.\\
+HIER FEHLT EINE ZEILE [ToDo]
+\\
+Nach Folgerung \ref{4.17} gibt es daher bis auf Isomorphie genau ein nichttriviales semidirektes Produkt $H\rtimes \langle a\rangle$, n\"amlich das in \ref{10.17.1} angegebene.\\
+F\"ur $p=2$ und $n\geq 3$ ist $\Aut H\cong\ZZ_{2^n}^*\stackrel{\ref{4.12}}{\cong}\ZZ_2\times\ZZ_2$, also gibt es in $\Aut H$ genau drei verschiedene Elemente der Ordnung $2$. Offensichtlich haben wir $\overline{-1},\overline{-1+2^{n-1}}$ und $\overline{1+2^{n-1}}$ mit Ordnung $2$ in $\ZZ_{2^n}^*$. Also sind die in \ref{10.17.2.b}, \ref{10.17.2.c} und \ref{10.17.2.d} aufgez\"ahlten Gruppen alle M\"oglichkeiten (f\"ur $n=2$ ist $\ZZ_4^*=\ZZ_2$, also gibt es in diesem Fall nur eine Gruppe, die $\Di_4$).\\
+Wir m\"ussen noch zeigen, dass diese drei Gruppen paarweise nicht isomorph sind. Sei $z:=h^{2^{n-1}}$. Das Element $z$ ist das einzige Element mit Ordnung $2$ in $H\nt P$ und daher in $\Zen(P)$ enthalten. F\"ur $i\in \NN$ ist $a^{-1}h^ia=h^{-i}z^i$ im Fall \ref{10.17.2.c}, $a^{-1}h^ia=h^{i}z^i$ im Fall \ref{10.17.2.d}. Daher ist $\Zen(P)=\langle z\rangle$ im Fall \ref{10.17.2.c}, $\Zen(P)=\langle h^2\rangle$ im Fall \ref{10.17.2.d}. Da auch $\Zen(\Di_{2^n})=\langle z\rangle$, ist $\Mod_{n+1}(2)$ zu keiner der beiden anderen Gruppen isomorph. In der Diedergruppe haben alle Elemente aus $P\backslash H$ Ordnung $2$, also gibt es in $\Di_{2^n}$ genau $2^n+1$ Involutionen (Elemente der Ordnung $2$). In $\SD_{n+1}$ ist $(ha)^2=haha=hh^{-1+2^{n-1}}=h^{2^{n-1}}=z\neq 1$, das hei\ss{}t, $ha\in \SD_{n+1}\backslash H$ hat Ordnung $4$. Folglich gibt es in $\SD_{n+1}$ h\"ochstens $2^n-1+1=2^n$ Elemente der Ordnung $2$, das hei\ss{}t, $\Di_{2^n}$ und $\SD_{n+1}$ sind nicht isomorph.
+\end{beweis}
+
+
+Im Beweis von \ref{10.17} haben wir bereits einige Eigenschaften der Gruppen gezeigt, die wir f\"ur \ref{10.19} ben\"otigen:
+
+\begin{satz}\label{10.18}
+ Sei $P$ eine Dieder-, Semidieder- oder eine verallgemeinerte Quaternionengruppe der Ordnung $2^n$. Dann gilt (mit den Bezeichnungen aus \ref{10.17}):
+\begin{enumerate}
+ \item $\Zen(P)=\langle h^{2^{n-2}}$, also insbesondere $|\Zen(P)|=2$.
+ \item $P'=\Phi(P)=\langle h^2\rangle$, also insbesondere $|P/P'|=4$.
+ \item $\SD_n$ besitzt genau drei maximale Untergruppen. Diese sind isomorph zu $\ZZ_{2^{n-1}}, \Di_{2^{n-2}},\Quat_{2n}$.
+ \item Alle abelschen Untergruppen von $P$ mit Ordnung $8$ sind zyklisch.
+ \item $\Zen\bigl(\Mod_n(p)\bigr)=\langle h^p\rangle$, also insbesondere $|\Zen\bigl(\Mod_n(p)\bigr)|=p^{n-2}$.
+ 
+\end{enumerate}
+ [ToDo] HIER FEHLT WAHRSCHEINLICH EIN TEIL DES SATZES (evtl. innerhalb der Aufzaehlung)
+\end{satz}
+
+[ToDo] HIER FEHLT DER REST DES KAPITELS 10
+
+%$$|-x|=|+x|$$ $$\mathopen{|}-x\mathclose{|}=\mathopen{|}+x\mathclose{|}$$
+%$$|\Phi(P)|=|P/\Phi(P)|$$ $$\mathopen{|}\Phi(P)\mathclose{|}=\mathopen{|}P/\Phi(P)\mathclose{|}$$
+
+%$\vert$, $\mid$
+

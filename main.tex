@@ -1,0 +1,181 @@
+\documentclass[12pt, a4paper,titlepage]{article}
+
+% Packages einbinden
+\usepackage[latin1]{inputenc}
+\usepackage{ngerman}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{makeidx}
+\usepackage{hyperref}
+
+% Autor, Titel und Datum
+\date{\today}
+\author{michael.gerhaeuser@gmx.de \and benedikt.ahrens@web.de}
+\title{Gruppentheorie}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeindex
+
+% Der erste Abschnitt soll Nummer 0 haben
+\setcounter{section}{-1}
+
+% Neue Theoremstile
+\newtheoremstyle{mydefinition}
+ {\topsep} % Platz vor dem Theorem
+ {\topsep} % Platz nach dem Theorem
+ {} % Schrift im Theorem
+ {} % Einrueckung (empty = keine Einrueckung, \parindent = Normale Paragrapheneinrueckung)
+ {} % Schrift in der Kopfzeile des Theorems
+ {} % Punktation nach dem Theoremkopf
+ {\newline} %     Space after thm head (\newline = linebreak)
+ {{\bfseries\thmnumber{#2 }\thmname{#1}} \emph{\thmnote{ #3}}} % Kopfformatierung
+
+\newtheoremstyle{myplain}
+ {\topsep} % Platz vor dem Theorem
+ {\topsep} % Platz nach dem Theorem
+ {\itshape} % Schrift im Theorem
+ {} % Einrueckung (empty = keine Einrueckung, \parindent = Normale Paragrapheneinrueckung)
+ {} % Schrift in der Kopfzeile des Theorems
+ {} % Punktation nach dem Theoremkopf
+ {\newline} %     Space after thm head (\newline = linebreak)
+ {{\bfseries\thmnumber{#2 }\thmname{#1}} \thmnote{ #3}} % Kopfformatierung
+
+\newtheoremstyle{myremark}
+ {\topsep} % Platz vor dem Theorem
+ {\topsep} % Platz nach dem Theorem
+ {} % Schrift im Theorem
+ {} % Einrueckung (empty = keine Einrueckung, \parindent = Normale Paragrapheneinrueckung)
+ {} % Schrift in der Kopfzeile des Theorems
+ {} % Punktation nach dem Theoremkopf
+ {\newline} %     Space after thm head (\newline = linebreak)
+ {{\bfseries\thmnumber{#2 }\thmname{#1}} \emph{\thmnote{#3}}} % Kopfformatierung
+
+\newtheoremstyle{mybeweis}
+ {\topsep} % Platz vor dem Theorem
+ {\topsep} % Platz nach dem Theorem
+ {} % Schrift im Theorem
+ {} % Einrueckung (empty = keine Einrueckung, \parindent = Normale Paragrapheneinrueckung)
+ {\itshape} % Schrift in der Kopfzeile des Theorems
+ {} % Punktation nach dem Theoremkopf
+ {\newline} %     Space after thm head (\newline = linebreak)
+ {\thmnumber{#2}\thmname{#1}\thmnote{ #3}:} % Kopfformatierung
+%{\thmnumber{ #2 }\thmname{#1}\thmnote{#3}:} % Kopfformatierung
+
+% Theoremumgebungen fuer das Skript definieren
+\theoremstyle{mydefinition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{defundsatz}[definition]{Definition und Satz}
+
+\theoremstyle{myplain}
+\newtheorem{satz}[definition]{Satz}
+\newtheorem*{satz*}{Satz}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{folgerung}[definition]{Folgerung}
+
+\theoremstyle{myremark}
+\newtheorem{beispiel}[definition]{Beispiel}
+\newtheorem*{beispiel*}{Beispiel}
+\newtheorem{bemerkung}[definition]{Bemerkung}
+\newtheorem*{bemerkung*}{Bemerkung}
+
+\newtheorem{aufgabe}{Aufgabe}[section]
+
+\theoremstyle{mybeweis}
+\newtheorem*{beweis}{Beweis}
+
+% Mathematische Operatoren definieren
+% Automorphismengruppen, Spezielle Gruppen
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Symm}{S}
+\DeclareMathOperator{\Alt}{A}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Di}{D}
+\DeclareMathOperator{\Gl}{Gl}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\PSU}{PSU}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Quat}{Q}
+\DeclareMathOperator{\Mod}{M}
+\DeclareMathOperator{\SD}{SD}
+% Abbildungen
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\id}{id}
+%\DeclareMathOperator{\deg}{deg}
+% Mengen bezueglich Abbildungen
+\DeclareMathOperator{\Img}{Im} % Bild
+\DeclareMathOperator{\Ker}{Ker} % Kern
+% Zentralisator, Zentrum, Normalisator
+\DeclareMathOperator{\Cen}{C} % Zentralisator
+\DeclareMathOperator{\Zen}{Z} % Zentrum
+\DeclareMathOperator{\Norm}{N} % Normalisator
+% Sonstiges
+\DeclareMathOperator{\Char}{ char }
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\kgV}{kgV}
+\DeclareMathOperator{\ord}{ord}
+
+
+
+% Neue Kommandos definieren
+% Klammern
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+
+% fuer den Index
+\renewcommand{\seename}{s.}
+
+% Neue Punkte im Inhalt einfuegen
+\newcommand{\addtotoc}[1]{\addcontentsline{toc}{subsection}{#1}}
+
+% Mathematische Operatoren
+\newcommand{\nt}{\lhd} % Normalteiler (links)
+\newcommand{\ntr}{\vartriangleright} % Normalteiler (rechts)
+%\newcommand{\bigcupdot}{\bigcup \hspace{-0.35cm} \cdot} % Disjunkte Vereinigung
+%\newcommand{\bigcupdot}{\mathop{\scriptstyle\amalg}\nolimits}
+\newcommand{\bigcupdot}{\bigcup}
+\newcommand{\cupdot}{\cup}
+% Abkuerzungen fuer die mathbb & mathcal
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\OOC}{\mathcal{O}}
+\newcommand{\GGC}{\mathcal{G}}
+\newcommand{\NNC}{\mathcal{N}}
+\newcommand{\Agemo}{\text{Agemo}}
+
+\newcommand{\spspace}{~\vspace{-6mm}}
+%\newcommand{\spspace}{}
+
+% Das eigentliche Dokument
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\begin{center}
+ Gruppentheorie nach Dr. Harald Meyer, Sommersemester 2007
+\end{center}
+
+
+\end{abstract}
+
+\tableofcontents
+\newpage
+\input{section_0.tex}
+\input{section_1.tex}
+\input{section_2.tex}
+\input{section_3.tex}
+\input{section_4.tex}
+\input{section_5.tex}
+\input{section_6.tex}
+\input{section_7.tex}
+\input{section_8.tex}
+\input{section_9.tex}
+\input{section_10.tex}
+\input{section_11.tex}		
+
+\printindex
+\end{document}

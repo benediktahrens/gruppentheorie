@@ -1,0 +1,485 @@
+\section{Zentralisator, Normalisator und Kommutator}
+
+\begin{definition}[Zentralisator, Normalisator und Zentrum]
+ \label{zentralisator_normalisator_zentrum}
+ \index{Zentralisator}
+ \index{Normalisator}
+ \index{Zentrum}
+ Sei $H \leq G$ und $X \subset G$.
+ \begin{enumerate}
+  \item $\Cen_H \l( X \r) = \l\{ h \in H \mid h^{-1}xh=x \quad \forall x \in X \r\}$ (Vertauschung elementweise) hei\ss{}t \emph{Zentralisator von X in H}. Ist $\l| X \r| = 1$, so schreiben wir $\Zen_H \l( x \r)$.
+  \item $\Norm_H\l(X\r)=\l\{h\in H\mid h^{-1}Xh=X\r\}$ (Vertauschung als Menge, d.h.  $h^{-1}xh=y\in X$) hei\ss{}t \emph{Normalisator von $X$ in $H$}.
+  \item $\Zen \l( G \r) := \Cen_G\l( G \r) = \l\{ g \in G \mid g^{-1} x g = x \quad \forall x \in G \r\}$ (Die Elemente, die mit allen vertauschen) hei\ss{}t \emph{Zentrum von $G$}.
+ \end{enumerate}
+\end{definition}
+
+\begin{satz}
+ \label{aussagen_zu_ugr}
+ Sei $G$ Gruppe, $X \subset G$ Teilmenge und $H, U \leq G$. Dann gilt:
+ \begin{enumerate}
+  \item $\Cen_H\l(X\r)$ und $\Norm_H\l(X\r)$ sind Untergruppen von $H$ und $G$.
+  \item $U \nt G \Leftrightarrow \Norm_G\l( U \r) = G$
+  \item $\Norm_G\l(U\r)$ ist die gr\"o\ss{}te Untergruppe von $G$, in der $U$ Normalteiler ist, d.h.:
+   \begin{itemize}
+    \item $U \nt \Norm_G\l(U\r)$
+    \item Ist $U \nt V \Rightarrow V \leq \Norm_G\l(U\r)$
+   \end{itemize}
+  \item $\Cen\l(G\r)$ ist abelsch
+  \item F\"ur alle $X \subset G$ gilt: $\Zen\l(G\r) \leq \Cen_G\l(X\r) \leq \Norm_G\l(X\r)$
+  \item $\Zen\l(G\r) \Char G$
+  \item \label{ugr_zen_nt} $U \leq \Zen\l(G\r) \Rightarrow U \nt G$
+  \item $\Zen\l(G\r) = G \Leftrightarrow G$ abelsch
+  \item $G$ abelsch $\Leftrightarrow G/\Zen\l(G\r) $ zyklisch
+  \item $\Zen\l(G_1 \times G_2\r) = \Zen\l(G_1\r) \times \Zen\l(G_2\r)$
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}
+ Wir beweisen hier nur die Aussagen 1) und 9), 2) bis 8) und 10) sind trivial und werden dem geneigten Leser \"uberlassen.
+ \begin{enumerate}
+  \item Seien $u,v \in \Cen_H\l(X\r)$, d.h. $u^{-1}xu=x, v^{-1}xv=x$ f\"ur alle $x\in X$. Dann:
+   \begin{equation*}
+    \l(uv\r)^{-1}x\l(uv\r)=v^{-1}\l(u^{-1}xu\r)v=v^{-1}xv=x
+   \end{equation*}
+   Also ist $uv \in \Cen_H\l(X\r)$. Damit ist $\Cen_H\l(X\r)$ eine Untergruppe. Analog f\"ur $\Norm_H\l(X\r)$ ($X$ statt $x$).
+  \setcounter{enumi}{8}
+  \item Sei zun\"achst $G$ abelsch. Dann ist $G = \Zen\l(G\r). \Rightarrow \l|G/\Zen\l(G\r)\r|=1$, also $G/\Zen\l(G\r)$ zyklisch.
+
+   Sei nun umgekehrt $x \in G$, so dass $G/\Zen\l(G\r) = \l< x\Zen\l(G\r)\r>$. Seien $a, b \in G$. Dann existiert $i, j \in \NN_0 : a\Zen\l(b\r) = x^i\Zen\l(G\r), b\Zen\l(G\r) = x^j\Zen\l(G\r)$. Also gibt es  $w, z \in \Zen\l(G\r)$, so dass $a=x^iw, b = x^jz$. Damit ist $ab=x^iwx^jz=x^{i+j}zw=x^jzx^iw=ba$, denn $w,z$ vertauschen mit allen Elementen. Also ist $G$ abelsch.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{satz}
+ $G/\Zen\l(G\r) \cong \Inn G$
+\end{satz}
+
+\begin{beweis}
+ Durch $\psi: G \to \Inn G, g \mapsto .^g$ wird ein Gruppenhomomorphismus definiert, denn es gilt:
+ \begin{equation*}
+  \psi\l(gh\r) = .^gh = \l(.^g\r)^h=\psi\l(g\r)\psi\l(h\r)
+ \end{equation*}
+ Weiter gilt:
+ \begin{equation*}
+  \ker\psi = \l\{g\in G \mid .^g = \id\r\}=\l\{g\in G \mid g^{-1}xg=x \quad \forall x\in G\r\}=\Zen\l(G\r)
+ \end{equation*}
+ Weil $\psi$ surjektiv ist, folgt mit dem Homomorphiesatz \ref{homomorphiesatz}:
+ \begin{equation*}
+  G/\Zen\l(G\r) \cong \Inn G
+ \end{equation*}
+ und mit dem vorangegangenen Satz folgt: $\Inn G$ zyklisch $\Rightarrow \Inn G=\l\{id\r\}$
+ \qed
+\end{beweis}
+
+\begin{satz}
+ Sei $U \leq G$. Dann gilt:
+ \begin{equation*}
+  \Cen_G\l(U\r) \nt \Norm_G\l(U\r)
+ \end{equation*}
+ und $\Norm_G\l(U\r)/Cen_g\l(U\r)$ ist isomorph zu einer Untergruppe von $\Aut U$. Ist insbesondere $U \nt G$, so gilt:
+ \begin{equation*}
+  \Cen_G\l(U\r) \nt G
+ \end{equation*}
+\end{satz}
+
+\begin{beweis}
+ Die Abbildung
+ \begin{equation*}
+  \psi: \Norm_G\l(U\r) \to \Aut\l(U\r), a \mapsto \l( u \mapsto u^a\r)
+ \end{equation*}
+ ist ein Gruppenhomomorphismus. Wegen $U \nt \Norm_G\l(U\r)$ ist die Abbildung $\l(u\mapsto u^a\r) \in \Aut U$. $\psi$ ist ein Homomorphismus, da
+ \begin{equation*} 
+  \psi\l(ab\r)=\l(u \mapsto u^{ab}\r)=\l(u \mapsto \l(u^a\r)^b\r)=\psi\l(a\r)\psi\l(b\r)
+ \end{equation*}
+ Es gilt:
+ \begin{eqnarray*}
+  \ker\psi&=&\l\{a \in \Norm_G\l(U\r) \mid u^a=a \quad \forall a \in U\r\}=\\&=& \l\{a\in \Norm_G\l(U\r) \mid a^{-1}ua=u \quad \forall u \in U\r\}=\\&=&\Cen_G\l(U\r)
+ \end{eqnarray*}
+ wobei die letzte Gleichung aus $\Cen_G\l(U\r)\leq\Norm_G\l(U\r)$ folgt.
+
+ Kerne von Homomorphismen sind Normalteiler, also ist $\Cen_G\l(U\r) \nt \Norm_G\l(U\r)$. Mit dem Homomorphiesatz \ref{homomorphiesatz} folgt
+ \begin{equation*}
+  \Norm_G\l(U\r)/\Cen_G\l(U\r) \cong \Img\psi \leq \Aut U
+ \end{equation*}
+ \qed
+\end{beweis}
+
+\begin{satz}
+ \label{satz_uber_cen_und_norm}
+ Seien $K\leq H \leq G$ Untergruppen von $G, Y \subset X \subset G$ Teilmengen, $g,a \in G$ und $h \in H$. Dann gilt:
+ \begin{enumerate}
+  \item $\Cen_H\l(X\r)^g = \Cen_{H^g}\l(X^g\r)$, also $g^{-1}\Cen_H\l(X\r)g = \Cen_{g^{-1}Hg}\l(g^{-1}Xg\r)$
+  \item $\Norm_H\l(X\r)^g = \Norm_{H^g}\l(X^g\r)$, also $g^{-1}\Norm_H\l(X\r)g = \Norm_{g^{-1}Hg}\l(g^{-1}Hg\r)$
+  \item $\Cen_G\l(g^{-1}ag\r) = g^{-1}\Cen_G\l(a\r)g$
+  \item $\Norm_G\l(g^{-1}Hg\r) = g^{-1}\Cen_G\l(H\r)g$
+  \item $\Cen_H\l(h\r) = \Cen_G\l(h\r)\cap H$
+  \item $\Norm_H\l(K\r) = \Norm_G\l(K\r)\cap H$
+  \item $\Cen_H\l(X\r) \leq\Cen_G\l(X\r)$
+  \item $\Norm_H\l(X\r) \leq\Norm_G\l(X\r)$
+  \item \label{cenx_ugr_ceny} $\Cen_H\l(X\r) \leq \Cen_H\l(Y\r)$. Die Aussage $\Norm_H\l(X\r) \leq \Norm_H\l(Y\r)$ ist im Allgemeinen falsch.
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}
+ Hier beweisen wir nur den Punkt \emph{1.} und bringen ein Gegenbeispiel zur \emph{2.} Aussage von Punk \emph{9.} Denn \emph{2.} folgt analog \emph{1.}, \emph{3.} \& \emph{4.} sind Spezialf\"alle von \emph{1.} und \emph{2.} und \emph{5.} bis \emph{9.} sind sofort aus der Definition \ref{zentralisator_normalisator_zentrum} klar.
+ \begin{enumerate}
+  \item
+   \begin{eqnarray*}
+    h^g \in \Cen_{H^g}\l(X^g\r) &\Leftrightarrow& \l(h^g\r)^{-1}x^g h^g = x^g \quad \forall x \in X\\&\Leftrightarrow& g^{-1}h^{-1}gg^{-1}xgg^{-1}hg=g^{-1}xg \quad \forall x \in X\\&\Leftrightarrow&h^{-1}xh=x \quad \forall x \in X\\&\Leftrightarrow& h \in \Cen_H\l(X\r)
+   \end{eqnarray*}
+  \setcounter{enumi}{8}
+  \item Gegenbeispiel zur zweiten Aussage:
+   \begin{eqnarray*}
+    H=G=\Symm_4, X=\Alt_4, Y=\l< \l(1 2 3\r) \r>\\\l(3 4\r)\l(1 2 3\r)\l(3 4\r) = \l(1 2 4\r) \in \l<\l(1 2 3\r)\r>=Y\\\Rightarrow \l(3 4\r) \in \Norm_{\Symm_4}\l(Y\r) \Rightarrow \Norm_{\Symm_4}\l(Y\r) < \Symm_4
+   \end{eqnarray*}
+  Aber $\Norm_{\Symm_4}\l(\Alt_4\r) = \Symm_4$.  Widerspruch!
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{definition}[Konjugationsklasse]
+\index{Konjugationsklasse}
+\label{konjugationsklasse}
+ Sei $g\in G,H\leq G$. Die Menge $K:=\l\{h^{-1}gh\mid h\in H\r\}$ hei\ss{}t \emph{$h$-Konjugationsklasse von $g$}. $G$-Konjugationsklassen hei\ss{}en einfach \emph{Konjugationsklassen}.
+\end{definition}
+
+\begin{bemerkung*}
+ $H$-Konjugation ist eine \"Aquivalenzrelation, die \"Aquivalenzklassen sind die $H$-Konjugationsklassen. Sind $K_1, \ldots, K_r$ alle Konjugationsklassen von $G$, so gilt:
+ \begin{equation*}
+  G = \bigcupdot_{i=1}^r K_i
+ \end{equation*}
+ wobei $K_i \cap K_j = \emptyset$ falls $i\neq j$.
+\end{bemerkung*}
+
+\begin{lemma}
+\label{anzahl_elemente_konjugationsklasse}
+ Sei $g\in G, H \leq G$. Die $H$-Konjugationsklasse $K$ von $g \in G$ enth\"alt genau
+ \begin{equation*}
+  \l|K\r|=\frac{\l| H \r|}{\l| \Cen_H\l( g \r) \r|}=\frac{\l| H \r|}{\l| \Cen_G\l( g \r) \cap H \r|}
+ \end{equation*}
+ Elemente.
+\end{lemma}
+
+\begin{beweis}
+ F\"ur $a,b \in H$ gilt:
+ \begin{eqnarray*}
+  a^{-1}ga=b^{-1}gb &\Leftrightarrow& ba^{-1}g=gba^{-1}\\&\Leftrightarrow&ba^{-1} \in \Cen_H\l(g\r)\Leftrightarrow b\in \Cen_H\l(g\r)a
+ \end{eqnarray*}
+ Damit ist
+ \begin{equation*}
+  \l| K \r|=\frac{\l|H\r|}{\l| \Cen_H\l(g\r) \r|}
+ \end{equation*}
+ \qed
+\end{beweis}
+
+\begin{satz}[Klassengleichung]
+\index{Klassengleichung}
+\label{klassengleichung}
+ Sei $x_1, \ldots, x_r$ eine Transversale der nicht-zentralen Konjugationsklassen von $G$ (das hei\ss{}t der Klassen, die nicht in $\Zen\l(G\r)$ liegen). Dann gilt:
+ \begin{equation*}
+  \l|G\r|=\sum_{i=1}^r\frac{\l|G\r|}{\l|\Cen_G\l(x_i\r)\r|} + \l|\Zen\l(G\r)\r|
+ \end{equation*}
+\end{satz}
+
+\begin{beweis}
+ Es gilt:
+ \begin{equation*}
+  \frac{\l|G\r|}{\l|\Cen_G\l(x\r)\r|}=1 \Leftrightarrow G=\Cen_G\l(x\r) \Leftrightarrow x \in \Zen\l(G\r)
+ \end{equation*}
+ Also bildet jedes Element des Zentrums eine eigene Konjugationsklasse. Damit ist
+ \begin{equation*}
+  G=\bigcupdot_{i=1}^rK\l(x_i\r) \cupdot \Zen\l(G\r)
+ \end{equation*}
+ die disjunkte Vereinigung der $K\l(x_i\r)$ mit $\Zen\l(G\r)$ und die Behauptung folgt aus Lemma \ref{anzahl_elemente_konjugationsklasse}
+ \qed
+\end{beweis}
+
+\begin{definition}[$p$-Gruppe, $p'$-Gruppe]
+\index{$p$-Gruppe}
+\index{$p'$-Gruppe}
+\label{pgruppe}
+ Sei $p$ prim. Eine Gruppe $G$ hei\ss{}t \emph{$p$-Gruppe}, wenn $\l|G\r| = p^n$ f\"ur ein $n\in \NN$. $G$ hei\ss{}t $p'$-Gruppe, wenn $p \nmid \l|G\r|$.
+\end{definition}
+
+\begin{satz}
+\label{pgruppe_hat_nichttriviales_zentrum}
+ Jede $p$-Gruppe hat ein nichttriviales Zentrum, das hei\ss{}t $Z\l(G\r) > \quad \l<1\r>$.
+\end{satz}
+
+\begin{beweis}
+ Sei $x_1,\ldots,x_r$ eine Transversale der nicht-zentralen Konjugationsklassen. Nach Satz \ref{klassengleichung} Klassengleichung gilt:
+ \begin{equation*}
+  \l|G\r|=\sum_{i=1}^r\frac{\l|G\r|}{\l|\Cen_G\l(x_i\r)\r|} + \l|\Zen\l(G\r)\r|
+ \end{equation*}
+ Da die Konjugationsklasse $K\l(x_i\r)$ nicht zentral ist, gilt $\l|K\l(x_i\r)\r| > 1$ (siehe Beweis von \ref{konjugationsklasse}, also ist
+ \begin{equation*}
+  1 < \l|K\l(x_i\r)\r| = \frac{\l|G\r|}{\l| \Cen_G\l(x_i\r) \r|} \mid \l|G\r| = p^n
+ \end{equation*}
+ und damit ist $p \mid \frac{\l|G\r|}{\l|\Cen_G\l(x_i\r)\r|}$. In der Klassengleichung sind sowohl die linke Seite als auch die Summanden $\frac{\l|G\r|}{\l|\Cen_G\l(x_i\r)\r|}$ durch $p$ teilbar $\Rightarrow p \mid \Zen\l(G\r)$.
+ \qed
+\end{beweis}
+
+\begin{folgerung}
+ Sei $p$ prim. Ist $G$ Gruppe mit $\l|G\r|=p^2$, so gilt:
+ \begin{equation*}
+  G \cong \ZZ_{p^2} \qquad \mbox{ oder } \qquad G \cong \ZZ_{p} \times \ZZ_{p}
+ \end{equation*}
+\end{folgerung}
+
+\begin{beweis}
+ Nach Satz \ref{pgruppe_hat_nichttriviales_zentrum} gilt $\l|\Zen\l(G\r)\r| = p$ oder $p^2$. Ist $\l|\Zen\l(G\r)\r| = p^2$ so ist $g = \Zen\l(G\r) \Rightarrow G$ abelsch. Ist $\l|\Zen\l(G\r)\r|=p$, so ist $\l| G/\Zen\l(G\r) \r| = p$, also ist $G/\Zen\l(G\r) \cong \ZZ_p$ zyklisch.
+
+ Daraus folgt nach \ref{cenx_ugr_ceny} dass $G$ abelsch (und damit $\l|Z\l(G\r)\r| = p^2$). Mit dem Hauptsatz \"uber endliche abelsche Gruppen \ref{hauptsatz_ueber_endliche_abelsche_gruppen} folgt: $G$ ist direktes Produkt zyklischer Gruppen, daf\"ur gibt es genau die zwei angegebenen M\"oglichkeiten.
+ \qed
+\end{beweis}
+
+\begin{definition}[Kommutator]
+\index{Kommutator}
+\index{Kommutatorgruppe}
+\label{kommutator}
+ Seien $g, h \in G, X, Y, Z \subset G$. Man definiert:
+ \begin{enumerate}
+  \item $\l[g, h\r] := g^{-1}h^{-1}gh$ hei\ss{}t \emph{Kommutator von $g$ und $h$}
+  \item $\l[X, Y\r] := \l< \l[ x,y \r] \mid x\in X, y\in Y\r>$
+  \item $\l[X,Y,Z\r] := \l[\l[X,Y\r],Z\r]$
+  \item $G' := \l<\l[g,h\r] \mid g,h\in G\r> = \l[G,G\r]$ hei\ss{}t \emph{Kommutatorgruppe von $G$}
+  \item Iterierte Kommutatorbildung liefert ``h\"ohere'' Kommutatorgruppen:
+   \begin{equation*}
+    G'' := \l[G', G'\r], \ldots, G^{\l(n\r)} := \l[G^{\l(n-1\r)},G^{\l(n-1\r)}\r]
+   \end{equation*}
+ \end{enumerate}
+ Beachte: $G'$ ist das Erzeugnis aller Kommutatoren. Die Menge aller Kommutatoren bildet im Allgemeinen keine Untergruppe.
+\end{definition}
+
+\begin{lemma}[Rechenregeln]
+\label{kommutator_rechenregeln}
+ Wir werden nun einige Rechenregeln zum Kommutator beweisen:
+ \begin{enumerate}
+  \item \label{kommutator_inverses_element} $\l[g,h\r]^{-1}=\l[h,g\r]$
+  \item Ist $ \varphi: G \to H$ Gruppenhomomorphismus, so gilt:
+   \begin{equation*}
+    \varphi \l(\l[ g,h \r]\r) = \l[\varphi\l(g\r), \varphi\l(h\r)\r]
+   \end{equation*}
+   Ist $H$ abelsch, so folgt: $G' \leq \Ker\varphi$.
+  \item $\l[g,g\r]^u = \l[g^u, h^u\r]$
+  \item $\l[gh,u\r] = \l[g,u\r]^h \l[h,u\r]$
+  \item $\l[u,gh\r] = \l[u,h\r]\l[u.g\r]^h$
+  \item Elemente von $G'$ sind Produkte von Kommutatoren
+  \item Kommutiert $\l[g,h\r]$ mit $g$, so gilt f\"ur alle $n \in \ZZ: \l[g^n,h\r] = \l[g,h\r]^n$
+  \item Kommutiert $\l[g,h\r]$ mit $h$, so gilt f\"ur alle $n \in \ZZ: \l[g,h^n\r] = \l[g,h\r]^n$
+  \item Kommutiert $\l[g,h\r]$ mit $g$ und $h$, so gilt f\"ur alle $n \in \ZZ:$
+   \begin{equation*}
+    \l(gh\r)^n = g^nh^n\l[g,h\r]^{\binom{n}{2}}
+   \end{equation*}
+\end{enumerate}
+\end{lemma}
+
+\begin{beweis}
+ Auch hier beweisen wir nicht alle Punkte, denn \emph{2.} ist klar, wenn man die Homomorphieeigenschaft von $\varphi$ betrachtet, \emph{3.} ist ein Speziallfall von \emph{2. 5.} folgt analog \emph{4.} und \emph{8.} analog zu \emph{7. 6.} folgt aus \emph{1.}
+ \begin{enumerate}
+  \item $\l[g,h\r]^{-1} = h^{-1}g^{-1}hg=\l[h,g\r]$
+  \setcounter{enumi}{3}
+  \item
+   \begin{eqnarray*}
+    \l[g,u\r]^h\l[h,u\r]&=&h^{-1}g^{-1}u^{-1}guhh^{-1}u^{-1}u=h^{-1}g^{-1}u^{-1}guu^{-1}hu=\\&=&\l(h^{-1}g^{-1}\r)u^{-1}\l(gh\r)u=\l(gh\r)^{-1}u^{-1}\l(gh\r)u=\\&=&\l[gh,u\r]
+   \end{eqnarray*}
+  \setcounter{enumi}{6}
+  \item F\"ur $n=0$ und $n=1$ klar. Induktion \"uber $n$: Weil $\l[g,h\r]$ mit $g^{n-1}$ vertauschbar ist, gilt:
+   \begin{eqnarray*}
+    \l[g^n,h\r]&=&\l[gg^{n-1},h\r]\stackrel{4.}{=}\l[g,h\r]^{g^{n-1}}\l[g^{n-1},h\r]=\\&=&\l[g,h\r]\l[g,h\r]^{n-1}=\l[g,h\r]^n
+   \end{eqnarray*}
+  F\"ur $n>0$ gilt nach \emph{4.} weiter:
+   \begin{eqnarray*}
+    1=\l[g^ng^{-n},h\r]&=&\l[g^n,h\r]^{g^{-n}}\l[g^{-n},h\r]=\l(\l[g,h\r]^n\r)^{g^{-n}}\l[g^{-n},h\r]=\\&=&\l[g,h\r]^n\l[g^{-n},h\r]\\&\Rightarrow& \l[g^{-n},h\r]=\l[g,h\r]^{-n}
+   \end{eqnarray*}
+  \setcounter{enumi}{8}
+  \item Induktion \"uber $n$: $n=1$ klar. Wir benutzen, dass $\l[h,g\r]=\l[g,h\r]^{-1}$ mit $g$ und $h$ vertauscht:
+   \begin{eqnarray*}
+    \l(gh\r)^n&=&\l(gh\r)^{n-1}\l(gh\r)=g^{n-1}h^{n-1}\l[hg\r]^{\binom{n-1}{2}}gh=\\&=&g^{n-1}h^{n-1}gh\l[h,g\r]^{\binom{n-1}{2}}=\\&=&g^{n-1}gh^{n-1}h^{-\l(n-1\r)}g^{-1}h^{n-1}gh\l[h,g\r]^{\binom{n-1}{2}}=\\&=&g^nh^{n-1}\l[h^{n-1},g\r]h\l[h,g\r]^{\binom{n-1}{2}}=\\&\stackrel{7.}{=}&g^nh^{n-1}\l[h,g\r]^{n-1}h\l[h,g\r]^{\binom{n-1}{2}}=\\&=&g^nh^n\l[h,g\r]^{n-1+\frac{1}{2}\l(n-1\r)\l(n-2\r)}=g^nh^n\l[h,g\r]^{\l(n-1\r)\l(1+\frac{1}{2}n-1\r)}=\\&=&g^nh^n\l[h,g\r]^{\binom{n}{2}}
+   \end{eqnarray*}
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{lemma}
+ Seien $U,V\leq G$. Dann gilt:
+ \begin{enumerate}
+  \item $\l[U,V\r]=\l[V,U\r]$
+  \item $\l[U,V\r]\leq U \Leftrightarrow V \leq \Norm_G\l(U\r)$
+  \item $\l[U,V\r] \nt \l<U,V\r>$
+ \end{enumerate}
+\end{lemma}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item klar mit \ref{kommutator_rechenregeln}.1
+  \item Sei $v\in V$, dann gilt f\"ur alle $u \in U$:
+   \begin{equation*}
+    \l[u,v\r]=u^{-1}\l(v^{-1}uv\r) \in U \Leftrightarrow v^{-1}uv\in U \Leftrightarrow v \in \Norm_G\l(U\r)
+   \end{equation*}
+  \item Sei $u,u' \in U, v,v' \in V$. Dann gilt nach \ref{kommutator_rechenregeln} 4. und 5.:
+   \begin{eqnarray*}
+    \l[u,v\r]^{v'}&=&\l[u,v'\r]^{-1} \l[u,vv'\r] \in \l[U,V\r]\\
+    \l[u,v\r]^{u'}&=&\l[uu',v\r]\l[u',v\r]^{-1} \in \l[U,V\r]
+   \end{eqnarray*}
+   Also ist $\l[U,V\r] \nt \l<U,V\r>$.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{satz} \label{2.15}
+ F\"ur die Kommutatorgruppe $G'$ von $G$ gilt:
+ \begin{enumerate}
+  \item $G$ ist abelsch $\Leftrightarrow G' = \l<1\r>$.
+  \item $G' \Char G$ (also ist $G'$ insbesondere Normalteiler von $G$).
+  \item $G/G'$ ist abelsch.
+  \item F\"ur $H\leq G$ gilt: $H \nt G$ und $G/H$ abelsch $\Leftrightarrow G'\leq H$. \label{2.15.4}
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}
+ Hier beweisen wir nur Punkt \emph{4.}, denn \emph{1.} ist klar, \emph{2.} auch wegen $\l[g,h\r]=\l[\alpha\l(g\r),\alpha\l(h\r)\r]$ f\"ur alle $\alpha \in \Aut G$ und \emph{3.} ist ein Spezialfall von \emph{4.}
+ \begin{enumerate}
+  \setcounter{enumi}{3}
+  \item Sei $a,b \in G$. Dann folgt aus $\l(aH\r)\l(bH\r)=\l(bH\r)\l(aH\r)$:
+   \begin{equation*}
+    H=\l(aH\r)^{-1}\l(bH\r)^{-1}\l(aH\r)\l(bH\r)=\l(a^{-1}b^{-1}ab\r)H
+   \end{equation*}
+   $\Rightarrow a^{-1}b^{-1}ab \in H \Rightarrow G' \leq H$
+
+   Sei nun umgekehrt $G' \leq H \leq G$. F\"ur $g \in G, h\in H$ gilt:
+   \begin{equation*}
+    g^{-1}Hg = hh^{-1}g^{-1}hg = h \l[h,g\r] \in HG' = H
+   \end{equation*}
+   $\Rightarrow H \nt G$. Seien $a,b\in G$, dann gilt:
+   \begin{equation*}
+    \l(aH\r)^{-1}\l(bH\r)^{-1}\l(aH\r)\l(bH\r)=\l(a^{-1}b^{-1}ab\r)H\stackrel{G'\leq H}{=}H
+   \end{equation*}
+   $\Rightarrow \l(aH\r)\l(bH\r)=\l(bH\r)\l(aH\r) \Rightarrow G/H$ ist abelsch.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{bemerkung}
+ Sei $K$ eine Konjugationsklasse von $G$ und $h \in K$. Dann gilt: $K \subset hG'$ und insbesondere $\l|K\r|\leq \l|G'\r|$
+\end{bemerkung}
+
+\begin{beweis}
+ Sei $g \in G$ beliebig. Dann ist $h^{-1}g^{-1}hg \in G'$, also $g^{-1}hg \in hG'$ und damit $K \subset hG'$. Damit ist $\l|K\r| \leq \l|hG'\r|=\l|G'\r|$.
+ \qed
+\end{beweis}
+
+\begin{satz} \label{2.17}
+ Seien $G,H$ Gruppen, $N \nt G$ und $U \leq G$. Dann gilt f\"ur alle $n \geq 0$:
+ \begin{enumerate}
+  \item $U^{\l(n\r)} \leq G^{\l(n\r)}$
+  \item $\l(G/N\r)^{\l(n\r)} = G^{\l(n\r)}N/N \cong G^{\l(n\r)}/\l(G^{\l(n\r)}\cap N\r)$
+  \item $\l(G \times H\r)^{\l(n\r)} = G^{\l(n\r)} \times H^{\l(n\r)}$
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}
+ \emph{1.} und \emph{3.} sind mit Induktion sofort klar.
+ \begin{enumerate}
+  \setcounter{enumi}{1}
+  \item Induktion \"uber $n$. $n=0$ klar, $n \to n+1$:
+   \begin{equation*}
+    \l(G/N\r)^{\l(n+1\r)}=\l(\l(G/N\r)^{\l(n\r)}\r)'\stackrel{IV}{=}\l(G^{\l(n\r)}N/N\r)'
+   \end{equation*}
+   F\"ur $g \in G^{\l(n\r)}$ und $u\in N$ is $guN=gN$. Damit ist
+   \begin{eqnarray*}
+    \l(G^{\l(n\r)}N/N\r)'&=&\l<h_1^{-1}Nh_2^{-1}Nh_1Nh_2N \mid h_1,h_2 \in G^{\l(n\r)}\r>= \\&=&\l<h_1^{-1}h_2^{-1}h_1h_2N \mid h_1,h_2 \in G^{\l(n\r)}\r>=\\&=&\l<\l[h_1,h_2\r]N \mid h_1,h_2 \in G^{\l(n\r)}\r>=G^{\l(n+1\r)}N/N
+   \end{eqnarray*}
+   Damit ist die erste Gleichung gezeigt, die zweite folgt aus dem ersten Isomorphiesatz \ref{isomorphiesatz1}.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{beispiel*}
+ Beispiele f\"ur charakteristische Untergruppen:
+ \begin{itemize}
+  \item $\l<1\r> \Char G, G \Char G$
+  \item $\Zen\l(G\r) \Char G$
+  \item $G' \Char G$
+ \end{itemize}
+\end{beispiel*}
+
+\begin{satz}
+ Sei $A \Char G$. Dann gilt: $\Cen_G\l(A\r) \Char G$.
+\end{satz}
+
+\begin{beweis}
+ Sei $\alpha \in \Aut G$. Ist $x \in \Cen_G\l(A\r)$ und $a \in A$, so gilt:
+ \begin{equation*}
+  \alpha\l(a\r) = \alpha\l(x^{-1}ax\r)=\alpha\l(x\r)^{-1}\alpha\l(a\r)\alpha\l(x\r)
+ \end{equation*}
+ Durchl\"auft $a$ die Gruppe $A$, so durchl\"auft auch $\alpha\l(a\r)$ ganz $A$. Daher ist $\alpha\l(a\r) \in \Cen_G\l(A\r)$, also $\alpha\l(\Cen_G\l(A\r)\r) \leq \Cen_G\l(A\r)$ und deshalb $\Cen_G\l(A\r) \Char G$.
+ \qed
+\end{beweis}
+
+\begin{satz}
+ Sei $H \nt G$ mit $\ggT\l(\l|H\r|, \l|G/H\r|\r)=1$. Dann gilt: $H \Char G$
+\end{satz}
+
+\begin{beweis}
+ Sei $\alpha \in \Aut G, \l| H \r| =: m$ und $\l| G/H \r| =: n$. Dann ist $\l| G \r| = mn$ und $\ggT \l( m, n \r) = 1$. Sei $\hat{H} := \alpha\l(H\r)$. Wir betrachten $H\hat{H}$: Nach dem 1. Isomorphiesatz \ref{isomorphiesatz1} gilt, dass $H\hat{H} \leq G$. Sei $\l|H\cap \hat{H}\r| =: d$. Dann gilt: $d \mid m$ und nach \ref{produkt_von_teilmengen} ist
+ \begin{equation*}
+  \l|H\hat{H}\r| = \frac{\l|H\r| \l|\hat{H}\r|}{\l|H\cap \hat{H}\r|} = \frac{m^2}{d} \mid mn
+ \end{equation*}
+ Wegen $\ggT\l(m,n\r)=1$ folgt $d=m$ und somit $H\cap \hat{H}=H$, also $\hat{H}=H$ und daher $\alpha\l(H\r)=H$.
+ \qed
+\end{beweis}
+
+\begin{satz}
+ \label{aussagen_zu_charakteristischen_ugr}
+ Seien $A, B \leq G$. Dann gilt:
+ \begin{enumerate}
+  \item \label{aussagen_zu_charakteristischen_ugr_1} $A \Char G \Rightarrow A \nt G$.
+  \item $A, B \nt G \Rightarrow A \cap B \nt G, AB \nt G$\\$A, B \Char G \Rightarrow A\cap B \Char G, AB \Char G$
+  \item \label{aussagen_zu_charakteristischen_ugr_3} $A \Char B \nt G \Rightarrow A \nt G$\\$A \Char B \Char G \Rightarrow A \Char G$
+  \item Vorsicht:
+   \begin{eqnarray*}
+    A \nt B \Char G &\stackrel{i.A.}{\nRightarrow}& A \nt G\\
+    A \nt B \nt G &\stackrel{i.A.}{\nRightarrow}& A \nt G\\
+    A \leq B \leq G, A \Char G &\stackrel{i.A.}{\nRightarrow}& A \Char B
+   \end{eqnarray*}
+  \item Sei $A \leq B \leq G$. Im Fall $A \nt G$ gilt: $B/A \nt G/A \Leftrightarrow B \nt G$. Im Fall $A \Char G$ gilt: $B/A \Char G/A \Rightarrow B \Char G$. Die Umkehrung, aus $B \Char G$ folgt $B/A \Char G/A$, gilt im Allgemeinen nicht.
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}
+ Punkt \emph{4.} bleibt dem Leser als \"Ubungsaufgabe \"uberlassen.
+ \begin{enumerate}
+  \item $A \Char G \Rightarrow \alpha\l(A\r) = A$ f\"ur alle $\alpha \in \Aut G$. Daher gilt auch $\alpha\l(A\r) = A$ f\"ur alle $\alpha \in \Inn G \Leftrightarrow A \nt G$.
+  \item Sei $\alpha \in \Aut G$. Dann folgt: $\alpha\l(A \cap B\r)=\alpha\l(A\r) \cap \alpha\l(B\r)$ wegen der Bijektivit\"at und $\alpha\l(AB\r) = \alpha \l(A\r)\alpha\l(B\r)$, weil $\alpha$ ein Homomorphismus ist. Die Behauptung folgt, wenn wir einmal alle $\alpha \in \Aut G$ und einmal alle $\alpha \in \Inn G$ betrachten.
+  \item Sei $\alpha \in \Aut G$ mit $\alpha\l(B\r)=B$. Dann ist $\alpha_{\mid B} \in \Aut B$ und folglich auch $\alpha_{\mid B}\l(A\r)=A$. Also ist $\alpha\l(A\r)=A$.
+  \setcounter{enumi}{4}
+  \item Die erste Aussage ist der Korrespondenzsatz \ref{korres}. Sei also nun $A \Char G$ und $B/A \Char G/A$. Sei $\Lambda$ ein Vertretersystem der Nebenklassen von $A$ in $B$. Dann ist $B = \bigcup_{\lambda \in \Lambda} \lambda A$. Sei $\alpha \in \Aut G$, dann:
+  \begin{eqnarray*}
+   \alpha\l(B\r) &=& \alpha\l(\bigcup_{\lambda\in\Lambda}\lambda A\r) = \bigcup_{\lambda\in\Lambda}\alpha\l(\lambda A\r)=\\&=&\bigcup_{\lambda\in\Lambda}\alpha\l(\lambda\r)\alpha\l(A\r)\stackrel{\ref{korres}}{=}\bigcup_{\lambda\in\Lambda}\alpha\l(b\r)A
+  \end{eqnarray*}
+  Weil $A \Char G$, wird durch $\bar{\alpha}: G/A \to G/A, gA \mapsto \alpha\l(g\r)A$ ein Automorphismus von $G/A$  gegeben. Ist $g_1A=g_2A$, so ist $g_1^{-1}g_2 \in A$ und daher $\alpha\l(g_1^{-1}g_2\r)=\alpha\l(g_1\r)^{-1}\alpha\l(g_2\r) \in A$ und folglich $\alpha\l(g_1\r)A=\alpha\l(g_2\r)A$, das hei\ss{}t $\bar{\alpha}$ ist wohldefiniert. Die Bijektivit\"at von $\bar{\alpha}$ folgt aus der Bijektivit\"at von $\bar{\alpha}$. Nach Voraussetzung gilt $\bar{\alpha}\l(B/A\r)=B/A$. Daher ist $\alpha\l(\lambda\r)A=\bar{\alpha}\l(\lambda A\r) \in B/A$ und demnach $\alpha\l(\lambda\r) \in B$. Also ist $\alpha\l(B\r) \leq B$ und daher $B \Char G$.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{folgerung}
+ F\"ur alle $n \in \NN$ gilt: $G^{\l(n\r)} \Char G$.
+\end{folgerung}
+
+\begin{beweis}
+ $G^{\l(n\r)} \Char G^{\l(n-1\r)}$, Induktion und \ref{aussagen_zu_charakteristischen_ugr} \ref{aussagen_zu_charakteristischen_ugr_3}.
+\end{beweis}
+
+\begin{satz}
+ Sei $G$ eine Gruppe, die au\ss{}er $G$ und $\l<1\r>$ keine charakteristischen Untergruppen enth\"alt. Dann ist $G$ einfach oder ein direktes Produkt von isomorphen einfachen Gruppen.
+\end{satz}
+
+\begin{beweis}
+ Sei $H > \l<1\r>$ ein minimaler Normalteiler von $G$. Wir schreiben $H_1 = H$ und betrachten alle Untergruppen von $G$ von der Form $H_1 \times \ldots \times H_n$ mit $H_i \cong H_i'$ und $H_i \nt G$. Sei $M$ eine solche Untergruppe mit maximaler Ordnung. Wir zeigen $H=G$, indem wir zeigen, dass $H \Char $ in $G$:
+
+ Sei $\alpha \in \Aut G$. Es gen\"ugt zu zeigen, dass $\alpha\l(H_i\r) \subseteq M$ f\"ur alle $i$. Offensichtlich ist $\alpha\l(H_i\r) \cong H \cong H_1$. Weiter gilt $\alpha\l(H_i\r) \nt G$. Ist $a \in G$, so existiert ein $b \in G$ mit $\alpha\l(b\r)=a$. Damit ist $a^{-1}\alpha\l(H_i\r)a=\alpha\l(b\r)^{-1}\alpha\l(H_i\r)\alpha\l(b\r)=\alpha\l(b^{-1}H_ib\r)=\alpha\l(H_i\r)$. Ist $\alpha\l(H_i\r) \nleq M$, so ist $\l|\alpha\l(H_i\r) \cap M\r| < \l|H_i\r|$ und wegen $\alpha\l(H_i\r) \nt G, M \nt G$ ist $\alpha\l(H_i\r) \cap M \nt G$. Da $H$ minimaler Normalteiler war, folgt $\alpha\l(H_i\r) \cap M = \l<1\r>$. Damit ist $\l<\alpha\l(H_i\r), M\r> \cong M \times \alpha\l(H_i\r)$ ein direktes Produkt von derselben Form wie $M$, aber mit gr\"o\ss{}erer Ordnung. Widerspruch!
+
+ Damit folgt $\alpha\l(H_i\r) \leq M$ und somit $M \Char G$, nach Voraussetzung also $M=G$. $H$ ist einfach: W\"are $N \nt H$ ein nichttrivialer Normalteiler, so w\"are auch $N \nt H_1 \times \ldots \times H_n = G$. Widerspruch zur Minimalit\"at von $H$.
+ \qed
+\end{beweis}

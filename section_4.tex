@@ -1,0 +1,245 @@
+\section{Automorphismengruppen zyklischer Gruppen}
+
+\begin{definition}[Eulersche $\varphi$-Funktion]\spspace
+ \index{Eulersche $\varphi$-Funktion}
+ \index{$\ZZ_n^*$}
+ \label{eulersche_phi_fkt}
+ \begin{enumerate}
+  \item $\varphi \l(u\r) := \#\l\{ m \in \NN \mid \l(n,m\r)=1 \r\}$ hei\ss{}t die \emph{Eulersche $\varphi$-Funktion}
+  \item $\ZZ_n^*, \l|\ZZ_n^*\r| = \varphi \l(n\r)$, da $m \in \ZZ_n^* \Leftrightarrow \l(m,n\r)=1$
+ \end{enumerate}
+\end{definition}
+
+\begin{bemerkung*}
+ Der Satz von Lagrange liefert sofort den Satz von Euler-Fermat: F\"ur $\ggT\l(x,n\r) = 1$ gilt:
+ $$
+  x^{\varphi\l(n\r)} \equiv 1 \mod n
+ $$
+\end{bemerkung*}
+
+\begin{satz}
+ \label{aut_isom_znstern}
+ F\"ur $n \in \ZZ$ gilt:
+ $$
+  \Aut\l(\ZZ_n\r) \cong \ZZ_n^*
+ $$
+\end{satz}
+
+\begin{beweis}
+ Sei $\ZZ_n = \l<g\r>$. Jedes $\alpha \in \Aut G$ ist bereits eindeutig festgelegt durch $\alpha\l(g\r)$. Offensichtlich ist $\alpha\l(g\r) = g^k$ f\"ur ein $k \in \NN$ mit $1 \leq k \leq n$. Weil $\alpha$ ein Automorphismus ist, gilt:
+ $$
+  n = \ord g = \ord \alpha\l(g\r) = \ord g^k = \frac{n}{\ggT\l(n,k\r)}
+ $$
+ Daher ist $\ggT\l(n,k\r)=1$ und folglich $\overline{k} \in \ZZ_n^*$. F\"ur $\overline{k} \in \ZZ_n^*$ ist
+ $$
+  \alpha_k: \ZZ_n \to \ZZ_n, x \mapsto x^n
+ $$
+ ein Automorphismus. Wir setzen:
+ $$
+  \psi: \Aut\l(\ZZ_n\r) \to \ZZ_n^*, \alpha_k \mapsto \overline{k}
+ $$
+ F\"ur $k, i \in \ZZ_n^*$ ist
+ $$
+  \l(\alpha_k \circ \alpha_i\r)\l(g\r) = \alpha_k\l(g'\r) = g^{ik} = g^{ki} = \alpha_{ki}\l(g\r)
+ $$
+ Und damit ist
+ $$
+  \psi\l(\alpha_k \circ \alpha_i\r)\l(g\r) = \psi\l(\alpha_{ki}\r) = \overline{k_i} = \overline{ki} = \overline{k}\overline{i}=\psi\l(\alpha_k\r)\psi\l(\alpha_i\r)
+ $$
+ Das hei\ss{}t: $\psi$ ist ein Homomorphismus. Die Bijektivit\"at ist klar.
+ \qed
+\end{beweis}
+
+\begin{satz}\spspace
+ \label{aut_von_kreuzprod}
+ \begin{enumerate}
+  \item $\Aut G \times \Aut H$ ist isomorph zu einer Untergruppe von $\Aut\l(G\times H\r)$
+  \item Falls $\ggT\l(\l|G\r|, \l|H\r|\r)=1$, so gilt:
+   $$
+    \Aut\l(G\times H\r) \cong \Aut\l(G\r) \times \Aut\l(H\r)
+   $$
+ \end{enumerate}
+\end{satz}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+  \item Sei $\varphi \in \Aut G, \psi \in \Aut H$. Wir setzen
+  $$
+   \varphi \times \psi: G \times H \to G\times H, \l(g,h\r) \mapsto \l(\varphi\l(g\r), \psi\l(h\r)\r)
+  $$
+  Dann ist $\varphi \times \psi$ Automorphismus von $G \times H$ (leicht nachzurechnen). Sei
+  $$
+   \Phi: \Aut G \times \Aut H \to \Aut \l( G\times H\r), \l(\varphi, \psi\r) \mapsto \varphi \times \psi
+  $$
+  ein injektiver Gruppenhomomorphismus:
+
+  F\"ur $\alpha, \varphi \in \Aut G, \beta, \psi \in \Aut H$ gilt mit $g \in G, h \in H$:
+  $$
+   \l(g^{\alpha\varphi},h^{\beta\psi}\r)=\l(g^\alpha,h^\beta\r)^{\varphi\times\psi}=\l(g,h\r)^{\l(\alpha\times\beta\r)\l(\varphi\times\psi\r)}
+  $$
+  Also ist
+  $$
+   \Phi\l(\l(\alpha, \beta\r)\cdot\l(\varphi,\psi\r)\r)=\Phi\l(\alpha\varphi,\beta\psi\r)=\l(\alpha\times\beta\r)\l(\varphi\times\psi\r)=\Phi\l(\alpha,\beta\r)\Phi\l(\varphi,\psi\r)
+  $$
+  Das hei\ss{}t $\Phi$ ist ein Homomorphismus. $\Phi$ ist injektiv, denn f\"ur $\l(\alpha,\beta\r)\neq\l(\varphi,\psi\r)$ ist $\alpha\times\beta \neq \varphi \times \psi$. Nach dem Homomorphiesatz \ref{homomorphiesatz} ist dann
+  $$
+   \Aut G\times\Aut H \cong \Phi\l(\Aut G\times\Aut H\r) \leq \Aut\l(G\times H\r)
+  $$
+  \item F\"ur $\ggT\l(\l|G\r|,\l|H\r|\r)=1$ ist $\ord\l(g,h\r)=\ord\l(g\r)\ord\l(h\r)$. Bei jedem Automorphismus $\varphi \in \Aut\l(G\times H\r)$ gilt $\ord\varphi\l(g,h\r)=\ord\l(g,h\r)$. Daher ist
+  $$
+   \varphi\l(G\times\l<1\r>\r) = G\times \l<1\r> \qquad \mbox{und} \qquad
+   \varphi\l(\l<1\r>\times H\r) = \l<1\r>\times H
+  $$
+  Seien
+  $$
+   \pi_1 : G\times H \to G \qquad \mbox{und} \qquad
+   \pi_2 : G\times H \to H
+  $$
+  Projektionen. Wir definieren
+  \begin{eqnarray*}
+   \varphi_G: G \to G&,& \varphi_G\l(g\r)=\l(\pi_1\circ\varphi\r)\l(g,1\r)\\
+   \varphi_H: H \to H&,& \varphi_H\l(h\r)=\l(\pi_2\circ\varphi\r)\l(h,1\r)
+  \end{eqnarray*}
+  Dann gilt: $\varphi_G\leq \Aut G, \varphi_H\in\Aut H$. Die Abbildung
+  $$
+   \Psi: \Aut\l(G\times H\r) \to \Aut G\times \Aut H, \varphi \mapsto \l(\varphi_G,\varphi_H\r)
+  $$
+  ist injektiv: Sind $\varphi, \tau \in \Aut\l(G\times H\r)$ mit $\varphi \neq \tau$, so gibt es $g \in G, h \in H$ mit $\varphi\l(g,h\r)\neq\tau\l(g,h\r)$, also ist $\varphi_G\l(g\r)\neq\tau_G\l(g\r)$ oder $\varphi_H\l(h\r)\neq\tau_H\l(h\r)$ und daher $\l(\varphi_G,\varphi_H\r)\neq\l(\tau_G,\tau_H\r)$. Damit ist
+  $$
+   \l|\Aut\l(G\times H\r)\r|\leq \l|\Aut G \times \Aut H\r|
+  $$
+  Mit 1. folgt die Behauptung.
+ \end{enumerate}
+ \qed
+\end{beweis}
+
+\begin{folgerung}
+ Sei $n=p_1^{a_1}\cdot\ldots\cdot p_n^{a_n}$ die Primfaktorzerlegung. Dann ist auch
+ $$
+  \Aut\ZZ_n \cong \ZZ_n^* \cong \ZZ_{p_1^{a_1}}^*\times\ldots\times\ZZ_{p_n^{a_n}}^*
+ $$
+\end{folgerung}
+
+\begin{beweis}
+ Nach dem Hauptsatz \"uber endliche abelsche Gruppen \ref{hauptsatz_ueber_endliche_abelsche_gruppen} ist $\ZZ_n \cong \ZZ_{p_1^{a_1}}\times\ldots\times\ZZ_{p_n^{a_n}}$. Mit \ref{aut_isom_znstern} und \ref{aut_von_kreuzprod} folgt die Behauptung.
+ \qed
+\end{beweis}
+
+\begin{folgerung}
+ \label{hom_euler_fkt}
+ F\"ur $n,m\in \NN, \ggT\l(n,m\r)=1$ gilt:
+ $$
+  \varphi\l(n,m\r) = \varphi\l(n\r) \varphi\l(m\r)
+ $$
+\end{folgerung}
+
+\begin{folgerung}
+ Sei $n=p_1^{a_1}\cdot\ldots\cdot p_n^{a_n}$ die Primfaktorzerlegung. Dann gilt:
+ $$
+  \varphi\l(n\r) = n\l(1-\frac{1}{p_1}\r)\l(1-\frac{1}{p_2}\r)\ldots\l(1-\frac{1}{p_k}\r)
+ $$
+\end{folgerung}
+
+\begin{beweis}
+ Ist $p$ prim, so gibt es genau $p^a - p^{a-1}$ Zahlen $m$ mit $1\leq m \leq p^a$, die zu $p^a$ teilerfremd sind. Daher ist
+ $$
+  \varphi\l(p^a\r)=p^a-p^{a-1}=p^a\l(1-\frac{1}{p}\r)
+ $$
+ Der Rest folgt mit \ref{hom_euler_fkt}.
+\end{beweis}
+
+Nun wollen wir die Gruppen $\ZZ_{p^k}^*$ f\"ur $p$ prim n\"aher untersuchen. F\"ur $\ZZ_p^*$ m\"ussen wir eine Aussage aus der K\"orpertheorie verwenden:
+
+\begin{satz}
+ Sei $p$ prim. Dann ist $\ZZ_p^* \cong \ZZ_{p-1}$ zyklisch.
+\end{satz}
+
+\begin{beweis}
+ $\ZZ_p^*$ ist als multiplikative Gruppe des K\"orpers $\l(\ZZ_p, +, \cdot\r)$ abelsch und l\"asst sich daher nach dem Hauptsatz \"uber endliche abelsche Gruppen \ref{hauptsatz_ueber_endliche_abelsche_gruppen} als direktes Produkt zyklischer Gruppen schreiben:
+ $$
+  \ZZ_p^* \cong Z_1\times\ldots\times Z_k
+ $$
+ Sind die Ordnungen $z_i := \l|Z_i\r|$ paarweise teilerfremd, so ist $\ZZ_p^*$ zyklisch. Sonst gibt es eine Primzahl $q$, die $z_i$ und $z_j$ f\"ur ein Paar $i,j$ mit $i\neq j$ teilt. Daher gibt es in $Z_1\times\ldots\times Z_k \cong \ZZ_p^*$ mindestens $q^2$ Elemente $x$ mit $x^q = 1$, das hei\ss{}t das Polynom $X^q-1 \in \ZZ_p\l[X\r]$ besitzt mindestens $q^2$ Nullstellen. \"Uber einem K\"orper besitzt ein Polynom vom Grad $m$ aber h\"ochstens $m$ Nullstellen $\Rightarrow$ Widerspruch! Also ist $\ZZ_p^*$ zyklisch und wegen $\l|\ZZ_p^*\r|=p-1$ daher $\ZZ_p^* \cong \ZZ_{p-1}$.
+ \qed
+\end{beweis}
+
+\begin{definition}[Primitivwurzel modulo $n$]
+ \index{Primitivwurzel}
+ \label{primitivwurzel}
+ Ein Erzeuger von $\ZZ_p^*$ heißt \emph{Primitivwurzel modulo $n$}. F\"ur $p$ prim l\"asst sich eine Primitivwurzel modulo $p$ nur durch Raten finden. Es gibt daf\"ur weder ein theoretisches Resultat, noch einen guten Algorithmus.
+\end{definition}
+
+\begin{lemma}
+ \label{menge_E_n}
+ Sei $p$ prim und $E_n := \l\{\overline{x} \in \ZZ_{p^n} \mid x \equiv 1 \mod p\r\}$. Dann ist
+ $$
+  E_n \leq \ZZ_{p^n}^* \qquad \mbox{mit } \l|E_n\r| = p^{n-1}
+ $$
+\end{lemma}
+
+\begin{beweis}
+ Seien $\overline{x}, \overline{y} \in E_n$. Aus $x,y \equiv 1 \mod p$ folgt $xy\equiv 1 \mod p$, also ist $\overline{x}\cdot\overline{y}\in E_n$ und damit $E_n \leq \ZZ_{p^n}^*$. $\l|E_n\r|=p^{n-1}$ ist klar.
+ \qed
+\end{beweis}
+
+\begin{lemma}
+ \label{E_n_zyklisch}
+ Sei $p>2$ prim. Dann ist $E_n$ zyklisch und f\"ur $n>1$ gilt:
+ $$
+  E_n = \l< x \r> \quad \Leftrightarrow \quad x \equiv 1 \mod p,\quad x \not\equiv 1 \mod p^2
+ $$
+\end{lemma}
+
+\begin{beweis}
+ Sei $y \equiv 0 \mod p$, aber $y \not\equiv 0 \mod p^2$. Wir zeigen induktiv f\"ur $0 \leq k \leq n-2$: $p^{k+1} \mid \l(1+x\r)^{p^k}-1$, aber $p^{k+2} \nmid \l(1+x\r)^{p^k}-1$. Nach Wahl von $y$ ist dies f\"ur $k=0$ klar.
+
+ $k \mapsto k+1$: Nach Induktionsvoraussetzung gibt es ein $a \in \NN$ mit $p \mid a$, so dass 
+ $$
+  \l(1+y\r)^{p^k}-1=ap^{k+1} \Leftrightarrow \l(1+y\r)^{p^k}=ap^{k+1}+1
+ $$
+ Also ist
+ \begin{eqnarray*}
+  \l(1+x\r)^{p^{k+1}} &=& \l(ap^{k+1}+1\r)^p=\\&=&1+\binom{p}{1}ap^{k+1}+\sum_{i=1}^p\binom{p}{i}a^i\l(p^{k+1}\r)^i=\\&=&1+ap^{k+2}+\sum_{i=2}^p\binom{p}{i}a^ip^{ki+i}
+ \end{eqnarray*}
+ F\"ur $i<p$ gilt $p \mid \binom{p}{i}$. Also gilt: $p^{ki+i+1} \mid \binom{p}{i}a^ip^{ki+i}$ und es gilt
+ $$
+  ik+i+1\geq k+3 \quad \Leftrightarrow \quad \l(i-1\r)k+i\geq 2
+ $$
+ was f\"ur $i\geq2$ und $k\geq0$ erf\"ullt ist. F\"ur $i=p$ ist der entsprechende Summand durch $p^{kp+p}$ teilbar und es gilt: $pk+p\geq k+3$ f\"ur $p\geq3$. Also folgt:
+ $$
+  \l(1+y\r)^{pk+1}-1 \equiv ap^{k+2} \mod p^{k+3}
+ $$
+ Das hei\ss{}t $p^{k+2}$ teilt $\l(1+y\r)p^{k+1}-1$, aber $p^{k+3}$ teilt $\l(1+y\r)p^{k+1}-1$ nicht. Setzen wir nun $\overline{x} := \overline{1}+\overline{y}$, so ist $\overline{x} \in E_n$ und es ist $\overline{x}^{p^k} \neq \overline{1}$ in $\ZZ_{p^k}^*$ f\"ur $k \leq n-2, \overline{x}^{p^{n-1}}=\overline{1}$.
+
+ Da nach \ref{menge_E_n} $\l|E_n\r|=p^{n-1}$, folgt $E_n=\l<\overline{x}\r>$, das hei\ss{}t $E_n$ ist zyklisch. Jedes $\overline{x}$ mit $x-1\not\equiv0\mod p^2$ erzeugt $E_n$ und es gibt $p^{n-1}-p^{n-2}$ Erzeugende dieser Form. Wegen $\varphi\l(p^{n-1}\r)=p^{n-1}-p^{n-2}$ sind diese alle Erzeugenden.
+ \qed
+\end{beweis}
+
+\begin{satz}
+ Sei $p>2$ prim und $k \in \NN$. Dann ist $\ZZ_{p^k}^* \cong \ZZ_{p^{k-1}}\times \ZZ_{p-1}$ zyklisch.
+\end{satz}
+
+\begin{beweis}
+ Sei $a$ eine Primitivwurzel modulo $p$, das hei\ss{}t $\ZZ_{p^k}^*\cong \l<a\r>$. Wir setzen $r := a^p-p$ und zeigen: $\ZZ_{p^k}^* = \l<r\r>$. Zun\"achst ist $r=a^{p-1}a\equiv a \mod p$ und wegen $\ZZ_{p^k}^*=\l<a\r>$ folgt
+ $$r^m\equiv 1 \mod p \quad \Leftrightarrow \quad p-1 \mid m$$
+ Ist $r^m\equiv 1 \mod p^k$, so ist insbesondere $r^m\equiv 1 \mod p$, also folgt $p-1$ teilt $\ord r$.
+
+ Jetzt zeigen wir, dass es ein $b \in ZZ$ gibt mit $p \nmid b$, so dass $r^{p-1}=1+bp$. Dann folgt die Behauptung mit Lemma \ref{E_n_zyklisch}. Wegen $r \equiv a \mod p$ ist $r^{p-1} \equiv 1 \mod p$, also ist $r^{p-1}=1+bp$ f\"ur ein $b \in \ZZ$. Wir zeigen noch $p \nmid b$: Es ist
+ \begin{eqnarray*}
+  r^{p-1}-1&=&\l(a^p-p\r)^{p-1}-1=\\&=&a^{p\l(p-1\r)}-\binom{p-1}{1}\l(a^p\r)^{p-2}p + \\&+&\sum_{i=2}^{p-1}\binom{p-1}{i}\l(a^p\r)^{p-1-i}p^i\l(-1\r)^i-1=\\&\stackrel{\mod p^2}{=}&a^{p\l(p-1\r)}-p^2\l(a^p\r)^{p-2}+a^{p\l(p-2\r)}-1=\\&\stackrel{\mod p^2}{=}&a^{p\l(p-1\r)}-1+a^{p\l(p-2\r)}p
+ \end{eqnarray*}
+ Da $a^{p-1}=1 \mod p$ gibt es ein $k \in \ZZ$, so dass $a^{p-1}=1+kp$. Damit ist
+ \begin{eqnarray*}
+  \l(a^{p-1}\r)^p-1&=&\l(1+kp\r)^p-1=\sum_{i=1}^p\binom{p}{i}\l(kp\r)^i=\\&=&p\l(kp\r)+\sum_{i=2}^p\binom{p}{i}\l(kp\r)^i\equiv 0 \mod p^2
+ \end{eqnarray*}
+ Also erhalten wir:
+ $$
+  r^{p-1}-1\equiv a^{p\l(p-2\r)}p \mod p^2
+ $$
+ Da $a \not\equiv 0 \mod p$, ist auch $a^x \not\equiv 0 \mod p$ und daher $r^{p-1}-1\not\equiv 0 \mod p^2$, das hei\ss{}t $r^{p-1}=1+bp$ mit $p \nmid b$. Mit Lemma \ref{E_n_zyklisch} folgt nun $\l<r^{p-1}\r>=E_k$, das hei\ss{}t $\ord r^{p-1}?p^{k-1}$ und damit $p^{k-1} \mid \ord r$. Zusammen mit $p-1\mid \ord r$ erhalten wir $\ord r=\l(p-1\r)p^{k-1}$, also $\ZZ_{p^k}^*=\l<r\r>$.
+ \qed
+\end{beweis}
+
+\begin{bemerkung}
+ In Definition \ref{primitivwurzel} haben wir festgestellt, dass es schwierig ist, eine Primitivwurzel modulo $p$ zu finden. Haben wir aber eine solche gefunden, etwa $a$, so k\"onnen wir sofort eine Primitivwurzel modulo $p^k$ angeben, n\"amlich $r=a^r-p$.
+\end{bemerkung}

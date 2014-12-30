@@ -1,0 +1,76 @@
+\section{Einf\"uhrung}
+Folgendes wird als bekannt vorausgesetzt:
+\begin{itemize}
+ \item Definitionen: Gruppe, Untergruppe, Normalteiler, Faktorgruppe, Ordnung
+ \index{Gruppe}
+ \index{Untergruppe}
+ \index{Normalteiler}
+ \index{Faktorgruppe}
+ \index{Ordnung}
+
+ \item Untergruppenkriterien
+ \item Homomorphiesatz und Isomorphies\"atze:
+ \index{Homorphiesatz}
+  \begin{satz}[Homomorphiesatz]
+   \label{homomorphiesatz}
+   $G, H$ Gruppen, $\varphi: G \to H$ Homomorphismus. Dann gilt: 
+   \begin{equation*} 
+    G/ H \cong \Img \varphi
+   \end{equation*}
+  \end{satz}
+  \begin{satz}[1. Isomorphiesatz]
+  \index{Isomorphies\"atze!1. Isomorphiesatz}
+  \label{isomorphiesatz1}
+   Sei $H\leq G, N \nt G$. Dann gilt:
+   \begin{enumerate}
+    \item $HN \leq G$
+    \item $N \nt HN$
+    \item $H \cap N \nt H$
+    \item Der kanonische Homomorphismus
+     \begin{equation*}
+      H/H\cap N \to HN/N, \quad h\l(H\cap N\r) \mapsto hN
+     \end{equation*}
+     ist ein Isomorphismus.
+   \end{enumerate}
+  \end{satz}
+  \begin{satz}[2. Isomorphiesatz]
+  \index{Isomorphies\"atze!2. Isomorphiesatz}
+  \label{isomorphiesatz2}
+   Seien $M, N \nt G, M\leq N$. Dann gilt:
+   \begin{enumerate}
+    \item $N/M \nt G/M$
+    \item Der kanonische Homomorphismus
+     \begin{equation*}
+      \l(G/M\r)/\l(N/M\r) \to G/N, \quad \l(gM\r)\l(N/M\r) \mapsto gN
+     \end{equation*}
+     ist ein Isomorphismus.
+   \end{enumerate}
+  \end{satz}
+ \item Der Satz von Lagrange:
+ \index{Lagrange!Satz von}
+  \begin{satz}[Satz von Lagrange]
+   Die Ordnung der Untergruppe teilt stets die Ordnung der Gruppe.
+  \end{satz}
+ \item Definition von zyklischen Gruppen, die Gruppen $\ZZ_n$.
+ \index{Gruppe!zyklische}
+ \index{Gruppe!$\ZZ_n$}
+ \item Hauptsatz \"uber endliche abelsche Gruppen:
+ %\index{Hauptsatz \"uber endliche abelsche Gruppen}
+  \begin{satz}[Hauptsatz \"uber endliche abelsche Gruppen]
+  \label{hauptsatz_ueber_endliche_abelsche_gruppen}
+   Jede endliche abelsche Gruppe ist direktes Produkt von Gruppen von Primzahlpotenzordnung, das hei\ss{}t es gibt (nicht notwendig verschiedene) Primzahlen $p_1, \ldots, p_k$, so dass
+   \begin{equation*}
+    G \cong \ZZ_{p_1^{a_1}} \times \ldots \ZZ_{p_k^{a_k}}
+   \end{equation*}
+  \end{satz}
+ \item Eigenschaften zyklischer Gruppen, zum Beispiel:
+  \begin{equation*}
+   \ZZ_{nm} \cong \ZZ_n \times \ZZ_m \Leftrightarrow \ggT\l(n, m\r)=1
+  \end{equation*}
+ \item Definition des direkten Produkts von Gruppen
+ \item Definition der symmetrischen Gruppe $\Symm_n$, alternierende Gruppe $\Alt_n$
+  \begin{equation*}
+   \sign: \Symm_n \to \l\{1, -1 \r\}
+  \end{equation*}
+ \item Rechnen mit Zykeln in $\Symm_n$, Zerlegung in elementfremde Zykeln.
+\end{itemize}

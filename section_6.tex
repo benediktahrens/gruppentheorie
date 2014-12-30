@@ -1,0 +1,130 @@
+\section{Aufl\"osbare Gruppen}
+
+Bevor wir zu den aufl\"osbaren Gruppen kommen, beweisen wir zun\"achst den Satz von Jordan-H\"older. Dieser kann als Versuch gesehen werden, f\"ur Gruppen eine Art 'Primfaktorzerlegung' zu definieren.
+
+\begin{definition}
+\index{Normalreihe}
+\index{Kompositionsreihe}
+ Eine \emph{Normalreihe} $\GGC=(G_i)_{0\leq i \leq n}$ ist eine Kette $$G=G_0 \ntr G_1\ntr \ldots\ntr G_n=\langle 1 \rangle$$ von Untergruppen von $G$.\\
+Die Faktorgruppen $G_{i-1}/G_i$ hei\ss{}en \emph{Faktoren} der Normalreihe $\GGC$.\\
+Eine Normalreihe $\GGC'$ von $G$ hei\ss{}t \emph{feiner} als $\GGC$, wenn $\GGC$ Teilfolge von $\GGC'$ ist.\\
+Zwei Normalreihen $\GGC = (G_i)_{0\leq i\leq n}$ und $\GGC'=(G'_j)_{0\leq j\leq m}$ hei\ss{}en \emph{isomorph}, wenn $n=m$ und wenn es ein $\sigma\in \Symm_n$ gibt derart, dass $$G_i/G_{i+1}\cong G'_{\sigma(i)}/G'_{\sigma(i)+1}.$$
+Eine Normalreihe mit lauter einfachen Faktoren $\neq \langle 1 \rangle$ hei\ss{}t \emph{Kompositionsreihe}.
+\end{definition}
+
+\begin{beispiel} \spspace
+ \begin{enumerate}
+\index{Normalreihe}
+\index{Kompositionsreihe}
+ \item $\Di_n \ntr \langle d \rangle \ntr \langle 1 \rangle$ ist eine Normalreihe.
+ \item $\ZZ_36 \ntr \ZZ_12 \ntr \ZZ_6 \ntr \langle 1 \rangle$ und $\ZZ_36\ntr\ZZ_18\ntr \ZZ_3\ntr \langle 1 \rangle$ sind isomorphe Normalreihen, obwohl die Gruppen innerhalb der Reihen nicht isomorph sind.
+ \item Ist $p$ prim, so ist $\ZZ_{p^n}\ntr\ZZ_{p^{n-1}}\ntr\ldots\ntr\ZZ_p\ntr\langle 1 \rangle$ eine Kompositionsreihe von $\ZZ_{p^n}$, die Faktorgruppen sind isomorph zu $\ZZ_p$ und damit einfach. 
+\end{enumerate}
+
+\end{beispiel}
+
+\begin{bemerkung} \label{6.3}
+ Sei $U\nt U^*\leq G$ und $V\leq G$. Dann gilt
+$$U\cap V \nt U^*\cap V.$$
+\end{bemerkung}
+
+\begin{beweis}
+ Sei $u\in U^*\cap V$. Weil $u\in U^*$ und $U\nt U^*$ ist dann $u^{-1}(U\cap V)u\leq U$. Da $u\in V$ und $U\cap V\leq V$, ist auch $u^{-1}(U\cap V)u\leq V$ und daher $u^{-1}(U\cap V)u\leq U\cap V$.\qed
+\end{beweis}
+\begin{lemma}[Zassenhaus] \label{6.4}
+\index{Zassenhaus!Lemma von}
+ Seien $U\nt U^*\leq G$ und $V\nt V^*\leq G$. Dann gilt
+$$\frac{U(U^*\cap V^*)}{U(U^*\cap V)}\cong \frac{V(U^*\cap V^*)}{V(U\cap V^*)}.$$
+\end{lemma}
+\begin{beweis}
+ Wegen $U\nt U^*$ gilt $U\cap V^* \nt U^*\cap V^*$ nach \ref{6.3} und analog folgt $U^*\cap V \nt U^*\cap V^*$. Damit ist $W:=(U\cap V^*)(U^*\cap V)$ ein Normalteiler in $U^*\cap V^*$. Aus $U\nt U^*$ folgt auch $U\nt U(U^*\cap V^*)\leq U^*$. In der Gruppe $U(U^*\cap V^*)$ wenden wir den 1. Isomorphiesatz an und erhalten $$\frac{U(U^*\cap V^*)}{U}\stackrel{\varphi}{\cong}\frac{U^*\cap V^*}{U\cap U^*\cap V^*}=\frac{U^*\cap V^*}{U\cap V^*}.$$
+Dabei bezeichne $\varphi$ den Isomorphismus aus dem 1. Isomorphiesatz. Wenden wir $\varphi$ auf die Untergruppe $U(U^*\cap V)/U$ an, so ergibt sich $$\varphi\l(\frac{U(U^*\cap V)}{U}\r)=\frac{(U^*\cap V)(U\cap V^*)}{U\cap V^*}=\frac{W}{U\cap V^*}.$$
+Oben hatten wir bereits $W\nt U^*\cap V^*$ bewiesen. Mit dem 2. Isomorphiesatz folgt
+\begin{eqnarray*}
+ \frac{U^*\cap V^*}{(U^*\cap V)(U\cap V^*)}=\frac{U^*\cap V^*}{W}&\stackrel{\text{2. Isom.}}{\cong}&\frac{(U^*\cap V^*)/(U\cap V^*)}{W/(U\cap V^*)}\stackrel{\varphi^{-1}}{\cong}\\\frac{U(U^*\cap V^*)/U}{U(U^*\cap V)/U}&\stackrel{\text{2. Isom.}}{\cong}&\frac{U(U^*\cap V^*)}{U(U^*\cap V)}.
+\end{eqnarray*}
+Aufgrund der Symmetrie des Ausdrucks auf der linken Seite sowie der Voraussetzungen an $U$ und $V$ sind wir fertig.
+\end{beweis}
+
+
+\begin{satz}[Verfeinerungssatz von Schreier und Zassenhaus] \label{6.5}
+ \index{Verfeinerungssatz}
+\index{Zassenhaus}
+\index{Schreier}
+\index{Normalreihe}
+Zwei Normalreihen $$G=G_0\ntr G_1\ntr G_2\ntr \ldots \ntr G_n=\langle 1 \rangle$$ und 
+                  $$G=G'_0\ntr G'_1\ntr G'_2\ntr \ldots \ntr G'_m=\langle 1 \rangle$$ einer Gruppe $G$ besitzen isomorphe Verfeinerungen.
+\end{satz}
+\begin{beweis}
+ Wir bilden $G_{i,j}:=G_i(G_{i-1}\cap G'_j)$ und $G'_{j,i}:=G'_j(G'_{j-1}\cap G_i)$ f\"ur $0\leq i\leq n$ und $0\leq j\leq m$, wobei wir $G_{-1}:=G'_{-1}:=G$ setzen. Nach \ref{6.4} gilt dann $G_{i,j+1}\nt G_{i,j}$ und $G'_{j,i+1}\nt G'_{j,i}$. 
+Also sind 
+$$G=G_{0,0}\ntr G_{0,1}\ntr \ldots \ntr G_{0,m}=G_{1,0}\ntr G_{1,1}\ntr \ldots \ntr G_{n,m-1}\ntr G_{n,m}=\langle 1 \rangle$$ und 
+$$G=G'_{0,0}\ntr G'_{0,1}\ntr\ldots \ntr G'_{0,n}=G'_{1,0}\ntr G'_{1,1}\ntr\ldots\ntr G'_{m,n-1}\ntr G'{m,n}=\langle 1 \rangle$$ Verfeinerungen der urspr\"unglichen Normalreihen. Mit \ref{6.4} folgt auch 
+$$G_{i,j-1}/G_{i,j}=\frac{G_i(G_{i-1}\cap G'_{j-1})}{G_i(G_{i-1}\cap G'_j)}\cong\frac{G'_j(G_{i-1}\cap G'_{j-1})}{G'_j(G_i\cap G'_{j-1})}=G'_{j,i-1}/G'_{j,i}.$$ f\"ur $i=1,\ldots,n$ und $j=1,\ldots,m$. Die Verfeinerungen sind also isomorph.
+\end{beweis}
+
+\begin{satz}[Jordan-H\"older]
+ \index{Jordan-H\"older!Satz von}
+ \index{Kompositionsreihe}
+Je zwei Kompositionsreihen einer endlichen Gruppe $G$ sind isomorph.
+\end{satz}
+\begin{beweis}
+ Die Kompositionsreihen lassen sich nicht ohne Wiederholungen verfeinern. Nach \ref{6.5} sind sie daher isomorph.
+\end{beweis}
+\begin{bemerkung} 
+\index{einfache Gr.}
+\index{$\PSL$}
+\index{$\PSU$}
+ Obwohl die Gruppen, die in verschiedenen Kompositionsreihen von $G$ stehen, in der Regel ganz verschieden sind, sind die Faktorgruppen der Reihen isomorph (nach einer Permutation). Die einfachen Gruppen, die als Faktoren einer Kompositionsreihe von $G$ vorkommen, sind also kennzeichnend f\"ur $G$. Wenn man so will, bilden sie eine Art 'Primfaktorzerlegung' von $G$. Allerdings m\"ussen Gruppen mit derselben 'Primfaktorzerlegung' keineswegs isomorph sein, beispielsweise haben alle $p$-Gruppen der Ordnung $p^n$ isomorphe Kompositionsreihen. F\"ur die Klassifikation von Gruppen sind die Faktoren also nur begrenzt hilfreich.
+Dennoch w\"are es im 1. Schritt interessant, die m\"oglichen Faktoren, d.h. die endlichen einfachen Gruppen zu kennen. Wir kennen bisher nur die $\ZZ_p$ f\"ur $p$ prim.
+Im n\"achsten Kapitel werden wir zeigen, dass die alternierenden Gruppen $\Alt_n$ f\"ur $n\geq 5$ einfach sind.\\
+Der wohl tiefliegendste Satz der Mathematik, endg\"ultig bewiesen in den 1980ern, ist die Klassifikation der endlichen einfachen Gruppen. Neben $\ZZ_p$ und $\Alt_n$ gibt es noch 16 weitere unendliche Serien einfacher Gruppen, z. B. $\PSL(n,a):=\frac{\SL(n,a)}{\Zen(\SL(n,a))}, \PSU(n,a),\ldots$ ($n,a$ nicht zu klein).\\
+Zus\"atzlich gibt es noch 26 sog. \emph{sporadische} einfache Gruppen, die zu keiner der Serien geh\"oren, z. B. die Mathieu-Gruppe, das Monster und das Babymonster. Die sporadischen Gruppen haben oft Verbindung zu anderen Teilgebieten der Mathematik, z. B. zur Kodierungstheorie.\\
+Auch wenn die Faktoren die Gruppe nicht eindeutig festlegen, bestimmen sie oft Eigenschaften der Gruppe. Das ist die gruppentheoretische Motivation f\"ur die folgende
+\end{bemerkung}
+\begin{definition}[Aufl\"osbarkeit, $p$-Aufl\"osbarkeit]
+ \index{Aufl\"osbarkeit}
+ \index{Aufl\"osbarkeit!$p$-}
+Eine Gruppe $G$ hei\ss{}t \emph{aufl\"osbar}, wenn sie eine Normalreihe mit abelschen Faktoren besitzt.\\
+$G$ hei\ss{}t \emph{$p$-aufl\"osbar}, wenn $G$ eine Normalreihe besitzt, deren Faktoren entweder $p$- oder $p'$-Gruppen sind.
+\end{definition}
+
+\begin{bemerkung}
+ Abelsche Gruppen sind aufl\"osbar, denn $G\ntr \langle 1 \rangle$ ist eine Normalreihe mit abelschen Faktoren.\\
+Die Eigenschaft der Aufl\"osbarkeit kann als Verallgemeinerung der Kommutativit\"at gesehen werden.\\
+Aufl\"osbare Gruppen sind $p$-aufl\"osbar f\"ur jede Primzahl $p$.\\
+Der Begriff 'aufl\"osbar' kommt tats\"achlich von der Aufl\"osbarkeit von Gleichungen. Bekanntlich gibt es L\"osungsformeln f\"ur quadratische, kubische und Gleichungen 4. Grades. Seit dem Mittelalter wurde intensiv nach L\"osungsformeln f\"ur Gleichungen 5. Grades gesucht, d. h. nach Formeln f\"ur die Nullstellen von Polynomen, die die L\"osung durch mehrfaches Wurzelziehen liefern. Solche Formeln nennt man \emph{Aufl\"osung durch Radikale}. 1824 bewies der Norweger Niels Henrik Abel \index{Abel!Niel Henrik}, dass Gleichungen 5. Grades im Allgemeinen nicht durch Radikale aufl\"osbar sind. Genauer gilt: die Nullstellen eines Polynoms $f$ sind genau dann durch Radikale zu beschreiben, wenn die zugeh\"orige \emph{Galoisgruppe} $\Gal(f)$ aufl\"osbar ist.\index{Galoisgruppe}
+$\Gal(f)$ l\"asst sich in die symmetrische Gruppe $\Symm_n, (n=\deg(f))$ einbetten. $\Symm_2, \Symm_3, \Symm_4$ sind aufl\"osbar, $\Symm_5$ nicht mehr. Es gibt tats\"achlich Polynome $f$ vom Grad 5 mit $\Gal(f)\cong \Symm_5$, z. B. $f(X)=X^5-5X-1$.
+\end{bemerkung}
+
+\begin{satz} \label{6.10}
+\index{Aufl\"osbarkeit}
+ $G$ ist genau dann aufl\"osbar, wenn es ein $n\in \NN$ gibt derart, dass $G^{(n)}=\langle 1 \rangle$.
+\end{satz}
+
+\begin{beweis}
+ Sei zun\"achst $G^(n)=\langle 1 \rangle$. Dann ist $$G\ntr G'\ntr G''\ntr\ldots\ntr G^{(n)}=\langle 1 \rangle$$ eine Normalreihe. Mit \ref{2.15}\ref{2.15.4} folgt, dass die Faktoren abelsch sind.\\
+Sei umgekehrt $$G=G_0\ntr G_1\ntr\ldots\ntr G_n= \langle 1 \rangle$$ eine Normalreihe mit abelschen Faktoren. Wir zeigen induktiv, dass $G^{(i)}\leq G_i$.
+Da $G/G_n$ abelsch ist, gilt $G'\leq G_1$ nach \ref{2.15}\ref{2.15.4}. \\
+Sei nun $G_i/G_{i+1}$ abelsch. Also ist $G_{i+1}\leq G'_i= \langle \lbrack G_i, G_i \rbrack \rangle \stackrel{\text{I.V.}}{\geq}\langle \lbrack G^{(i)},G^{(i)}\rbrack\rangle = G^{(i+1)}$.
+Wegen $G_n=\langle 1\rangle $ ist auch $G^{(n)}=\langle 1\rangle$.
+\end{beweis}
+
+Der folgende Satz gilt sinngem\"a\ss{} auch f\"ur $p$-aufl\"osbare Gruppen, allerdings muss man dann im Beweis die entsprechenden Normalreihen angeben.
+\begin{satz}\spspace \label{6.11} \index{Aufl\"osbarkeit}
+\begin{enumerate}
+ \item Unter- und Faktorgruppen aufl\"osbarer Gruppen sind aufl\"osbar.
+ \item Sei $N\nt G$. Sind $N$ und $G/N$ aufl\"osbar, so auch $G$. \label{6.11.2}
+ \item (Semi-)direkte Produkte aufl\"osbarer Gruppen sind aufl\"osbar.
+\end{enumerate}
+
+\end{satz}
+
+\begin{beweis}\spspace
+ \item Es gilt $U^{(n)}\leq G^{(n)}$ und nach \ref{2.17} gilt $(G/N)^{(n)} = G^{(n)}N/N$. Mit \ref{6.10} folgt die Behauptung.
+ \item Seien $N=N_0\ntr N_1\ntr\ldots\ntr N_n = \langle 1 \rangle$ und $G/N=M_0\ntr M_1\ntr\ldots\ntr M_m=\langle 1 \rangle$ Normalreihen mit abelschen Faktoren. Sei $v:G\to G/N$ die kanonische Einbettung. Wir setzen $G_i:=v^{-1}(M_i)$ und zeigen, dass $$G=G_0\ntr G_1\ntr\ldots\ntr G_m = N\ntr N_1\ntr \ldots \ntr N_n=\langle 1 \rangle$$ eine Normalreihe mit abelschen Faktoren ist. \\
+Es gilt $G_i/N = M_i\nt M_{i-1}=G_{i-1}/N$. Sei $v_{i-1}:G_{i-1}\to G_{i-1}/N$ der kanonische Epimorphismus. Der Korrespondenzsatz, angewandt auf $v_{i-1}$ liefert $G_i\nt G_{i-1}$. Da sogar $N\nt G$, gilt auch $N\nt G_i$ f\"ur $i=0,\ldots,n$.
+Mit dem 2. Isomorphiesatz folgt
+$$G_{i-1}/G_i\cong (G_{i-1}/N)/(G_i/N)=M_{i-1}/M_i,$$ also sind die Faktoren $G_{i-1}/G_i$ abelsch.
+\item Sei $N\nt G$ und $G\cong N\rtimes U$. Dann ist $G/N\cong U$, nach Voraussetzung sind $N$ und $U$ aufl\"osbar, nach \ref{6.11.2} also auch $G$. Direkte Produkte sind ein Spezialfall.
+\end{beweis}

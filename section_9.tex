@@ -1,0 +1,106 @@
+\section{Die Frattini-Gruppe}
+
+\begin{definition} \index{Frattini-Gruppe}
+ Die \emph{Frattini-Gruppe} $\Phi(G)$ einer Gruppe $G$ wird definiert als der Durchschnitt aller maximalen Untergruppen von $G$.
+\end{definition}
+
+\begin{bemerkung*}
+ $\Phi(G)\Char G$, weil Automorphismen die Maximalit\"at von Untergruppen erhalten. Wir zeigen nun, da\ss{} $\Phi(G)$ die Menge der ``Nicht-Erzeuger'' ist, das hei\ss{}t die Menge der Elemente, die man in jedem Erzeugendensystem weglassen kann.
+\end{bemerkung*}
+
+\begin{lemma}\spspace \label{9.2}\index{Frattini-Gruppe}
+ \begin{enumerate}
+ \item Sei $A\subset \Phi(G)$ und $B\subset G$ mit $G=\langle A, B \rangle$. Dann ist $G=\langle B\rangle$.
+ \item Sei $g\in G$ und $G=\langle g_1, g_2,\ldots , g_n\rangle$. Dann ist $G=\langle g_1g, g_2, \ldots , g_n\rangle$.
+\end{enumerate}
+
+\end{lemma}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+ \item Ist $\langle B\rangle < G$, so gibt es eine maximale Untergruppe $M$ mit $\langle B\rangle\leq M$. Wegen $A\subset \Phi(G)\leq M$ ist dann $G=\langle A, B\rangle \leq M\leq G$, ein Widerspruch.
+ \item Angenommen, es ist $U:=\langle g_1g, g_2, \ldots , g_n\rangle < G$. Dann gibt es eine maximale Untergruppe $M < G$ mit $U\leq M$. Da $g\in \Phi(G)\leq M$, ist auch $g^{-1}\in M$ und folglich $(g_1g)g^{-1}=g_1\in M$. Damit ist $G=\langle g_1, \ldots , g_n\rangle\leq M < G$, ein Widerspruch.
+\end{enumerate}
+
+ 
+\end{beweis}
+
+\begin{lemma}[Dedekind-Identit\"at] \label{9.3}
+ \index{Dedekind-Identit\"at}
+ Ist $A\leq C\leq G$ und $B\leq G$, so gilt $(AB)\cap C=A(B\cap C)$.
+\end{lemma}
+
+\begin{beweis}
+ Sei zun\"achst $c\in (AB)\cap C$. Dann gibt es $a\in A, b\in B$ derart, dass $c=ab$. Da $a\in A\subset C$, gilt $b=a^{-1}c\in C$. Also ist $c=ab \in A(B\cap C)$.\\
+Ist nun $c\in A(B\cap C)$, so gibt es $a\in A, b\in B\cap C$ mit $c=ab$. Da $b\in B\cap C\subset B$, ist $c\in AB$. Wegen $A\leq B$ und $B\cap C\leq C$ ist auch $c\in C$ und insgesamt $c\in (AB)\cap C$.
+\end{beweis}
+
+\begin{satz} \spspace
+\index{Frattini-Gruppe}
+ \begin{enumerate}
+ \item Gilt $N\nt G, U\leq G$ und $N\leq \Phi(U)$, so ist $N\leq \Phi(G)$. \label{9.4.1}
+ \item Aus $M\nt G$ folgt $Phi(M)\leq \Phi(G)$.
+ \item Warnung: $U < G \stackrel{\text{i.A.}}{\Longrightarrow} \Phi(U)\leq \Phi(G)$.
+ \item $\Phi(G\times H)=\Phi(G)\times \Phi(H)$.
+\end{enumerate}
+ 
+\end{satz}
+
+\begin{beweis}\spspace
+ \begin{enumerate}
+ \item Angenommen, es ist $N\nleq \Phi(G)$. Dann gibt es eine maximale Untergruppe $V$ von $G$ mit $N\nleq V$. Wegen $N\nt G$ ist $NV\leq G$ mit $NV > V$. Die Maximalit\"at von V liefert $NV=G$. Nun ist $U=U\cap NV \stackrel{\ref{9.3}}{=}N(U\cap V)\stackrel{\ref{9.2}}{=}U\cap V$, denn aus $U=N(U\cap V)$ folgt $U=\langle N, U\cap V\rangle$, die Elemente von $N\leq \Phi(U)$ k\"onnen nach \ref{9.2} aber weggelassen werden, das hei\ss{}t, wir erhalten $U=\langle U\cap V\rangle = U\cap V$. Damit ist aber $N\leq U=U\cap V\leq V$, ein Widerspruch zu $N\nleq V$.
+ \item Da $\Phi(M)\Char M\nt G$, ist $\Phi(M)\nt G$ nach \ref{2.20}. Setzen wir in \ref{9.4.1} $N=\Phi(M), U=M$, so folgt die Behauptung.
+ \item Beispiel: $\ZZ_5 \stackrel{\varphi}{\rtimes}\ZZ_4$, wobei $\varphi:\ZZ_4\to\ZZ_5^*$ Isomorphismus
+ \item \"Ubung
+\end{enumerate}
+
+\end{beweis}
+
+\begin{satz}\index{Frattini-Gruppe}\label{9.5}
+ $\Phi(G)$ ist nilpotent.
+\end{satz}
+\begin{beweis}
+ Sei $P$ eine $p$-Sylowgruppe von $\Phi(G)$. Da $\Phi(G)\nt G$, k\"onnen wir das Frattini-Argument II (\ref{5.22}) anwenden und erhalten $G=\Phi(G)N_G(P)$. In $G=\langle \Phi(G), N_G(P)\rangle$ k\"onnen wir nach \ref{9.2} aber $\Phi(G)$ weglassen und erhalten $G=\langle N_G(P)\rangle = N_G(P)$. Damit ist $P\nt G$, also insbesondere $P\nt \Phi(G)$. Nach \ref{1.14} ist nun $\Phi(G)$ das direkte Produkt ihrer Sylowgruppen und daher gem\"a\ss{} \ref{8.3} nilpotent.
+\end{beweis}
+
+\begin{satz}[Gasch\"utz]\index{Gasch\"utz, Satz von}
+ In jeder Gruppe $G$ gilt $G'\cap \Zen(G)\leq \Phi(G)$.
+\end{satz}
+\begin{beweis}
+ Sei $D:=G'\cap \Zen(G)$. Ist $D\nleq\Phi(G)$, so gibt es eine maximale Untergruppe $M<G$ mit $D\nleq M$. Wegen $D\nt G$ ist $MD\leq G$ und wegen der Maximalit\"at von $M$ ist dann $DM=G$. Also gibt es zu $g\in G$ Elemente $d\in D, m\in M$ derart, dass $g=dm$. Nun gilt $g^{-1}Mg=m^{-1}d^{-1}Mdm\stackrel{d\in D\leq \Zen(G)}{=}m^{-1}Mm=M$, das hei\ss{}t, $M\nt G$. Nach Folgerung \ref{3.4} ist somit $[G:M]$ eine Primzahl, insbesondere ist $G/M$ daher abelsch. Laut \ref{2.15} gilt nun $D\leq G'\stackrel{\ref{2.15}}{\leq}M$, ein Widerspruch zu $D\nleq M$.
+\end{beweis}
+
+\begin{satz}\label{9.7}
+ \index{Nilpotenz}
+ \index{Frattini-Gruppe}
+ F\"ur eine endliche Gruppe $G$ sind \"aquivalent:
+\begin{enumerate}
+ \item $G$ ist nilpotent.\label{9.7.1}
+ \item $G'\leq \Phi(G)$.\label{9.7.2}
+ \item $G/\Phi(G)$ ist nilpotent.\label{9.7.3}
+\end{enumerate}
+
+\end{satz}
+
+\begin{beweis}
+ Sei zun\"achst $G$ nilpotent, wir zeigen $G'\leq\Phi(G)$. Sei hierzu $M < G$ eine maximale Untergruppe. Weil $G$ nilpotent ist, gilt $M\nt G$. Mit Folgerung \ref{3.4} folgt: $G/M$ hat Primzahlordnung, ist also abelsch. Nach \ref{2.15} gilt nun $G'\leq M$. Da dies f\"ur alle maximalen Untergruppen gilt, ist $G'\leq \Phi(G)$.\\
+ Gilt nun \ref{9.7.2}., so ist $G/\Phi(G)$ nach \ref{2.15} abelsch und somit nilpotent. Also folgt \ref{9.7.3}..\\
+ Sei jetzt $G/\Phi(G)$ nilpotent und damit direktes Produkt von Sylowgruppen. Seien $P_i\leq G$ mit $\Phi(G)\leq P_i$ derart, dass $P_i/\Phi(G)$ $p_i$-Sylowgruppen von $G/\Phi(G)$ sind, das hei\ss{}t, es gelte $G/\Phi(G)=P_1/\Phi(G)\times\ldots\times P_r/\Phi(G)$.
+Da $P_i/\Phi(G)\nt G/\Phi(G)$ Normalteiler sind, sind nach dem Korrespondenzsatz auch $P_i\nt G$. Sei $Q_i$ die $p_i$-Sylowgruppe von $P_i$. Nun gilt $P_i=Q_i\Phi(G)$. Da $|P_i|=|P_i/\Phi(G)|\cdot|\Phi(G)|$ gilt, enth\"alt $P_i$ bereits eine $p_i$-Sylowgruppe von $G$, das hei\ss{}t, $Q_i$ ist $p_i$-Sylowgruppe von $G$. Mit dem Frattini-Argument II (\ref{5.22}) folgt aus $P_i\nt G$ nun $G=\Norm_G(Q_i)P_i=\Norm_G(Q_i)Q_i\Phi(G)=\Norm_G(Q_i)\Phi(G)$.
+Aus $G=\langle\Norm_G(Q_i), \Phi(G)\rangle$ folgt mit \ref{9.2}, dass $G=\langle\Norm_G(Q_i)\rangle=\Norm_G(Q_i)$. Damit ist $Q_i \nt G$.\\
+Gilt $p||\Phi(G)|$, aber $p\nmid |G/\Phi(G)|$ f\"ur eine Primzahl $p$, so ist die $p$-Sylowgruppe $P$ ebenfalls Normalteiler von $G$, da dann $P\Char \Phi(G)\nt G$ nach \ref{9.5}.
+Also sind alle Sylowgruppen von $G$ Normalteiler in $G$ und nach \ref{1.14} ist $G$ das direkte Produkt ihrer Sylowgruppen, also nilpotent
+
+\end{beweis}
+
+
+\begin{bemerkung}\spspace
+\index{Herzog}
+\index{Kaplan}
+\index{Lev}
+\begin{enumerate}
+ \item Mit Hilfe des Satzes von Zassenhaus werden wir in Kapitel \ref{11} noch beweisen: Ist $p$ prim mit $p| |\Phi(G)|$, so gilt $p||G/\Phi(G)|$.
+\item Nach einem Satz von Herzog, Kaplan und Lev (2004) gilt: Sei $G\neq \langle 1\rangle$ aufl\"osbar mit $|G'|\leq \sqrt[3]{|G|}$. Dann ist entweder $\Zen(G)\neq \langle 1\rangle$ oder $\Phi(G)\neq \langle 1 \rangle$.
+\end{enumerate}
+
+\end{bemerkung}
